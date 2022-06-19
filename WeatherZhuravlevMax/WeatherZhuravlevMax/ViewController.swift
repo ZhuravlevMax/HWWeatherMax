@@ -18,7 +18,7 @@ class ViewController: UIViewController {
             return
         }
         //url по которому будем получать данные
-        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)") {
+        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric") {
             
             //Создаю реквест
             var urlRequest = URLRequest(url: url)
