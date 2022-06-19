@@ -13,10 +13,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let city = "Minsk"
-        let apiKey = "e3d520a7f75cff3164067d89df3e34a8"
-
+        let key = Bundle.main.object(forInfoDictionaryKey: "APIKey") as? String
+        
         //url по которому будем получать данные
-        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)") {
+        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key!)") {
             
             //Создаю реквест
             var urlRequest = URLRequest(url: url)

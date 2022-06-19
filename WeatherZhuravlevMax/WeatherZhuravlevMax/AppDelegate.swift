@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //Берем ключ из info.plist
+        let key = Bundle.main.object(forInfoDictionaryKey: "APIKey") as? String
         return true
     }
 
