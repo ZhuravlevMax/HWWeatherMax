@@ -17,14 +17,14 @@ class ViewController: UIViewController {
             print("There is no any key")
             return
         }
-        //enum для выбора системы 
-        enum Units {
+        //enum для выбора системы
+        enum Units: String {
             case metric
             case imperial
         }
         
         //url по которому будем получать данные
-        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=\(Units.metric)") {
+        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=\(Units.metric.rawValue)") {
             
             //Создаю реквест
             var urlRequest = URLRequest(url: url)
