@@ -12,8 +12,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let city = "Minsk"
+        let apiKey = "e3d520a7f75cff3164067d89df3e34a8"
+
         //url по которому будем получать данные
-        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=e3d520a7f75cff3164067d89df3e34a8") {
+        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)") {
             
             //Создаю реквест
             var urlRequest = URLRequest(url: url)
