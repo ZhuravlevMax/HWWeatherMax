@@ -15,8 +15,12 @@ class ViewController: UIViewController {
         let city = "Minsk"
         let key = Bundle.main.object(forInfoDictionaryKey: "APIKey") as? String
         
+        guard let checkedKey = key else {
+            print("There is no any key")
+            return
+        }
         //url по которому будем получать данные
-        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key!)") {
+        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(checkedKey)") {
             
             //Создаю реквест
             var urlRequest = URLRequest(url: url)
