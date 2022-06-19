@@ -8,19 +8,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let city = "Minsk"
-        let key = Bundle.main.object(forInfoDictionaryKey: "APIKey") as? String
         
-        guard let checkedKey = key else {
+        let city = "Minsk"
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "APIKey") as? String else {
             print("There is no any key")
             return
         }
         //url по которому будем получать данные
-        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(checkedKey)") {
+        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)") {
             
             //Создаю реквест
             var urlRequest = URLRequest(url: url)
@@ -49,7 +47,7 @@ class ViewController: UIViewController {
             dataTask.resume()
         }
     }
-
-
+    
+    
 }
 
