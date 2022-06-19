@@ -12,19 +12,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //enum для выбора системы
+        enum Units {
+            case metric
+            case imperial
+        }
+        
+        var units: Units = .metric
+        
         let city = "Minsk"
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "APIKey") as? String else {
             print("There is no any key")
             return
         }
-        //enum для выбора системы
-        enum Units: String {
-            case metric
-            case imperial
-        }
-        
         //url по которому будем получать данные
-        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=\(Units.metric.rawValue)") {
+        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=\(units)") {
             
             //Создаю реквест
             var urlRequest = URLRequest(url: url)
