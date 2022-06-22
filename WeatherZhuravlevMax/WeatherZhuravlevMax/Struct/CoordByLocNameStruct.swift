@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct CoordByLocName: Codable {
 
         let name: String?
