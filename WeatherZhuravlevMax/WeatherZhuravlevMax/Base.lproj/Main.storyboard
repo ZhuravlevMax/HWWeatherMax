@@ -17,28 +17,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nnA-YM-vDk">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <rect key="frame" x="197" y="438.5" width="20" height="19"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Y2-uc-6hJ">
+                                <rect key="frame" x="160" y="190" width="94" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" systemColor="systemTealColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dui-jo-nOl">
+                                <rect key="frame" x="182" y="278" width="50" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qre-Yz-a4f">
+                                <rect key="frame" x="186" y="498" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstItem="nnA-YM-vDk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="678-Gc-6lG"/>
+                            <constraint firstItem="nnA-YM-vDk" firstAttribute="top" secondItem="1Y2-uc-6hJ" secondAttribute="bottom" constant="200" id="8mK-yv-nxe"/>
+                            <constraint firstItem="Dui-jo-nOl" firstAttribute="top" secondItem="1Y2-uc-6hJ" secondAttribute="bottom" constant="40" id="9Tm-8f-nwt"/>
+                            <constraint firstItem="qre-Yz-a4f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R1a-N1-lof"/>
                             <constraint firstItem="nnA-YM-vDk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xfn-sb-nj2"/>
+                            <constraint firstItem="Dui-jo-nOl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ytk-U0-HaJ"/>
+                            <constraint firstItem="qre-Yz-a4f" firstAttribute="top" secondItem="nnA-YM-vDk" secondAttribute="bottom" constant="40" id="Zkm-FZ-tKh"/>
+                            <constraint firstItem="1Y2-uc-6hJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vig-RL-bZG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionWeatherLabel" destination="qre-Yz-a4f" id="tFA-AY-kEZ"/>
+                        <outlet property="feelsLikeTempLabel" destination="Dui-jo-nOl" id="gdd-bI-W7G"/>
+                        <outlet property="tempLabel" destination="1Y2-uc-6hJ" id="m6Z-TM-j8r"/>
                         <outlet property="weatherImage" destination="nnA-YM-vDk" id="xUB-yB-BYi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="64"/>
+            <point key="canvasLocation" x="34.782608695652179" y="63.616071428571423"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

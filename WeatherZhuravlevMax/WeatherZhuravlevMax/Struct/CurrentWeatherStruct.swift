@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK: - Объект для текущей погоды
 struct CurrentWeather: Codable {
     
     struct Coord: Codable {
@@ -28,8 +28,8 @@ struct CurrentWeather: Codable {
     let base: String?
     
     struct Main: Codable {
-        var temp: Decimal?
-        var feelsLike: Decimal?
+        var temp: Double?
+        var feelsLike: Double?
         var tempMin: Decimal?
         var tempMax: Decimal?
         var pressure: Int?

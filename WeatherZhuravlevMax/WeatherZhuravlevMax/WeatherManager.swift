@@ -22,26 +22,32 @@ enum Limits: String {
     case five = "5"
 }
 
+enum Language: String {
+    case russian = "ru"
+    case english = "en"
+}
+
 class WeatherManager {
 
     var city: String
     var apiKey: String
     var units: Units
     var limit: String
+    var lang: String
     
-    
-    init (city: String, apiKey: String, units: Units, limit: String) {
+    init (city: String, apiKey: String, units: Units, limit: String, lang: String) {
         self.city = city
         self.apiKey = apiKey
         self.units = units
         self.limit = limit
+        self.lang = lang
     }
 
-    //метод для запроса текущей погоды
+    //MARK: - метод для запроса текущей погоды
     func makeCurrentlyRequest(completion: ((CurrentWeather) -> Void)?) {
         
     //url по которому будем получать данные
-    if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=\(units)") {
+    if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=\(units)&lang=\(lang)") {
         
         //Создаю реквест
         var urlRequest = URLRequest(url: url)
@@ -72,7 +78,7 @@ class WeatherManager {
     }
     }
 
-    //Метод для получения координат по имени города
+    //MARK: - Метод для получения координат по имени города
     func getCoordByLocName(completion: (([CoordByLocName]) -> Void)?) {
         //url по которому будем получать данные
         if let url = URL(string:"https://api.openweathermap.org/geo/1.0/direct?q=\(city)&limit=\(limit)&appid=\(apiKey)") {
