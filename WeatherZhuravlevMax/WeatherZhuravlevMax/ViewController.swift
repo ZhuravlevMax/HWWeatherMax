@@ -9,53 +9,45 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var weatherImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //enum для выбора системы
-        enum Units {
-            case metric
-            case imperial
-        }
-        
-        var units: Units = .metric
         
         let city = "Minsk"
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "APIKey") as? String else {
             print("There is no any key")
             return
         }
-        //url по которому будем получать данные
-        if let url = URL(string:"https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=\(units)") {
-            
-            //Создаю реквест
-            var urlRequest = URLRequest(url: url)
-            
-            //Указываю тип запроса GET, т.к. получаю данные с сайта
-            urlRequest.httpMethod = "GET"
-            
-            //Указываю тип контента json
-            urlRequest.setValue("application/json", forHTTPHeaderField: "content-Type")
-            
-            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-                
-                if let response = response {
-                    print(response)
-                }
-                
-                if let data = data {
-                    let weather = try! JSONDecoder().decode(Weather.self, from: data)
-                    print(weather)
-                }
-                
-                if let error = error {
-                    print(error)
-                }
-            }
-            dataTask.resume()
+        let units: Units = .metric
+        let limit = Limits.one.rawValue
+        
+        var WeatherManager = WeatherManager(city: city, apiKey: apiKey, units: units, limit: limit)
+        
+        WeatherManager.makeCurrentlyRequest { currentWeather in
+            print(currentWeather)
         }
+        
+        DispatchQueue.main.async {
+            WeatherManager.getCoordByLocName { coord in
+                print(coord)
+            }
+        }
+        
+//        let imageUrl = URL(string: "https://openweathermap.org/img/wn/10d@4x.png")
+//        if let data = try? Data(contentsOf: imageUrl!) {
+//            weatherImage.image = UIImage(data: data)
+//        }
     }
     
-    
 }
+
+
+
+
+
+
+
+
+
 
