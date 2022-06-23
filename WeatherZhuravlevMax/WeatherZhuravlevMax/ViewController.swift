@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         }
         let units: Units = .metric
         let limit = Limits.one.rawValue
-        let lang = Language.russian.rawValue
+        let lang: Language = .ru
         tempLabel.text = ""
         feelsLikeTempLabel.text = ""
         descriptionWeatherLabel.text = ""
@@ -36,10 +36,11 @@ class ViewController: UIViewController {
             print(currentWeather)
             
             //Получаю картинку погоды
-            guard let weatherIconId = currentWeather.weather[0].icon else {return}
+            guard let weatherIconId = currentWeather.weather.first?.icon else {return}
             DispatchQueue.main.async { [self] in
                 let imageUrl = URL(string: "https://openweathermap.org/img/wn/\(weatherIconId)@4x.png")
-                if let data = try? Data(contentsOf: imageUrl!) {
+                guard let imageUrlChecked = imageUrl else {return}
+                if let data = try? Data(contentsOf: imageUrlChecked) {
                     self.weatherImage.image = UIImage(data: data)
                 }
                 // Текущая температура
@@ -51,8 +52,8 @@ class ViewController: UIViewController {
                 feelsLikeTempLabel.text = "Чувствуется как + \(Int(feelsLikeTemp))"
                 
                 //Ясность / облачность
-                guard let descriptionWeather = currentWeather.weather[0].description else {return}
-                descriptionWeatherLabel.text = "\(descriptionWeather)"
+                guard let descriptionWeather = currentWeather.weather.first?.description else {return}
+                descriptionWeatherLabel.text = descriptionWeather
             }
             
         }

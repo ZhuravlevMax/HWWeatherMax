@@ -22,9 +22,9 @@ enum Limits: String {
     case five = "5"
 }
 
-enum Language: String {
-    case russian = "ru"
-    case english = "en"
+enum Language {
+    case ru
+    case en
 }
 
 class WeatherManager {
@@ -33,9 +33,9 @@ class WeatherManager {
     var apiKey: String
     var units: Units
     var limit: String
-    var lang: String
+    var lang: Language
     
-    init (city: String, apiKey: String, units: Units, limit: String, lang: String) {
+    init (city: String, apiKey: String, units: Units, limit: String, lang: Language) {
         self.city = city
         self.apiKey = apiKey
         self.units = units

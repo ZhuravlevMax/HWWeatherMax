@@ -13,7 +13,7 @@ struct HourlyWeather: Codable {
     let lat: String?
     let lon: String?
     let timezone: String?
-    let timezone_offset: Int?
+    let timezoneOffset: Int?
     
     let hourly: [hourlyInfo]
     
@@ -52,18 +52,23 @@ struct HourlyWeather: Codable {
         }
     }
     
-        let alerts: [alertsInfo]
+    let alerts: [alertsInfo]
+    
+    struct alertsInfo: Codable {
+        let sender_name: String?
+        let event: String?
+        let start: Int?
+        let end: Int?
+        let description: String?
         
-        struct alertsInfo: Codable {
-            let sender_name: String?
-            let event: String?
-            let start: Int?
-            let end: Int?
-            let description: String?
-            
-            let tags: [String?]
-            
-        }
+        let tags: [String?]
+        
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case timezoneOffset = "timezone_offset"
+        case lat, lon, timezone, hourly, alerts
+    }
+}
 
 
