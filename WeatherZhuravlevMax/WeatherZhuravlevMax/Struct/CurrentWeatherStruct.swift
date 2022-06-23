@@ -6,8 +6,8 @@
 //
 
 import Foundation
-
-struct Weather: Codable {
+//MARK: - Объект для текущей погоды
+struct CurrentWeather: Codable {
     
     struct Coord: Codable {
         var lon: Decimal?
@@ -28,23 +28,18 @@ struct Weather: Codable {
     let base: String?
     
     struct Main: Codable {
-        var temp: Decimal?
-        var feelsLike: Decimal?
+        var temp: Double?
+        var feelsLike: Double?
         var tempMin: Decimal?
         var tempMax: Decimal?
         var pressure: Int?
         var humidity: Int?
-        var seaLevel: Int?
-        var grndLevel: Int?
         
         enum CodingKeys: String, CodingKey {
             case feelsLike = "feels_like"
             case tempMin = "temp_min"
             case tempMax = "temp_max"
-            case seaLevel = "sea_level"
-            case grndLevel = "grnd_level"
             case temp, pressure, humidity
-            
         }
     }
     
@@ -55,7 +50,6 @@ struct Weather: Codable {
     struct Wind: Codable {
         var speed: Decimal?
         var deg: Int?
-        var gust: Decimal?
     }
     
     let wind: Wind
