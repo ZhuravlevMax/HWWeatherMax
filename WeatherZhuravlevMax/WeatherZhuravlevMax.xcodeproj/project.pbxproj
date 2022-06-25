@@ -13,7 +13,6 @@
 		9467C244285E5E4400ADD251 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9467C242285E5E4400ADD251 /* Main.storyboard */; };
 		9467C246285E5E4A00ADD251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9467C245285E5E4A00ADD251 /* Assets.xcassets */; };
 		9467C249285E5E4A00ADD251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9467C247285E5E4A00ADD251 /* LaunchScreen.storyboard */; };
-		9467C2552861E2E500ADD251 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C2542861E2E500ADD251 /* WeatherManager.swift */; };
 		94FC8D102866F90A000CDE91 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 94FC8D0F2866F90A000CDE91 /* Alamofire */; };
 		94FC8D142866F998000CDE91 /* DailyWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D132866F998000CDE91 /* DailyWeatherData.swift */; };
 		94FC8D162866F99A000CDE91 /* Geocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D152866F99A000CDE91 /* Geocoding.swift */; };
@@ -32,7 +31,6 @@
 		9467C245285E5E4A00ADD251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9467C248285E5E4A00ADD251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9467C24A285E5E4A00ADD251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9467C2542861E2E500ADD251 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		94FC8D132866F998000CDE91 /* DailyWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherData.swift; sourceTree = "<group>"; };
 		94FC8D152866F99A000CDE91 /* Geocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoding.swift; sourceTree = "<group>"; };
 		94FC8D172866F99C000CDE91 /* HourlyWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherData.swift; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				94FC8D1C2866FB5E000CDE91 /* Constants.swift */,
 				94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */,
 				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
-				9467C2542861E2E500ADD251 /* WeatherManager.swift */,
 				94FC8D1B2866F9A5000CDE91 /* Struct */,
 				9467C242285E5E4400ADD251 /* Main.storyboard */,
 				9467C245285E5E4A00ADD251 /* Assets.xcassets */,
@@ -182,7 +179,6 @@
 				9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */,
 				94FC8D1D2866FB5E000CDE91 /* Constants.swift in Sources */,
 				94FC8D162866F99A000CDE91 /* Geocoding.swift in Sources */,
-				9467C2552861E2E500ADD251 /* WeatherManager.swift in Sources */,
 				94FC8D1A2866F99E000CDE91 /* WeatherData.swift in Sources */,
 				94FC8D182866F99C000CDE91 /* HourlyWeatherData.swift in Sources */,
 			);
