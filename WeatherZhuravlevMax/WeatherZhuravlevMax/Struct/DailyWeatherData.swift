@@ -56,3 +56,4 @@ struct WeatherDaily: Codable {
     var description: String?
     var icon: String?
 }
+

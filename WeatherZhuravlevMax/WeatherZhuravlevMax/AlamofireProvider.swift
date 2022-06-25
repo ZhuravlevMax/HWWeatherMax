@@ -8,6 +8,30 @@
 import Foundation
 import Alamofire
 
+enum Language {
+    case ru
+    case en
+}
+
+enum Exclude {
+    case current
+    case minutely
+    case hourly
+    case daily
+    case alerts
+}
+
+enum Units {
+    case metric
+    case imperial
+}
+
+let russian = Language.ru
+let minutely = Exclude.minutely
+let alerts = Exclude.alerts
+let metric = Units.metric
+
+
 protocol RestAPIProviderProtocol {
     
     func getCoordinatesByCityName(name: String, completion: @escaping (Result<[Geocoding], Error>) -> Void)
@@ -31,7 +55,7 @@ class AlamofireProvider: RestAPIProviderProtocol {
     
     func getWeatherForCityCoordinates(lat: Double, lon: Double, completion: @escaping (Result<WeatherData, Error>) -> Void) {
         
-        let params = addParams(queryItems: ["lat": lat.description, "lon": lon.description, "exclude": "minutely,alerts", "lang": "ru", "units": "metric"])
+        let params = addParams(queryItems: ["lat": lat.description, "lon": lon.description, "exclude": "\(minutely),\(alerts)", "lang": "\(russian)", "units": "\(metric)"])
         
         AF.request(Constants.weatherURL, method: .get, parameters: params).responseDecodable(of: WeatherData.self) {response in
             switch response.result {

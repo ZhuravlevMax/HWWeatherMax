@@ -20,6 +20,9 @@
 		94FC8D1A2866F99E000CDE91 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D192866F99E000CDE91 /* WeatherData.swift */; };
 		94FC8D1D2866FB5E000CDE91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D1C2866FB5E000CDE91 /* Constants.swift */; };
 		94FC8D1F2866FC99000CDE91 /* AlamofireProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */; };
+		94FC8D22286726F3000CDE91 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 94FC8D21286726F3000CDE91 /* GoogleMaps */; };
+		94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */; };
+		94FC8D262867349F000CDE91 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D252867349F000CDE91 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,8 @@
 		94FC8D192866F99E000CDE91 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		94FC8D1C2866FB5E000CDE91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProvider.swift; sourceTree = "<group>"; };
+		94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapStoryboard.storyboard; sourceTree = "<group>"; };
+		94FC8D252867349F000CDE91 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94FC8D22286726F3000CDE91 /* GoogleMaps in Frameworks */,
 				94FC8D102866F90A000CDE91 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,8 +81,10 @@
 				94FC8D1C2866FB5E000CDE91 /* Constants.swift */,
 				94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */,
 				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
-				94FC8D1B2866F9A5000CDE91 /* Struct */,
+				94FC8D252867349F000CDE91 /* MapViewController.swift */,
+				94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */,
 				9467C242285E5E4400ADD251 /* Main.storyboard */,
+				94FC8D1B2866F9A5000CDE91 /* Struct */,
 				9467C245285E5E4A00ADD251 /* Assets.xcassets */,
 				9467C247285E5E4A00ADD251 /* LaunchScreen.storyboard */,
 				9467C24A285E5E4A00ADD251 /* Info.plist */,
@@ -113,6 +121,7 @@
 			name = WeatherZhuravlevMax;
 			packageProductDependencies = (
 				94FC8D0F2866F90A000CDE91 /* Alamofire */,
+				94FC8D21286726F3000CDE91 /* GoogleMaps */,
 			);
 			productName = WeatherZhuravlevMax;
 			productReference = 9467C239285E5E4400ADD251 /* WeatherZhuravlevMax.app */;
@@ -144,6 +153,7 @@
 			mainGroup = 9467C230285E5E4300ADD251;
 			packageReferences = (
 				94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				94FC8D20286726F3000CDE91 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 			);
 			productRefGroup = 9467C23A285E5E4400ADD251 /* Products */;
 			projectDirPath = "";
@@ -161,6 +171,7 @@
 			files = (
 				9467C249285E5E4A00ADD251 /* LaunchScreen.storyboard in Resources */,
 				9467C246285E5E4A00ADD251 /* Assets.xcassets in Resources */,
+				94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */,
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +186,7 @@
 				94FC8D142866F998000CDE91 /* DailyWeatherData.swift in Sources */,
 				9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */,
 				9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */,
+				94FC8D262867349F000CDE91 /* MapViewController.swift in Sources */,
 				94FC8D1F2866FC99000CDE91 /* AlamofireProvider.swift in Sources */,
 				9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */,
 				94FC8D1D2866FB5E000CDE91 /* Constants.swift in Sources */,
@@ -408,6 +420,14 @@
 				kind = branch;
 			};
 		};
+		94FC8D20286726F3000CDE91 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/YAtechnologies/GoogleMaps-SP.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -415,6 +435,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		94FC8D21286726F3000CDE91 /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94FC8D20286726F3000CDE91 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMaps;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

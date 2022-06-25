@@ -7,13 +7,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
     
     @IBOutlet weak var weatherImage: UIImageView!
     
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var feelsLikeTempLabel: UILabel!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
+    
+    @IBOutlet weak var testButton: UIButton!
     
     private var apiProvider: RestAPIProviderProtocol!
     
@@ -76,7 +78,13 @@ class ViewController: UIViewController {
 
             
         }
+    @IBAction func testButtonPressed(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "MapStoryboard", bundle: nil)
+        if let viewController = storyboard.instantiateViewController(withIdentifier: "MapStoryboard") as? MapViewController {
+            present(viewController, animated: true)
+        }
     }
+}
     
 
 
