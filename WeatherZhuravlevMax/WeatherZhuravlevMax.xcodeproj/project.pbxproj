@@ -23,6 +23,8 @@
 		94FC8D22286726F3000CDE91 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 94FC8D21286726F3000CDE91 /* GoogleMaps */; };
 		94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */; };
 		94FC8D262867349F000CDE91 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D252867349F000CDE91 /* MapViewController.swift */; };
+		94FC8D3F2868B551000CDE91 /* HourlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D3D2868B551000CDE91 /* HourlyCollectionViewCell.swift */; };
+		94FC8D402868B551000CDE91 /* HourlyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProvider.swift; sourceTree = "<group>"; };
 		94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapStoryboard.storyboard; sourceTree = "<group>"; };
 		94FC8D252867349F000CDE91 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		94FC8D3D2868B551000CDE91 /* HourlyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionViewCell.swift; sourceTree = "<group>"; };
+		94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 				94FC8D1C2866FB5E000CDE91 /* Constants.swift */,
 				94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */,
 				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
+				94FC8D3D2868B551000CDE91 /* HourlyCollectionViewCell.swift */,
+				94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */,
 				94FC8D252867349F000CDE91 /* MapViewController.swift */,
 				94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */,
 				9467C242285E5E4400ADD251 /* Main.storyboard */,
@@ -173,6 +179,7 @@
 				9467C246285E5E4A00ADD251 /* Assets.xcassets in Resources */,
 				94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */,
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
+				94FC8D402868B551000CDE91 /* HourlyCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +192,7 @@
 			files = (
 				94FC8D142866F998000CDE91 /* DailyWeatherData.swift in Sources */,
 				9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */,
+				94FC8D3F2868B551000CDE91 /* HourlyCollectionViewCell.swift in Sources */,
 				9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */,
 				94FC8D262867349F000CDE91 /* MapViewController.swift in Sources */,
 				94FC8D1F2866FC99000CDE91 /* AlamofireProvider.swift in Sources */,
