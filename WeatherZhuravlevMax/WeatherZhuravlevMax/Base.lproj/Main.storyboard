@@ -62,7 +62,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="p9m-OX-654">
-                                <rect key="frame" x="0.0" y="323" width="414" height="260"/>
+                                <rect key="frame" x="10" y="323" width="394" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k1x-I0-jy3">
                                     <size key="itemSize" width="128" height="128"/>
@@ -72,7 +72,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ngj-GH-v55">
-                                        <rect key="frame" x="0.0" y="66" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="61" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hRK-Nm-GAC">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -82,29 +82,40 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6eP-72-22g">
-                                <rect key="frame" x="0.0" y="593" width="414" height="269"/>
+                                <rect key="frame" x="10" y="583" width="394" height="269"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gwz-YP-3OW">
+                                        <rect key="frame" x="0.0" y="44.5" width="394" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gwz-YP-3OW" id="rAz-H9-DlS">
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemCyanColor"/>
                         <constraints>
                             <constraint firstItem="p9m-OX-654" firstAttribute="top" secondItem="45A-ub-5f3" secondAttribute="bottom" constant="10" id="2cw-Ro-HHz"/>
-                            <constraint firstItem="p9m-OX-654" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6PU-c0-MMU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6eP-72-22g" secondAttribute="trailing" id="FYP-2t-FlZ"/>
+                            <constraint firstItem="p9m-OX-654" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="6PU-c0-MMU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6eP-72-22g" secondAttribute="trailing" constant="10" id="FYP-2t-FlZ"/>
                             <constraint firstItem="45A-ub-5f3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lys-ah-bM9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6eP-72-22g" secondAttribute="bottom" id="ONZ-aX-Rmc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6eP-72-22g" secondAttribute="bottom" constant="10" id="ONZ-aX-Rmc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="45A-ub-5f3" secondAttribute="trailing" id="OlX-mj-sqw"/>
                             <constraint firstItem="45A-ub-5f3" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="RTX-Mq-8MV"/>
                             <constraint firstItem="6eP-72-22g" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="Zc1-Av-pnW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p9m-OX-654" secondAttribute="trailing" id="gm5-eZ-aDd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p9m-OX-654" secondAttribute="trailing" constant="10" id="gm5-eZ-aDd"/>
                             <constraint firstItem="6eP-72-22g" firstAttribute="top" secondItem="p9m-OX-654" secondAttribute="bottom" constant="10" id="jpR-kN-ofb"/>
-                            <constraint firstItem="6eP-72-22g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wtg-AA-8vr"/>
+                            <constraint firstItem="6eP-72-22g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="wtg-AA-8vr"/>
                             <constraint firstItem="45A-ub-5f3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zZg-lC-2rv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cityNameLabel" destination="Vlg-pM-shU" id="JbY-ik-Ueb"/>
+                        <outlet property="dailyTableView" destination="6eP-72-22g" id="Vme-HI-kXJ"/>
                         <outlet property="descriptionWeatherLabel" destination="Xxe-LR-Pio" id="CsH-dJ-fir"/>
                         <outlet property="feelsLikeTempLabel" destination="ST9-fE-RDf" id="zaY-uf-iVd"/>
                         <outlet property="hourlyCollectionView" destination="p9m-OX-654" id="xgF-KB-TFf"/>

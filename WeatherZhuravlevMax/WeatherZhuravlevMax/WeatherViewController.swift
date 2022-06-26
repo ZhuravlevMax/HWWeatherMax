@@ -18,6 +18,8 @@ class WeatherViewController: UIViewController {
     
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     
+    @IBOutlet weak var dailyTableView: UITableView!
+    
     private var apiProvider: RestAPIProviderProtocol!
     
     var hourlyWeatherArray: [HourlyWeatherData] = []
@@ -42,6 +44,12 @@ class WeatherViewController: UIViewController {
         hourlyCollectionView.dataSource = self
         
         hourlyCollectionView.register(UINib(nibName: "HourlyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: HourlyCollectionViewCell.key)
+        
+        dailyTableView.delegate = self
+        dailyTableView.dataSource = self
+        
+        dailyTableView.register(UINib(nibName: "DailyTableViewCell", bundle: nil), forCellReuseIdentifier: DailyTableViewCell.key)
+        
     }
     
     func getCoordByCityName() {
@@ -61,7 +69,7 @@ class WeatherViewController: UIViewController {
             }
         }
     }
-    //https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly&appid=e3d520a7f75cff3164067d89df3e34a8
+
     func getWeatherByCoordinates(city: Geocoding) {
         apiProvider.getWeatherForCityCoordinates(lat: city.lat, lon: city.lon) { result in
             switch result {
@@ -72,6 +80,9 @@ class WeatherViewController: UIViewController {
                     
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly
+                    }
+                    if let daily = value.daily {
+                        self.dailyWeatherArray = daily
                     }
                     guard let temp = value.current?.temp else {return}
                     
@@ -90,6 +101,7 @@ class WeatherViewController: UIViewController {
                     }
                     
                     self.hourlyCollectionView.reloadData()
+                    self.dailyTableView.reloadData()
                     print(value)
                 }
                 
@@ -101,20 +113,6 @@ class WeatherViewController: UIViewController {
     }
 }
 
-//extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//
-//            hourlyWeatherArray.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if let catalogCell = tableView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.key) as? HourlyTableViewCell {
-//            catalogCell.cellLabel.text = "\(hourlyWeatherArray[indexPath.row].temp)"
-//            return catalogCell
-//        }
-//        return UITableViewCell()
-//    }
-//}
 
 extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -129,6 +127,20 @@ extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataS
         return UICollectionViewCell()
     }
     
+}
+
+extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        dailyWeatherArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let dailyCell = dailyTableView.dequeueReusableCell(withIdentifier: DailyTableViewCell.key) as? DailyTableViewCell {
+            dailyCell.dailyLabel.text = "\(dailyWeatherArray[indexPath.row].temp)"
+            return dailyCell
+        }
+       return UITableViewCell()
+    }
     
 }
 

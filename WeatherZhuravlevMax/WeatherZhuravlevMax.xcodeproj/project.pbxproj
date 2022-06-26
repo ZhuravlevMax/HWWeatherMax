@@ -25,6 +25,8 @@
 		94FC8D262867349F000CDE91 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D252867349F000CDE91 /* MapViewController.swift */; };
 		94FC8D3F2868B551000CDE91 /* HourlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D3D2868B551000CDE91 /* HourlyCollectionViewCell.swift */; };
 		94FC8D402868B551000CDE91 /* HourlyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */; };
+		94FC8D432868BA31000CDE91 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D412868BA31000CDE91 /* DailyTableViewCell.swift */; };
+		94FC8D442868BA31000CDE91 /* DailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FC8D422868BA31000CDE91 /* DailyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		94FC8D252867349F000CDE91 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		94FC8D3D2868B551000CDE91 /* HourlyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionViewCell.swift; sourceTree = "<group>"; };
 		94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyCollectionViewCell.xib; sourceTree = "<group>"; };
+		94FC8D412868BA31000CDE91 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
+		94FC8D422868BA31000CDE91 /* DailyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
 				94FC8D3D2868B551000CDE91 /* HourlyCollectionViewCell.swift */,
 				94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */,
+				94FC8D412868BA31000CDE91 /* DailyTableViewCell.swift */,
+				94FC8D422868BA31000CDE91 /* DailyTableViewCell.xib */,
 				94FC8D252867349F000CDE91 /* MapViewController.swift */,
 				94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */,
 				9467C242285E5E4400ADD251 /* Main.storyboard */,
@@ -180,6 +186,7 @@
 				94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */,
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
 				94FC8D402868B551000CDE91 /* HourlyCollectionViewCell.xib in Resources */,
+				94FC8D442868BA31000CDE91 /* DailyTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +206,7 @@
 				9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */,
 				94FC8D1D2866FB5E000CDE91 /* Constants.swift in Sources */,
 				94FC8D162866F99A000CDE91 /* Geocoding.swift in Sources */,
+				94FC8D432868BA31000CDE91 /* DailyTableViewCell.swift in Sources */,
 				94FC8D1A2866F99E000CDE91 /* WeatherData.swift in Sources */,
 				94FC8D182866F99C000CDE91 /* HourlyWeatherData.swift in Sources */,
 			);
