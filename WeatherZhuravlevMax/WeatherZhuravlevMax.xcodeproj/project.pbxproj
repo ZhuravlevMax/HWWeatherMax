@@ -88,14 +88,10 @@
 				9467C23E285E5E4400ADD251 /* SceneDelegate.swift */,
 				94FC8D1C2866FB5E000CDE91 /* Constants.swift */,
 				94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */,
-				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
-				94FC8D3D2868B551000CDE91 /* HourlyCollectionViewCell.swift */,
-				94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */,
-				94FC8D412868BA31000CDE91 /* DailyTableViewCell.swift */,
-				94FC8D422868BA31000CDE91 /* DailyTableViewCell.xib */,
-				94FC8D252867349F000CDE91 /* MapViewController.swift */,
-				94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */,
-				9467C242285E5E4400ADD251 /* Main.storyboard */,
+				94FC8D452868FB58000CDE91 /* HourlyWeather */,
+				94FC8D462868FB6C000CDE91 /* DailyWeather */,
+				94FC8D472868FB92000CDE91 /* ViewControllers */,
+				94FC8D482868FBA5000CDE91 /* Storyboards */,
 				94FC8D1B2866F9A5000CDE91 /* Struct */,
 				9467C245285E5E4A00ADD251 /* Assets.xcassets */,
 				9467C247285E5E4A00ADD251 /* LaunchScreen.storyboard */,
@@ -113,6 +109,42 @@
 				94FC8D192866F99E000CDE91 /* WeatherData.swift */,
 			);
 			path = Struct;
+			sourceTree = "<group>";
+		};
+		94FC8D452868FB58000CDE91 /* HourlyWeather */ = {
+			isa = PBXGroup;
+			children = (
+				94FC8D3D2868B551000CDE91 /* HourlyCollectionViewCell.swift */,
+				94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */,
+			);
+			path = HourlyWeather;
+			sourceTree = "<group>";
+		};
+		94FC8D462868FB6C000CDE91 /* DailyWeather */ = {
+			isa = PBXGroup;
+			children = (
+				94FC8D412868BA31000CDE91 /* DailyTableViewCell.swift */,
+				94FC8D422868BA31000CDE91 /* DailyTableViewCell.xib */,
+			);
+			path = DailyWeather;
+			sourceTree = "<group>";
+		};
+		94FC8D472868FB92000CDE91 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				94FC8D252867349F000CDE91 /* MapViewController.swift */,
+				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		94FC8D482868FBA5000CDE91 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */,
+				9467C242285E5E4400ADD251 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
