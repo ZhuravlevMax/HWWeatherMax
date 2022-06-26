@@ -22,6 +22,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.layoutSubviews()
+        
         tempLabel.text = "--"
         feelsLikeTempLabel.text = "--"
         descriptionWeatherLabel.text = "--"

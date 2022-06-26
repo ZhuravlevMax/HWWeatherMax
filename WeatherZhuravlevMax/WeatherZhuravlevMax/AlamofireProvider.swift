@@ -41,7 +41,7 @@ protocol RestAPIProviderProtocol {
 
 class AlamofireProvider: RestAPIProviderProtocol {
     func getCoordinatesByCityName(name: String, completion: @escaping (Result<[Geocoding], Error>) -> Void) {
-        let params = addParams(queryItems: ["q" : name])
+        let params = addParams(queryItems: ["q" : name, "lang": "\(russian)"])
         
         AF.request(Constants.getCodingURL, method: .get, parameters: params).responseDecodable(of: [Geocoding].self) { response in
             switch response.result {

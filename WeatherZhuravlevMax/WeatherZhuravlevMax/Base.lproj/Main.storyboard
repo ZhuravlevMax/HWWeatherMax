@@ -11,7 +11,7 @@
         <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="VC1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="WeatherViewController" customModule="WeatherZhuravlevMax" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="WeatherViewController" customModule="WeatherZhuravlevMax" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,39 +32,39 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qre-Yz-a4f">
-                                <rect key="frame" x="186" y="498" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="175" y="498" width="64" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" systemColor="systemTealColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkV-5O-3us">
-                                <rect key="frame" x="174" y="567" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Button"/>
-                                <connections>
-                                    <action selector="testButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mSI-dd-Aff"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qr2-5t-UbY">
+                                <rect key="frame" x="20.5" y="161" width="373" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstItem="nnA-YM-vDk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="678-Gc-6lG"/>
-                            <constraint firstItem="nnA-YM-vDk" firstAttribute="top" secondItem="1Y2-uc-6hJ" secondAttribute="bottom" constant="200" id="8mK-yv-nxe"/>
+                            <constraint firstItem="nnA-YM-vDk" firstAttribute="top" secondItem="1Y2-uc-6hJ" secondAttribute="bottom" constant="40" id="8mK-yv-nxe"/>
                             <constraint firstItem="Dui-jo-nOl" firstAttribute="top" secondItem="1Y2-uc-6hJ" secondAttribute="bottom" constant="40" id="9Tm-8f-nwt"/>
                             <constraint firstItem="qre-Yz-a4f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R1a-N1-lof"/>
                             <constraint firstItem="nnA-YM-vDk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xfn-sb-nj2"/>
                             <constraint firstItem="Dui-jo-nOl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ytk-U0-HaJ"/>
+                            <constraint firstItem="Qr2-5t-UbY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZbD-rZ-3TF"/>
                             <constraint firstItem="qre-Yz-a4f" firstAttribute="top" secondItem="nnA-YM-vDk" secondAttribute="bottom" constant="40" id="Zkm-FZ-tKh"/>
+                            <constraint firstItem="Qr2-5t-UbY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="hCk-oU-c9a"/>
                             <constraint firstItem="1Y2-uc-6hJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vig-RL-bZG"/>
+                            <constraint firstItem="1Y2-uc-6hJ" firstAttribute="top" secondItem="Qr2-5t-UbY" secondAttribute="bottom" constant="10" id="wEb-Ms-oBA"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityNameLabel" destination="Qr2-5t-UbY" id="fIh-MF-IzZ"/>
                         <outlet property="descriptionWeatherLabel" destination="qre-Yz-a4f" id="tFA-AY-kEZ"/>
                         <outlet property="feelsLikeTempLabel" destination="Dui-jo-nOl" id="gdd-bI-W7G"/>
                         <outlet property="tempLabel" destination="1Y2-uc-6hJ" id="m6Z-TM-j8r"/>
-                        <outlet property="testButton" destination="lkV-5O-3us" id="Orr-cP-C0e"/>
                         <outlet property="weatherImage" destination="nnA-YM-vDk" id="xUB-yB-BYi"/>
                     </connections>
                 </viewController>
@@ -74,6 +74,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

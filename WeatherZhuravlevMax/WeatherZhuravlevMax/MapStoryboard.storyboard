@@ -17,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ehd-te-9Ub">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="537.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2ir-tx-lQN">
-                                <rect key="frame" x="20.5" y="667" width="373" height="89"/>
+                                <rect key="frame" x="20.5" y="577.5" width="373" height="89"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NV4-VL-URS">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="36"/>
@@ -53,11 +53,11 @@
                             <constraint firstItem="Ehd-te-9Ub" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="9Pc-y7-ZxR"/>
                             <constraint firstItem="OEN-iK-KRv" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Apw-dN-GvD"/>
                             <constraint firstItem="2ir-tx-lQN" firstAttribute="top" secondItem="Ehd-te-9Ub" secondAttribute="bottom" constant="40" id="GWT-99-RIU"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="OEN-iK-KRv" secondAttribute="bottom" constant="10" id="PhB-01-b0l"/>
                             <constraint firstItem="Ehd-te-9Ub" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YFS-uZ-dBD"/>
-                            <constraint firstItem="Ehd-te-9Ub" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.7" id="dei-4n-obY"/>
+                            <constraint firstItem="Ehd-te-9Ub" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.6" id="dei-4n-obY"/>
                             <constraint firstItem="2ir-tx-lQN" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="h0w-Nd-FHo"/>
                             <constraint firstItem="2ir-tx-lQN" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="hdw-uY-8Bc"/>
-                            <constraint firstItem="OEN-iK-KRv" firstAttribute="top" secondItem="2ir-tx-lQN" secondAttribute="bottom" constant="20" id="sqo-TL-1ys"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ehd-te-9Ub" secondAttribute="trailing" id="uvO-3D-2EU"/>
                         </constraints>
                     </view>
