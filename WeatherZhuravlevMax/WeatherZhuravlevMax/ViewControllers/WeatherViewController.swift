@@ -27,8 +27,8 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
+        
         view.layoutSubviews()
         
         cityNameLabel.text = ""
@@ -69,7 +69,7 @@ class WeatherViewController: UIViewController {
             }
         }
     }
-
+    
     func getWeatherByCoordinates(city: Geocoding) {
         apiProvider.getWeatherForCityCoordinates(lat: city.lat, lon: city.lon) { result in
             switch result {
@@ -120,8 +120,18 @@ extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if let collectionCell = hourlyCollectionView.dequeueReusableCell(withReuseIdentifier: HourlyCollectionViewCell.key, for: indexPath) as? HourlyCollectionViewCell {
-            collectionCell.hourlyLabel.text = "\( hourlyWeatherArray[indexPath.row].temp)"
+            
+            if let hourlyTemp = hourlyWeatherArray[indexPath.row].temp,
+               let hourlyIconId = hourlyWeatherArray[indexPath.row].weather?.first?.icon,
+               let imageUrl = URL(string: "https://openweathermap.org/img/wn/\(hourlyIconId)@2x.png"),
+               let data = try? Data(contentsOf: imageUrl) {
+                
+                collectionCell.hourlyLabel.text = "+\(Int(hourlyTemp))"
+                collectionCell.hourlyImageView.image = UIImage(data: data)
+            }
+            
             return collectionCell
         }
         return UICollectionViewCell()
@@ -136,10 +146,16 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let dailyCell = dailyTableView.dequeueReusableCell(withIdentifier: DailyTableViewCell.key) as? DailyTableViewCell {
-            dailyCell.dailyLabel.text = "\(dailyWeatherArray[indexPath.row].temp)"
+            
+            if let dailyWeatherDay = dailyWeatherArray[indexPath.row].weather?.first?.description,
+               let dailyWeatherMax = dailyWeatherArray[indexPath.row].temp?.max {
+                
+                dailyCell.dailyLabelDay.text = "\(dailyWeatherDay)"
+                dailyCell.dailyLabelTemp.text = "+\(Int(dailyWeatherMax))"
+            }
             return dailyCell
         }
-       return UITableViewCell()
+        return UITableViewCell()
     }
     
 }

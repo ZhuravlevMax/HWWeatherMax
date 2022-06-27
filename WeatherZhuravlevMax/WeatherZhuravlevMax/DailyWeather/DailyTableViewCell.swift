@@ -9,7 +9,9 @@ import UIKit
 
 class DailyTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var dailyLabel: UILabel!
+    @IBOutlet weak var dailyStackView: UIStackView!
+    @IBOutlet weak var dailyLabelDay: UILabel!
+    @IBOutlet weak var dailyLabelTemp: UILabel!
     
     static let key = "DailyTableViewCell"
     override func awakeFromNib() {

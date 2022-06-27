@@ -10,6 +10,7 @@ import UIKit
 class HourlyCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var hourlyLabel: UILabel!
+    @IBOutlet weak var hourlyImageView: UIImageView!
     
     static let key = "HourlyCollectionViewCell"
     override func awakeFromNib() {

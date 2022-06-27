@@ -16,23 +16,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4S-Na-pib">
-                        <rect key="frame" x="139" y="11.5" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Jub-ZS-cWk">
+                        <rect key="frame" x="10" y="0.0" width="300" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13S-HV-6vM">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewx-iP-fCn">
+                                <rect key="frame" x="150" y="0.0" width="150" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="S4S-Na-pib" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="fz6-Qo-rQd"/>
-                    <constraint firstItem="S4S-Na-pib" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="liB-at-ti8"/>
+                    <constraint firstAttribute="trailing" secondItem="Jub-ZS-cWk" secondAttribute="trailing" constant="10" id="211-P6-EOh"/>
+                    <constraint firstItem="Jub-ZS-cWk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="HTb-QN-8mi"/>
+                    <constraint firstItem="Jub-ZS-cWk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MP7-U8-A90"/>
+                    <constraint firstAttribute="bottom" secondItem="Jub-ZS-cWk" secondAttribute="bottom" id="jTb-eH-MML"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dailyLabel" destination="S4S-Na-pib" id="eEN-S2-X9b"/>
+                <outlet property="dailyLabelDay" destination="13S-HV-6vM" id="N4l-S6-MSA"/>
+                <outlet property="dailyLabelTemp" destination="Ewx-iP-fCn" id="yUZ-Bj-tP1"/>
+                <outlet property="dailyStackView" destination="Jub-ZS-cWk" id="ylg-h7-AIT"/>
             </connections>
-            <point key="canvasLocation" x="133" y="80"/>
+            <point key="canvasLocation" x="131.8840579710145" y="79.6875"/>
         </tableViewCell>
     </objects>
 </document>
