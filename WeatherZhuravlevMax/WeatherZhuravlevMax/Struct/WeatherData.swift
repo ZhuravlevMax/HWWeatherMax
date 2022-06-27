@@ -17,9 +17,9 @@ struct WeatherData: Codable {
     var daily: [DailyWeatherData]?
     
     enum CodingKeys: String, CodingKey {
-        case lat, lon, current
         case timeZone = "timezone"
         case timeZoneOffset = "timezone_offset"
+        case lat, lon, current, hourly, daily
     }
 }
 

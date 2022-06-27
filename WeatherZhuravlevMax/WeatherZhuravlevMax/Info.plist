@@ -4,6 +4,8 @@
 <dict>
 	<key>APIKey</key>
 	<string>e3d520a7f75cff3164067d89df3e34a8</string>
+	<key>GoogleMapKey</key>
+	<string>AIzaSyCu_EB5yQKZ8lUOh_c7YRKacA3oQcI8zOY</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

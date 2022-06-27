@@ -17,12 +17,12 @@ struct HourlyWeatherData: Codable {
     var pop: Double?
     
     enum CodingKeys: String, CodingKey {
-        case dt, temp, pressure, humidity, uvi, clouds, visibility, weather, pop
         case feelsLike = "feels_like"
         case dewPoint = "dew_point"
         case windSpeed = "wind_speed"
         case windDeg = "wind_deg"
         case windGust = "wind_gust"
+        case dt, temp, pressure, humidity, uvi, clouds, visibility, weather, pop
     }
 }
 
