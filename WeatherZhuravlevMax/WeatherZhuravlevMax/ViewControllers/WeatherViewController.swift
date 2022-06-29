@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WeatherViewController: UIViewController {
     
@@ -25,11 +26,13 @@ class WeatherViewController: UIViewController {
     var hourlyWeatherArray: [HourlyWeatherData] = []
     var dailyWeatherArray: [DailyWeatherData] = []
     
+    let realm = try! Realm()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         view.layoutSubviews()
+        
         
         cityNameLabel.text = ""
         tempLabel.text = ""
@@ -78,6 +81,43 @@ class WeatherViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     
+                    
+                    // MARK: - работа с БД
+                    //Сохраняю в таблицу RealmResponseData
+                    guard let lonData = value.lon,
+                          let latData = value.lat
+                    else {return}
+                    
+                    //Значение текущего времени
+                    let date = Date()
+                    let coordRealmData = RealmResponseData()
+                    coordRealmData.lat = latData
+                    coordRealmData.lon = lonData
+                    coordRealmData.time = Int(date.timeIntervalSince1970)
+                    
+                    try! self.realm.write {
+                        self.realm.add(coordRealmData)
+                    }
+                    print(coordRealmData)
+                    
+                    // Сохраняем в таблицу RealmWeatherData
+                    guard let tempData = value.current?.temp,
+                          let feelsLikeData = value.current?.feelsLike,
+                          let descriptionData = value.current?.weather?.first?.description
+                    else {return}
+                    
+                    let weatherRealmData = RealmWeatherData()
+                    weatherRealmData.temp = tempData
+                    weatherRealmData.feelsLike = feelsLikeData
+                    weatherRealmData.descriptionWeather = descriptionData
+                    weatherRealmData.time = Int(date.timeIntervalSince1970)
+                    weatherRealmData.coordinate = coordRealmData
+                    
+                    try! self.realm.write {
+                        self.realm.add(weatherRealmData)
+                    }
+                    
+                  //MARK: - работа с UI
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly
                     }
@@ -94,7 +134,7 @@ class WeatherViewController: UIViewController {
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
                     self.descriptionWeatherLabel.text = "\(descriptionWeather)"
                     
-                    guard let imageUrl = URL(string: "https://openweathermap.org/img/wn/\(weatherIconId)@2x.png") else {return}
+                    guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@2x.png") else {return}
                     if let data = try? Data(contentsOf: imageUrl) {
                         self.weatherImage.image = UIImage(data: data)
                         
@@ -125,7 +165,7 @@ extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             if let hourlyTemp = hourlyWeatherArray[indexPath.row].temp,
                let hourlyIconId = hourlyWeatherArray[indexPath.row].weather?.first?.icon,
-               let imageUrl = URL(string: "https://openweathermap.org/img/wn/\(hourlyIconId)@2x.png"),
+               let imageUrl = URL(string: "\(Constants.imageURL)\(hourlyIconId)@2x.png"),
                let data = try? Data(contentsOf: imageUrl) {
                 
                 collectionCell.hourlyLabel.text = "+\(Int(hourlyTemp))"
@@ -139,6 +179,17 @@ extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataS
     
 }
 
+//Форматирую dt в dd MMM YYYY формат
+extension Int {
+    func decoderDt(int: Int, format: String) -> String {
+        let date = NSDate(timeIntervalSince1970: TimeInterval(int))
+        let dayTimePeriodFormatter = DateFormatter()
+        dayTimePeriodFormatter.dateFormat = format
+        let dateString = dayTimePeriodFormatter.string(from: date as Date)
+        return dateString
+    }
+}
+
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dailyWeatherArray.count
@@ -147,11 +198,13 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let dailyCell = dailyTableView.dequeueReusableCell(withIdentifier: DailyTableViewCell.key) as? DailyTableViewCell {
             
-            if let dailyWeatherDay = dailyWeatherArray[indexPath.row].weather?.first?.description,
+            if let dailyWeatherDay = dailyWeatherArray[indexPath.row].dt,
                let dailyWeatherMax = dailyWeatherArray[indexPath.row].temp?.max {
                 
-                dailyCell.dailyLabelDay.text = "\(dailyWeatherDay)"
+                let decodedDay = dailyWeatherDay.decoderDt(int: dailyWeatherDay, format: "dd MMM YYYY")
+                dailyCell.dailyLabelDay.text = "\(decodedDay)"
                 dailyCell.dailyLabelTemp.text = "+\(Int(dailyWeatherMax))"
+                
             }
             return dailyCell
         }

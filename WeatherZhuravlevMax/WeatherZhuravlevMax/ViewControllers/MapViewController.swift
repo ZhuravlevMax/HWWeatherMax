@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMaps
+import RealmSwift
 
 class MapViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var weatherImage: UIImageView!
     
     private var apiProviderMap: RestAPIProviderProtocol!
+    
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +52,42 @@ extension MapViewController: GMSMapViewDelegate {
             case .success(let value):
                 guard let weatherIconId = value.current?.weather?.first?.icon else {return}
                 DispatchQueue.main.async {
+                    // MARK: - работа с БД
+                    //Сохраняю в таблицу RealmResponseData
+                    guard let lonData = value.lon,
+                          let latData = value.lat
+                    else {return}
+                    
+                    //Значение текущего времени
+                    let date = Date()
+                    let coordRealmData = RealmResponseData()
+                    coordRealmData.lat = latData
+                    coordRealmData.lon = lonData
+                    coordRealmData.time = Int(date.timeIntervalSince1970)
+                    
+                    try! self.realm.write {
+                        self.realm.add(coordRealmData)
+                    }
+                    print(coordRealmData)
+                    
+                    // Сохраняем в таблицу RealmWeatherData
+                    guard let tempData = value.current?.temp,
+                          let feelsLikeData = value.current?.feelsLike,
+                          let descriptionData = value.current?.weather?.first?.description
+                    else {return}
+                    
+                    let weatherRealmData = RealmWeatherData()
+                    weatherRealmData.temp = tempData
+                    weatherRealmData.feelsLike = feelsLikeData
+                    weatherRealmData.descriptionWeather = descriptionData
+                    weatherRealmData.time = Int(date.timeIntervalSince1970)
+                    weatherRealmData.coordinate = coordRealmData
+                    
+                    try! self.realm.write {
+                        self.realm.add(weatherRealmData)
+                    }
+                    
+                    // MARK: - работа с UI
                     guard let temp = value.current?.temp else {return}
                     self.tempLabel.text = "+\(Int(temp))"
                     
@@ -58,11 +97,11 @@ extension MapViewController: GMSMapViewDelegate {
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
                     self.descriptionWeatherLabel.text = "\(descriptionWeather)"
                     
-                    guard let imageUrl = URL(string: "https://openweathermap.org/img/wn/\(weatherIconId)@2x.png") else {return}
+                    guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@2x.png") else {return}
                     if let data = try? Data(contentsOf: imageUrl) {
                         self.weatherImage.image = UIImage(data: data)
                     }
-                print(value)
+                    print(value)
                 }
             case .failure(let error):
                 print(error)
