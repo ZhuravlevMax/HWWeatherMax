@@ -21,7 +21,7 @@
 		94F18EFD286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F18EFC286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard */; };
 		94F18F02286CA80A0092D1C0 /* RealmDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F18F00286CA80A0092D1C0 /* RealmDataTableViewCell.swift */; };
 		94F18F03286CA80A0092D1C0 /* RealmDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F18F01286CA80A0092D1C0 /* RealmDataTableViewCell.xib */; };
-		94F18F06286CDE5E0092D1C0 /* Extension+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F18F05286CDE5E0092D1C0 /* Extension+Int.swift */; };
+		94F18F06286CDE5E0092D1C0 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F18F05286CDE5E0092D1C0 /* Int+Extension.swift */; };
 		94F18F0A286DA9540092D1C0 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F18F09286DA9540092D1C0 /* DBManager.swift */; };
 		94FC8D102866F90A000CDE91 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 94FC8D0F2866F90A000CDE91 /* Alamofire */; };
 		94FC8D142866F998000CDE91 /* DailyWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC8D132866F998000CDE91 /* DailyWeatherData.swift */; };
@@ -54,7 +54,7 @@
 		94F18EFC286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealmDataStoryboard.storyboard; sourceTree = "<group>"; };
 		94F18F00286CA80A0092D1C0 /* RealmDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataTableViewCell.swift; sourceTree = "<group>"; };
 		94F18F01286CA80A0092D1C0 /* RealmDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealmDataTableViewCell.xib; sourceTree = "<group>"; };
-		94F18F05286CDE5E0092D1C0 /* Extension+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Int.swift"; sourceTree = "<group>"; };
+		94F18F05286CDE5E0092D1C0 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		94F18F09286DA9540092D1C0 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		94FC8D132866F998000CDE91 /* DailyWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherData.swift; sourceTree = "<group>"; };
 		94FC8D152866F99A000CDE91 /* Geocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoding.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 				94FC8D1C2866FB5E000CDE91 /* Constants.swift */,
 				94F18F0B286DB4490092D1C0 /* RealmManager+Objects */,
 				94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */,
-				94F18F05286CDE5E0092D1C0 /* Extension+Int.swift */,
+				94F18F05286CDE5E0092D1C0 /* Int+Extension.swift */,
 				94F18F04286CA8110092D1C0 /* RealmDataTableViewCell */,
 				94FC8D452868FB58000CDE91 /* HourlyWeather */,
 				94FC8D462868FB6C000CDE91 /* DailyWeather */,
@@ -340,7 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FC8D142866F998000CDE91 /* DailyWeatherData.swift in Sources */,
-				94F18F06286CDE5E0092D1C0 /* Extension+Int.swift in Sources */,
+				94F18F06286CDE5E0092D1C0 /* Int+Extension.swift in Sources */,
 				9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */,
 				94FC8D3F2868B551000CDE91 /* HourlyCollectionViewCell.swift in Sources */,
 				9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */,
