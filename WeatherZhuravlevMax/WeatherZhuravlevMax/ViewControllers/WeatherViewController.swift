@@ -110,6 +110,7 @@ class WeatherViewController: UIViewController {
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
+                    
                   //MARK: - работа с UI
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly

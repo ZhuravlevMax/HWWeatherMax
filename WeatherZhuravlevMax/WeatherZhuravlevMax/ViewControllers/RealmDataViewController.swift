@@ -22,8 +22,6 @@ class RealmDataViewController: UIViewController {
         super.viewDidLoad()
    
         dBManager = DBManager()
-        //Массив для того чтобы вверху были последние запросы
-        sortedRealmWeatherData = dBManager.obtainWeather().sorted {$0.time > $1.time}
         //sortedRealmWeatherData = realm.objects(RealmWeatherData.self).sorted {$0.time > $1.time}
         
         realmDataTableView.delegate = self
@@ -32,8 +30,14 @@ class RealmDataViewController: UIViewController {
         realmDataTableView.register(UINib(nibName: "RealmDataTableViewCell", bundle: nil), forCellReuseIdentifier: RealmDataTableViewCell.key)
         realmDataTableView.reloadData()
     }
-
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //Массив для того чтобы вверху были последние запросы
+        sortedRealmWeatherData = dBManager.obtainWeather().sorted {$0.time > $1.time}
+        self.realmDataTableView.reloadData()
+    }
 }
 
 extension RealmDataViewController: UITableViewDelegate, UITableViewDataSource {
