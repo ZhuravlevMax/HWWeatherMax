@@ -22,17 +22,15 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var dailyTableView: UITableView!
     
     private var apiProvider: RestAPIProviderProtocol!
+    private var dBManager: DBManagerProtocol!
     
     var hourlyWeatherArray: [HourlyWeatherData] = []
     var dailyWeatherArray: [DailyWeatherData] = []
-    
-    let realm = try! Realm()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.layoutSubviews()
-        
         
         cityNameLabel.text = ""
         tempLabel.text = ""
@@ -40,6 +38,7 @@ class WeatherViewController: UIViewController {
         descriptionWeatherLabel.text = ""
         
         apiProvider = AlamofireProvider()
+        dBManager = DBManager()
         
         getCoordByCityName()
         
@@ -80,24 +79,20 @@ class WeatherViewController: UIViewController {
                 guard let weatherIconId = value.current?.weather?.first?.icon else {return}
                 
                 DispatchQueue.main.async {
-                    
-                    
                     // MARK: - работа с БД
                     //Сохраняю в таблицу RealmResponseData
+
                     guard let lonData = value.lon,
                           let latData = value.lat
                     else {return}
-                    
-                    //Значение текущего времени
                     let date = Date()
-                    let coordRealmData = RealmResponseData()
+                    let coordRealmData = RealmCoordinateData()
                     coordRealmData.lat = latData
                     coordRealmData.lon = lonData
                     coordRealmData.time = Int(date.timeIntervalSince1970)
                     
-                    try! self.realm.write {
-                        self.realm.add(coordRealmData)
-                    }
+                    self.dBManager.saveCoordinate(coordinateData: coordRealmData)
+ 
                     print(coordRealmData)
                     
                     // Сохраняем в таблицу RealmWeatherData
@@ -113,9 +108,7 @@ class WeatherViewController: UIViewController {
                     weatherRealmData.time = Int(date.timeIntervalSince1970)
                     weatherRealmData.coordinate = coordRealmData
                     
-                    try! self.realm.write {
-                        self.realm.add(weatherRealmData)
-                    }
+                    self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
                   //MARK: - работа с UI
                     if let hourly = value.hourly {
@@ -132,7 +125,7 @@ class WeatherViewController: UIViewController {
                     self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))"
                     
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
-                    self.descriptionWeatherLabel.text = "\(descriptionWeather)"
+                    self.descriptionWeatherLabel.text = descriptionWeather
                     
                     guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@2x.png") else {return}
                     if let data = try? Data(contentsOf: imageUrl) {
@@ -179,16 +172,7 @@ extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataS
     
 }
 
-//Форматирую dt в dd MMM YYYY формат
-extension Int {
-    func decoderDt(int: Int, format: String) -> String {
-        let date = NSDate(timeIntervalSince1970: TimeInterval(int))
-        let dayTimePeriodFormatter = DateFormatter()
-        dayTimePeriodFormatter.dateFormat = format
-        let dateString = dayTimePeriodFormatter.string(from: date as Date)
-        return dateString
-    }
-}
+
 
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

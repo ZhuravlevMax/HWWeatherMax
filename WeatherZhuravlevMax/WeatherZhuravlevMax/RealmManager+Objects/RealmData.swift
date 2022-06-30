@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class RealmResponseData: Object {
+class RealmCoordinateData: Object {
     @objc dynamic var lat: Double = 0
     @objc dynamic var lon: Double = 0
     @objc dynamic var time: Int = 0
@@ -19,6 +19,6 @@ class RealmWeatherData: Object {
     @objc dynamic var feelsLike: Double = 0
     @objc dynamic var descriptionWeather: String = ""
     @objc dynamic var time: Int = 0
-    @objc dynamic var coordinate: RealmResponseData?
+    @objc dynamic var coordinate: RealmCoordinateData?
 }
 

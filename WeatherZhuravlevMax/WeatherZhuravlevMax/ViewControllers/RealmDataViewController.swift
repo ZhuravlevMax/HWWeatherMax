@@ -14,15 +14,17 @@ class RealmDataViewController: UIViewController {
     
     
     var sortedRealmWeatherData: [RealmWeatherData] = []
-    
-    let realm = try! Realm()
-    
+    private var dBManager: DBManagerProtocol!
+
     @IBOutlet weak var realmLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
    
+        dBManager = DBManager()
         //Массив для того чтобы вверху были последние запросы
-        sortedRealmWeatherData = realm.objects(RealmWeatherData.self).sorted {$0.time > $1.time}
+        sortedRealmWeatherData = dBManager.obtainWeather().sorted {$0.time > $1.time}
+        //sortedRealmWeatherData = realm.objects(RealmWeatherData.self).sorted {$0.time > $1.time}
         
         realmDataTableView.delegate = self
         realmDataTableView.dataSource = self
@@ -44,11 +46,12 @@ extension RealmDataViewController: UITableViewDelegate, UITableViewDataSource {
         if let realmDataTableViewCell = realmDataTableView.dequeueReusableCell(withIdentifier: RealmDataTableViewCell.key) as? RealmDataTableViewCell {
             
             let decodedTime = sortedRealmWeatherData[indexPath.row].time.decoderDt(int: sortedRealmWeatherData[indexPath.row].time, format: "HH:mm:ss dd MMM YYYY")
+            
             realmDataTableViewCell.tempLabel.text = "\(Int(sortedRealmWeatherData[indexPath.row].temp))"
             realmDataTableViewCell.feelsLikeLable.text = "\(Int(sortedRealmWeatherData[indexPath.row].feelsLike))"
             realmDataTableViewCell.descriptionLabel.text = "\(sortedRealmWeatherData[indexPath.row].descriptionWeather)"
             
-            realmDataTableViewCell.timeLabel.text = "\(decodedTime)"
+            realmDataTableViewCell.timeLabel.text = decodedTime
             
             if let latCoord = sortedRealmWeatherData[indexPath.row].coordinate?.lat,
                let lonCoord = sortedRealmWeatherData[indexPath.row].coordinate?.lon {

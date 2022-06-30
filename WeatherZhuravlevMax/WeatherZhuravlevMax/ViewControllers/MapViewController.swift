@@ -19,9 +19,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var weatherImage: UIImageView!
     
     private var apiProviderMap: RestAPIProviderProtocol!
-    
-    let realm = try! Realm()
-    
+    private var dBManager: DBManagerProtocol!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +31,7 @@ class MapViewController: UIViewController {
         descriptionWeatherLabel.text = "--"
         
         apiProviderMap = AlamofireProvider()
+        dBManager = DBManager()
         
         view.layoutSubviews()
         
@@ -60,15 +60,12 @@ extension MapViewController: GMSMapViewDelegate {
                     
                     //Значение текущего времени
                     let date = Date()
-                    let coordRealmData = RealmResponseData()
+                    let coordRealmData = RealmCoordinateData()
                     coordRealmData.lat = latData
                     coordRealmData.lon = lonData
                     coordRealmData.time = Int(date.timeIntervalSince1970)
                     
-                    try! self.realm.write {
-                        self.realm.add(coordRealmData)
-                    }
-                    print(coordRealmData)
+                    self.dBManager.saveCoordinate(coordinateData: coordRealmData)
                     
                     // Сохраняем в таблицу RealmWeatherData
                     guard let tempData = value.current?.temp,
@@ -83,9 +80,7 @@ extension MapViewController: GMSMapViewDelegate {
                     weatherRealmData.time = Int(date.timeIntervalSince1970)
                     weatherRealmData.coordinate = coordRealmData
                     
-                    try! self.realm.write {
-                        self.realm.add(weatherRealmData)
-                    }
+                    self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
                     // MARK: - работа с UI
                     guard let temp = value.current?.temp else {return}
