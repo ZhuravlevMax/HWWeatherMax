@@ -20,14 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //MARK: - Создаю tabBar 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window?.windowScene = windowScene
-        guard let firstVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WeatherStoryboard") as? WeatherViewController else {return}
-        guard let secondVC = UIStoryboard(name: "MapStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MapStoryboard") as? MapViewController else {return}
+        guard let currentWeatherVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WeatherStoryboard") as? WeatherViewController else {return}
+        guard let MapVC = UIStoryboard(name: "MapStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MapStoryboard") as? MapViewController else {return}
+        guard let RealmDataVC = UIStoryboard(name: "RealmDataStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RealmDataStoryboard") as? RealmDataViewController else {return}
         let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([firstVC, secondVC], animated: true)
-        firstVC.tabBarItem.title = "Weather"
-        firstVC.tabBarItem.image = UIImage(systemName: "cloud.sun")
-        secondVC.tabBarItem.title = "Map"
-        secondVC.tabBarItem.image = UIImage(systemName: "map")
+        tabBarController.setViewControllers([currentWeatherVC, MapVC, RealmDataVC], animated: true)
+        currentWeatherVC.tabBarItem.title = "Weather"
+        currentWeatherVC.tabBarItem.image = UIImage(systemName: "cloud.sun")
+        MapVC.tabBarItem.title = "Map"
+        MapVC.tabBarItem.image = UIImage(systemName: "map")
+        RealmDataVC.tabBarItem.title = "WeatherRequestInfo"
+        RealmDataVC.tabBarItem.image = UIImage(systemName: "tablecells")
         
         tabBarController.tabBar.backgroundColor = UIColor.yellow
         window?.rootViewController = tabBarController

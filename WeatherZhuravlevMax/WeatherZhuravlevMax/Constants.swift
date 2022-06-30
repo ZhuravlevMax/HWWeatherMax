@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct Constants {
     static var baseURL = "https://api.openweathermap.org/"
     
@@ -19,4 +17,9 @@ struct Constants {
     static var weatherURL: String {
         return baseURL.appending("data/2.5/onecall")
     }
+    
+    static var imageURL: String {
+        return "https://openweathermap.org/img/wn/"
+    }
+    
 }
