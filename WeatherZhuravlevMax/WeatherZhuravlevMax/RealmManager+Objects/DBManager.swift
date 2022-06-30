@@ -16,36 +16,27 @@ protocol DBManagerProtocol {
 }
 
 class DBManager: DBManagerProtocol {
+    let realm = try! Realm()
     
     func saveCoordinate (coordinateData: RealmCoordinateData) {
-        let realm = try! Realm()
-        
         try! realm.write {
             realm.add(coordinateData)
         }
     }
     
     func obtainCoordinate() -> [RealmCoordinateData] {
-        let realm = try! Realm()
-        
         let models = realm.objects(RealmCoordinateData.self)
-        
         return Array(models)
     }
     
     func saveWeather(weatherData: RealmWeatherData) {
-        let realm = try! Realm()
-        
         try! realm.write {
             realm.add(weatherData)
         }
     }
     
     func obtainWeather() -> [RealmWeatherData] {
-        let realm = try! Realm()
-        
         let models = realm.objects(RealmWeatherData.self)
-        
         return Array(models)
     }
     
