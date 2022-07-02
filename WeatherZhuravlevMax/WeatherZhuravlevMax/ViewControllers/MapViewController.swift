@@ -66,7 +66,19 @@ extension MapViewController: GMSMapViewDelegate {
                     coordRealmData.lon = lonData
                     coordRealmData.time = Int(date.timeIntervalSince1970)
                     
+//                    let changedLat = coordRealmData.lat
+//                    let changedLon = coordRealmData.lon
+//                    let changedTime = String(coordRealmData.time)
+                    
+                    //Добавляю observer
+//                    coordRealmData.addObserver(self, forKeyPath: changedLat, options: [.new, .old], context: nil)
+//                    coordRealmData.addObserver(self, forKeyPath: changedLon, options: [.new, .old], context: nil)
+//                    coordRealmData.addObserver(self, forKeyPath: changedTime, options: [.new, .old], context: nil)
+                    //observ
+                    
+                    
                     self.dBManager.saveCoordinate(coordinateData: coordRealmData)
+                
                     
                     // Сохраняем в таблицу RealmWeatherData
                     guard let tempData = value.current?.temp,
