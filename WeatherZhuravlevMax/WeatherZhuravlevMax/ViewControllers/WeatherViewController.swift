@@ -15,7 +15,9 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var feelsLikeTempLabel: UILabel!
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
+    @IBOutlet weak var searchButton: UIButton!
     
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     
@@ -26,7 +28,9 @@ class WeatherViewController: UIViewController {
     
     var hourlyWeatherArray: [HourlyWeatherData] = []
     var dailyWeatherArray: [DailyWeatherData] = []
-
+    var defaultCity: String = "Minsk"
+    var searchCity: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +44,7 @@ class WeatherViewController: UIViewController {
         apiProvider = AlamofireProvider()
         dBManager = DBManager()
         
-        getCoordByCityName()
+        getCoordByCityName(searchCity: defaultCity)
         
         hourlyCollectionView.delegate = self
         hourlyCollectionView.dataSource = self
@@ -54,8 +58,13 @@ class WeatherViewController: UIViewController {
         
     }
     
-    func getCoordByCityName() {
-        apiProvider.getCoordinatesByCityName(name: "Minsk") { [weak self] result in
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        guard let checkedSearchCity = searchTextField.text else {return}
+        getCoordByCityName(searchCity: checkedSearchCity)
+    }
+    
+    func getCoordByCityName(searchCity: String) {
+        apiProvider.getCoordinatesByCityName(name: searchCity) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let value):

@@ -20,35 +20,58 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="269"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nWg-L5-YiC">
-                                        <rect key="frame" x="0.0" y="10" width="414" height="259"/>
+                                        <rect key="frame" x="10" y="10" width="394" height="259"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vlg-pM-shU">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="94.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <color key="textColor" systemColor="linkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMg-Y7-YTI">
-                                                <rect key="frame" x="0.0" y="30" width="414" height="33.5"/>
+                                                <rect key="frame" x="0.0" y="94.5" width="394" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <color key="textColor" systemColor="systemPinkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bQb-M0-70i">
-                                                <rect key="frame" x="0.0" y="63.5" width="414" height="128"/>
+                                                <rect key="frame" x="0.0" y="128" width="394" height="50"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST9-fE-RDf">
-                                                <rect key="frame" x="0.0" y="191.5" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="178" width="394" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-LR-Pio">
-                                                <rect key="frame" x="0.0" y="212" width="414" height="47"/>
+                                                <rect key="frame" x="0.0" y="198.5" width="394" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemYellowColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="2Ya-Wb-G92">
+                                                <rect key="frame" x="0.0" y="219" width="394" height="40"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите название города" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRz-u2-Buq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vi3-Mz-Wie">
+                                                        <rect key="frame" x="295.5" y="0.0" width="98.5" height="40"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="gray" title="Найти!"/>
+                                                        <connections>
+                                                            <action selector="searchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8j2-dr-Znd"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Vi3-Mz-Wie" firstAttribute="width" secondItem="2Ya-Wb-G92" secondAttribute="width" multiplier="0.25" id="0cu-b3-zUj"/>
+                                                    <constraint firstAttribute="height" constant="40" id="GtK-6u-aVu"/>
+                                                    <constraint firstItem="gRz-u2-Buq" firstAttribute="width" secondItem="2Ya-Wb-G92" secondAttribute="width" multiplier="0.7" id="hXO-Ym-lub"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -56,8 +79,8 @@
                                 <constraints>
                                     <constraint firstItem="nWg-L5-YiC" firstAttribute="top" secondItem="45A-ub-5f3" secondAttribute="top" constant="10" id="Fuf-Qs-j9n"/>
                                     <constraint firstAttribute="bottom" secondItem="nWg-L5-YiC" secondAttribute="bottom" id="bGr-zf-HDd"/>
-                                    <constraint firstItem="nWg-L5-YiC" firstAttribute="leading" secondItem="45A-ub-5f3" secondAttribute="leading" id="dOw-oO-tRt"/>
-                                    <constraint firstAttribute="trailing" secondItem="nWg-L5-YiC" secondAttribute="trailing" id="zPX-Hg-dVm"/>
+                                    <constraint firstItem="nWg-L5-YiC" firstAttribute="leading" secondItem="45A-ub-5f3" secondAttribute="leading" constant="10" id="dOw-oO-tRt"/>
+                                    <constraint firstAttribute="trailing" secondItem="nWg-L5-YiC" secondAttribute="trailing" constant="10" id="zPX-Hg-dVm"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="p9m-OX-654">
@@ -118,6 +141,8 @@
                         <outlet property="descriptionWeatherLabel" destination="Xxe-LR-Pio" id="CsH-dJ-fir"/>
                         <outlet property="feelsLikeTempLabel" destination="ST9-fE-RDf" id="zaY-uf-iVd"/>
                         <outlet property="hourlyCollectionView" destination="p9m-OX-654" id="xgF-KB-TFf"/>
+                        <outlet property="searchButton" destination="Vi3-Mz-Wie" id="PSi-oQ-dHO"/>
+                        <outlet property="searchTextField" destination="gRz-u2-Buq" id="ijL-EI-z8N"/>
                         <outlet property="tempLabel" destination="SMg-Y7-YTI" id="T6t-V3-eGV"/>
                         <outlet property="weatherImage" destination="bQb-M0-70i" id="dAV-rS-0i0"/>
                     </connections>
