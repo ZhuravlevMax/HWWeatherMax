@@ -65,18 +65,7 @@ extension MapViewController: GMSMapViewDelegate {
                     coordRealmData.lat = latData
                     coordRealmData.lon = lonData
                     coordRealmData.time = Int(date.timeIntervalSince1970)
-                    
-//                    let changedLat = coordRealmData.lat
-//                    let changedLon = coordRealmData.lon
-//                    let changedTime = String(coordRealmData.time)
-                    
-                    //Добавляю observer
-//                    coordRealmData.addObserver(self, forKeyPath: changedLat, options: [.new, .old], context: nil)
-//                    coordRealmData.addObserver(self, forKeyPath: changedLon, options: [.new, .old], context: nil)
-//                    coordRealmData.addObserver(self, forKeyPath: changedTime, options: [.new, .old], context: nil)
-                    //observ
-                    
-                    
+
                     self.dBManager.saveCoordinate(coordinateData: coordRealmData)
                 
                     
@@ -94,6 +83,10 @@ extension MapViewController: GMSMapViewDelegate {
                     weatherRealmData.coordinate = coordRealmData
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
+                    
+                    guard let badWeather = value.hourly?.first?.weather?.first?.main else {return}
+                    
+                    self.weatherNotification(badWeather: badWeather)
                     
                     // MARK: - работа с UI
                     guard let temp = value.current?.temp else {return}

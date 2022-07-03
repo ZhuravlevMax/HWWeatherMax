@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class WeatherViewController: UIViewController {
     
@@ -33,6 +34,29 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        //Создаем NotificationCenter
+//        let notificationCenter = UNUserNotificationCenter.current()
+//        
+//        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { isAutorized, error in
+//            if isAutorized {
+//                let content = UNMutableNotificationContent()
+//                content.body = "Test"
+//                
+//                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+//                let identifier = "identifier"
+//                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+//                
+//                notificationCenter.add(request) { error in
+//                    if let error = error {
+//                        print(error)
+//                    }
+//                    
+//                }
+//            } else if let error = error {
+//            print(error)
+//        }
+//        }
         
         view.layoutSubviews()
         
@@ -119,6 +143,9 @@ class WeatherViewController: UIViewController {
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
+                    guard let badWeather = value.hourly?.first?.weather?.first?.main else {return}
+                    
+                    self.weatherNotification(badWeather: badWeather)
                     
                   //MARK: - работа с UI
                     if let hourly = value.hourly {
