@@ -16,20 +16,22 @@ extension UIViewController {
             case rain = "Rain"
             case thunderstorm = "Thunderstorm"
             case snow = "Snow"
-            case clouds
+            case clouds = "Clouds"
         }
         
         if badWeather == BadWeatherEnum.rain.rawValue ||
             badWeather == BadWeatherEnum.snow.rawValue ||
-            badWeather == BadWeatherEnum.thunderstorm.rawValue ||
+            badWeather == BadWeatherEnum.thunderstorm.rawValue
         //Облачность для проверки работы
-            badWeather == BadWeatherEnum.clouds.rawValue
+           // badWeather == BadWeatherEnum.clouds.rawValue
         {
             
             let notificationCenter = UNUserNotificationCenter.current()
             
             notificationCenter.requestAuthorization(options: [.alert, .sound]) { isAuthorized, error in
                 if isAuthorized {
+    
+                    
                     let content = UNMutableNotificationContent()
                     content.title = "Weather"
                     content.subtitle = "About weather"
@@ -38,7 +40,7 @@ extension UIViewController {
 
                     
                     //Нотификация через 30 минут
-                    let date = Date().addingTimeInterval(60*60)
+                    let date = Date().addingTimeInterval(60*30)
                     let dateComponent = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
                     
                     let timeTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
