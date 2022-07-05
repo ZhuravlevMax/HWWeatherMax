@@ -57,6 +57,8 @@ class WeatherViewController: UIViewController {
         
         dailyTableView.register(UINib(nibName: "DailyTableViewCell", bundle: nil), forCellReuseIdentifier: DailyTableViewCell.key)
         
+        
+        
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {

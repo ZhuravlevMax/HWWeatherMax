@@ -49,6 +49,7 @@ class RealmDataViewController: UIViewController {
                 fatalError("\(error)")
                 
             }
+            
     
         }
         
@@ -63,6 +64,9 @@ class RealmDataViewController: UIViewController {
         
     }
     
+    deinit {
+        notificationToken?.invalidate()
+    }
         
     
 }
