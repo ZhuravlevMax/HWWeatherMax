@@ -83,11 +83,7 @@ extension MapViewController: GMSMapViewDelegate {
                     weatherRealmData.coordinate = coordRealmData
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
-                    
-                    guard let badWeather = value.hourly?.first?.weather?.first?.main else {return}
-                    
-                    self.weatherNotification(badWeather: badWeather)
-                    
+
                     // MARK: - работа с UI
                     guard let temp = value.current?.temp else {return}
                     self.tempLabel.text = "+\(Int(temp))"

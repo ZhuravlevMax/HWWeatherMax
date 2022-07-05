@@ -35,29 +35,6 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        //Создаем NotificationCenter
-//        let notificationCenter = UNUserNotificationCenter.current()
-//        
-//        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { isAutorized, error in
-//            if isAutorized {
-//                let content = UNMutableNotificationContent()
-//                content.body = "Test"
-//                
-//                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-//                let identifier = "identifier"
-//                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-//                
-//                notificationCenter.add(request) { error in
-//                    if let error = error {
-//                        print(error)
-//                    }
-//                    
-//                }
-//            } else if let error = error {
-//            print(error)
-//        }
-//        }
-        
         view.layoutSubviews()
         
         cityNameLabel.text = ""
@@ -143,10 +120,12 @@ class WeatherViewController: UIViewController {
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
-                    guard let badWeather = value.hourly?.first?.weather?.first?.main else {return}
+                    //guard let badWeather = value.hourly?.first?.weather?.first?.id else {return}
+                    // self.weatherNotification(badWeather: badWeather)
+                    guard let hourlyWeatherDataArray = value.hourly else {return}
+                    self.weatherIdCheck(hourlyWeatherData: hourlyWeatherDataArray)
                     
-                    self.weatherNotification(badWeather: badWeather)
-                    
+                   
                   //MARK: - работа с UI
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly
@@ -195,11 +174,15 @@ extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             if let hourlyTemp = hourlyWeatherArray[indexPath.row].temp,
                let hourlyIconId = hourlyWeatherArray[indexPath.row].weather?.first?.icon,
+               let hourlyTime = hourlyWeatherArray[indexPath.row].dt,
                let imageUrl = URL(string: "\(Constants.imageURL)\(hourlyIconId)@2x.png"),
                let data = try? Data(contentsOf: imageUrl) {
                 
+                let decodedTime = hourlyTime.decoderDt(int: hourlyTime, format: "HH mm ss")
+                collectionCell.timeLabel.text = "\(decodedTime)"
                 collectionCell.hourlyLabel.text = "+\(Int(hourlyTemp))"
                 collectionCell.hourlyImageView.image = UIImage(data: data)
+                
             }
             
             return collectionCell

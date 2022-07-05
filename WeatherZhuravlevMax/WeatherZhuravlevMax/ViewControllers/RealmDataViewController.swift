@@ -15,7 +15,8 @@ class RealmDataViewController: UIViewController {
     //Переменная для работы с observe realm
     var notificationToken: NotificationToken?
     
-    var sortedRealmWeatherData: [RealmWeatherData] = []
+    //var sortedRealmWeatherData: [RealmWeatherData] = []
+    var sortedRealmWeatherData: Results<RealmWeatherData>!
     private var dBManager: DBManagerProtocol!
 
     @IBOutlet weak var realmLabel: UILabel!
@@ -28,9 +29,9 @@ class RealmDataViewController: UIViewController {
        //MARK: - Наблюдатель за изменением БД и обновление таблицы
         let realm = try! Realm()
         
-        let results = realm.objects(RealmWeatherData.self)
+        sortedRealmWeatherData = realm.objects(RealmWeatherData.self).sorted(byKeyPath: "time", ascending: false)
         
-        notificationToken = results.observe { [weak self] (changes: RealmCollectionChange) in
+        notificationToken = sortedRealmWeatherData.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.realmDataTableView else {return}
             switch changes {
             case .initial:
@@ -38,12 +39,7 @@ class RealmDataViewController: UIViewController {
             case .update(_, let deletions, let insertions, let modifications):
  
                 tableView.performBatchUpdates({
- 
-                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
-                                         with: .automatic)
                     tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
-                                         with: .automatic)
-                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
                                          with: .automatic)
                 }, completion: { finished in
                     tableView.reloadData()
@@ -51,7 +47,9 @@ class RealmDataViewController: UIViewController {
             case.error(let error):
 
                 fatalError("\(error)")
+                
             }
+    
         }
         
         //MARK: - Регистрация ячеек
@@ -61,19 +59,26 @@ class RealmDataViewController: UIViewController {
         
         realmDataTableView.register(UINib(nibName: "RealmDataTableViewCell", bundle: nil), forCellReuseIdentifier: RealmDataTableViewCell.key)
         realmDataTableView.reloadData()
+        
+        
     }
+    
+        
+    
 }
 
 extension RealmDataViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dBManager.obtainWeather().count
+//        sortedRealmWeatherData = dBManager.obtainWeather()
+//       return
+        sortedRealmWeatherData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let realmDataTableViewCell = realmDataTableView.dequeueReusableCell(withIdentifier: RealmDataTableViewCell.key) as? RealmDataTableViewCell {
             
-            sortedRealmWeatherData = dBManager.obtainWeather().sorted {$0.time > $1.time}
+         //   sortedRealmWeatherData = dBManager.obtainWeather().sorted {$0.time > $1.time}
             
             let decodedTime = sortedRealmWeatherData[indexPath.row].time.decoderDt(int: sortedRealmWeatherData[indexPath.row].time, format: "HH:mm:ss dd MMM YYYY")
             
