@@ -48,15 +48,10 @@ extension UIViewController {
                 content.sound = UNNotificationSound.default
                 
                 //MARK: Нотификация за 30 минут
-                let currentTime = Int(Date().timeIntervalSince1970)
-                //time - время начала ближайшей плохой погоды
-                //timeForNotificate - вычисляю 30 мин до наступления плохой погоды
-                let timeForNotificate = time - 1800
-                //Вычисляю время уведомления
-                let date = Date().addingTimeInterval(TimeInterval(timeForNotificate - currentTime))
-                let dateComponent = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-                
-                let timeTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+                //time - время начала плохой погоды
+                var timeForTrigger = time - 1800
+                let date = timeForTrigger.decoderIntToDate(int: timeForTrigger)
+                let timeTrigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
                 
                 //Для натификейшена надо создать уникальные идентификатор для уведомления
                 let identifier = "identifier"

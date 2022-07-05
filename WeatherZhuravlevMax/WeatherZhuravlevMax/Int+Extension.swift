@@ -15,4 +15,13 @@ extension Int {
         let dateString = dayTimePeriodFormatter.string(from: date as Date)
         return dateString
     }
+    
+    //Форматирование Int в DateComponents
+    func decoderIntToDate(int: Int) -> DateComponents {
+        
+        let timeInterval = TimeInterval(int)
+        let myNSDate = Date(timeIntervalSince1970: timeInterval)
+        let comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: myNSDate)
+        return comps
+    }
 }
