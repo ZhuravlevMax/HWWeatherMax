@@ -65,8 +65,9 @@ extension MapViewController: GMSMapViewDelegate {
                     coordRealmData.lat = latData
                     coordRealmData.lon = lonData
                     coordRealmData.time = Int(date.timeIntervalSince1970)
-                    
+
                     self.dBManager.saveCoordinate(coordinateData: coordRealmData)
+                
                     
                     // Сохраняем в таблицу RealmWeatherData
                     guard let tempData = value.current?.temp,
@@ -82,7 +83,7 @@ extension MapViewController: GMSMapViewDelegate {
                     weatherRealmData.coordinate = coordRealmData
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
-                    
+
                     // MARK: - работа с UI
                     guard let temp = value.current?.temp else {return}
                     self.tempLabel.text = "+\(Int(temp))"

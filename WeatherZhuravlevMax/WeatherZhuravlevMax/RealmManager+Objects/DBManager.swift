@@ -18,7 +18,9 @@ protocol DBManagerProtocol {
 class DBManager: DBManagerProtocol {
     let realm = try! Realm()
     
+    
     func saveCoordinate (coordinateData: RealmCoordinateData) {
+        
         try! realm.write {
             realm.add(coordinateData)
         }

@@ -14,6 +14,7 @@
 		9467C244285E5E4400ADD251 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9467C242285E5E4400ADD251 /* Main.storyboard */; };
 		9467C246285E5E4A00ADD251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9467C245285E5E4A00ADD251 /* Assets.xcassets */; };
 		9467C249285E5E4A00ADD251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9467C247285E5E4A00ADD251 /* LaunchScreen.storyboard */; };
+		94BF6A432871AD6E006BD3C3 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */; };
 		94F18EF0286C580B0092D1C0 /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F18EEF286C580B0092D1C0 /* RealmData.swift */; };
 		94F18EF3286C59580092D1C0 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 94F18EF2286C59580092D1C0 /* Realm */; };
 		94F18EF5286C59580092D1C0 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 94F18EF4286C59580092D1C0 /* RealmSwift */; };
@@ -49,6 +50,7 @@
 		9467C245285E5E4A00ADD251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9467C248285E5E4A00ADD251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9467C24A285E5E4A00ADD251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		94F18EEF286C580B0092D1C0 /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
 		94F18EFA286C6A480092D1C0 /* RealmDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataViewController.swift; sourceTree = "<group>"; };
 		94F18EFC286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealmDataStoryboard.storyboard; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				94F18F0B286DB4490092D1C0 /* RealmManager+Objects */,
 				94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */,
 				94F18F05286CDE5E0092D1C0 /* Int+Extension.swift */,
+				94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */,
 				94F18F04286CA8110092D1C0 /* RealmDataTableViewCell */,
 				94FC8D452868FB58000CDE91 /* HourlyWeather */,
 				94FC8D462868FB6C000CDE91 /* DailyWeather */,
@@ -353,6 +356,7 @@
 				94F18F0A286DA9540092D1C0 /* DBManager.swift in Sources */,
 				94FC8D1D2866FB5E000CDE91 /* Constants.swift in Sources */,
 				94FC8D162866F99A000CDE91 /* Geocoding.swift in Sources */,
+				94BF6A432871AD6E006BD3C3 /* ViewController+Extension.swift in Sources */,
 				94FC8D432868BA31000CDE91 /* DailyTableViewCell.swift in Sources */,
 				94FC8D1A2866F99E000CDE91 /* WeatherData.swift in Sources */,
 				94FC8D182866F99C000CDE91 /* HourlyWeatherData.swift in Sources */,

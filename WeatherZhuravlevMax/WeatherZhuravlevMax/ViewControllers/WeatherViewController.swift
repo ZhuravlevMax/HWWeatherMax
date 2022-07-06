@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class WeatherViewController: UIViewController {
     
@@ -15,7 +16,9 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var feelsLikeTempLabel: UILabel!
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
+    @IBOutlet weak var searchButton: UIButton!
     
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     
@@ -26,7 +29,9 @@ class WeatherViewController: UIViewController {
     
     var hourlyWeatherArray: [HourlyWeatherData] = []
     var dailyWeatherArray: [DailyWeatherData] = []
-
+    var defaultCity: String = "Minsk"
+    var searchCity: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +45,7 @@ class WeatherViewController: UIViewController {
         apiProvider = AlamofireProvider()
         dBManager = DBManager()
         
-        getCoordByCityName()
+        getCoordByCityName(searchCity: defaultCity)
         
         hourlyCollectionView.delegate = self
         hourlyCollectionView.dataSource = self
@@ -52,10 +57,17 @@ class WeatherViewController: UIViewController {
         
         dailyTableView.register(UINib(nibName: "DailyTableViewCell", bundle: nil), forCellReuseIdentifier: DailyTableViewCell.key)
         
+        
+        
     }
     
-    func getCoordByCityName() {
-        apiProvider.getCoordinatesByCityName(name: "Minsk") { [weak self] result in
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        guard let checkedSearchCity = searchTextField.text else {return}
+        getCoordByCityName(searchCity: checkedSearchCity)
+    }
+    
+    func getCoordByCityName(searchCity: String) {
+        apiProvider.getCoordinatesByCityName(name: searchCity) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let value):
@@ -110,7 +122,12 @@ class WeatherViewController: UIViewController {
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
+                    //guard let badWeather = value.hourly?.first?.weather?.first?.id else {return}
+                    // self.weatherNotification(badWeather: badWeather)
+                    guard let hourlyWeatherDataArray = value.hourly else {return}
+                    self.weatherIdCheck(hourlyWeatherData: hourlyWeatherDataArray)
                     
+                   
                   //MARK: - работа с UI
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly
@@ -159,11 +176,15 @@ extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             if let hourlyTemp = hourlyWeatherArray[indexPath.row].temp,
                let hourlyIconId = hourlyWeatherArray[indexPath.row].weather?.first?.icon,
+               let hourlyTime = hourlyWeatherArray[indexPath.row].dt,
                let imageUrl = URL(string: "\(Constants.imageURL)\(hourlyIconId)@2x.png"),
                let data = try? Data(contentsOf: imageUrl) {
                 
+                let decodedTime = hourlyTime.decoderDt(format: "HH mm ss")
+                collectionCell.timeLabel.text = "\(decodedTime)"
                 collectionCell.hourlyLabel.text = "+\(Int(hourlyTemp))"
                 collectionCell.hourlyImageView.image = UIImage(data: data)
+                
             }
             
             return collectionCell
@@ -186,7 +207,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
             if let dailyWeatherDay = dailyWeatherArray[indexPath.row].dt,
                let dailyWeatherMax = dailyWeatherArray[indexPath.row].temp?.max {
                 
-                let decodedDay = dailyWeatherDay.decoderDt(int: dailyWeatherDay, format: "dd MMM YYYY")
+                let decodedDay = dailyWeatherDay.decoderDt(format: "dd MMM YYYY")
                 dailyCell.dailyLabelDay.text = "\(decodedDay)"
                 dailyCell.dailyLabelTemp.text = "+\(Int(dailyWeatherMax))"
                 
