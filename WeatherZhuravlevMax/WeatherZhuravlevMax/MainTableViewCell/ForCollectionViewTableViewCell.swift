@@ -11,7 +11,7 @@ class ForCollectionViewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var inTableCellCollectionView: UICollectionView!
     
-    var hourlyWeatherData: [HourlyWeatherData]?
+    var models = [HourlyWeatherData]()
     
     static let key = "ForCollectionViewTableViewCell"
     
@@ -28,31 +28,24 @@ class ForCollectionViewTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+        inTableCellCollectionView.reloadData()
+    }
+    
+    func configure( with models: [HourlyWeatherData]) {
+        self.models = models
     }
     
 }
 
 extension ForCollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        hourlyWeatherData?.count ?? 0
+        models.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let collectionCell = inTableCellCollectionView.dequeueReusableCell(withReuseIdentifier: HourlyCollectionViewCell.key, for: indexPath) as? HourlyCollectionViewCell {
-            
-            if let hourlyWeatherArray = hourlyWeatherData,
-               let hourlyTemp = hourlyWeatherArray[indexPath.row].temp,
-               let hourlyIconId = hourlyWeatherArray[indexPath.row].weather?.first?.icon,
-               let hourlyTime = hourlyWeatherArray[indexPath.row].dt,
-               let imageUrl = URL(string: "\(Constants.imageURL)\(hourlyIconId)@2x.png"),
-               let data = try? Data(contentsOf: imageUrl) {
-                
-                let decodedTime = hourlyTime.decoderDt(format: "HH mm ss")
-                collectionCell.timeLabel.text = "\(decodedTime)"
-                collectionCell.hourlyLabel.text = "+\(Int(hourlyTemp))"
-                collectionCell.hourlyImageView.image = UIImage(data: data)
-                
-            }
+
+            collectionCell.configure( with: models[indexPath.row])
             return collectionCell
         }
         return UICollectionViewCell()

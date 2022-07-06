@@ -62,8 +62,11 @@ class WeatherViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.register(UINib(nibName: "ForCollectionViewTableViewCell", bundle: nil), forCellReuseIdentifier: ForCollectionViewTableViewCell.key)
-        
-        
+        //MARK: Работа с header
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 300))
+        header.backgroundColor = .brown
+        mainTableView.tableHeaderView = header
+
     }
     
 //    @IBAction func searchButtonPressed(_ sender: Any) {
@@ -157,6 +160,7 @@ class WeatherViewController: UIViewController {
 //
 //                    self.hourlyCollectionView.reloadData()
 //                    self.dailyTableView.reloadData()
+                    self.mainTableView.reloadData()
                     print(value)
                 }
                 
@@ -224,6 +228,14 @@ class WeatherViewController: UIViewController {
 //}
 
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        20
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
@@ -231,17 +243,16 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        if let collectionCell = mainTableView.dequeueReusableCell(withIdentifier: ForCollectionViewTableViewCell.key) as? ForCollectionViewTableViewCell {
            
-           DispatchQueue.main.async {
-               collectionCell.hourlyWeatherData = self.hourlyWeatherArray
+               collectionCell.models = self.hourlyWeatherArray
                return collectionCell
-           }
+           
            
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250.0
+        return 150.0
     }
     
 }

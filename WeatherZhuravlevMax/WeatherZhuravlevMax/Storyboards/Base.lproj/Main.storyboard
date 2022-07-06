@@ -17,17 +17,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tKQ-5u-zTG">
-                                <rect key="frame" x="5" y="265.5" width="404" height="591.5"/>
+                                <rect key="frame" x="5" y="49" width="404" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ForCollectionViewTableViewCell" id="JDD-9B-5qS" customClass="ForCollectionViewTableViewCell" customModule="WeatherZhuravlevMax" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="404" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JDD-9B-5qS" id="oCi-au-AJ0">
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemCyanColor"/>
                         <constraints>
+                            <constraint firstItem="tKQ-5u-zTG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="4wg-j2-faL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tKQ-5u-zTG" secondAttribute="trailing" constant="5" id="DwX-SL-CZL"/>
                             <constraint firstItem="tKQ-5u-zTG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="QwO-dR-JX4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tKQ-5u-zTG" secondAttribute="bottom" constant="5" id="evD-qw-Xz5"/>
-                            <constraint firstItem="tKQ-5u-zTG" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.66" id="gcQ-Tn-Ood"/>
                         </constraints>
                     </view>
                     <connections>
