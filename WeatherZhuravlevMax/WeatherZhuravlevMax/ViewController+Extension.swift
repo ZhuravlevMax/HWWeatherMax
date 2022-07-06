@@ -50,7 +50,7 @@ extension UIViewController {
                 //MARK: Нотификация за 30 минут
                 //time - время начала плохой погоды
                 var timeForTrigger = time - 1800
-                let date = timeForTrigger.decoderIntToDate(int: timeForTrigger)
+                let date = timeForTrigger.decoderIntToDate()
                 let timeTrigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
                 
                 //Для натификейшена надо создать уникальные идентификатор для уведомления

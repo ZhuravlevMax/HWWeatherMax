@@ -180,7 +180,7 @@ extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataS
                let imageUrl = URL(string: "\(Constants.imageURL)\(hourlyIconId)@2x.png"),
                let data = try? Data(contentsOf: imageUrl) {
                 
-                let decodedTime = hourlyTime.decoderDt(int: hourlyTime, format: "HH mm ss")
+                let decodedTime = hourlyTime.decoderDt(format: "HH mm ss")
                 collectionCell.timeLabel.text = "\(decodedTime)"
                 collectionCell.hourlyLabel.text = "+\(Int(hourlyTemp))"
                 collectionCell.hourlyImageView.image = UIImage(data: data)
@@ -207,7 +207,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
             if let dailyWeatherDay = dailyWeatherArray[indexPath.row].dt,
                let dailyWeatherMax = dailyWeatherArray[indexPath.row].temp?.max {
                 
-                let decodedDay = dailyWeatherDay.decoderDt(int: dailyWeatherDay, format: "dd MMM YYYY")
+                let decodedDay = dailyWeatherDay.decoderDt(format: "dd MMM YYYY")
                 dailyCell.dailyLabelDay.text = "\(decodedDay)"
                 dailyCell.dailyLabelTemp.text = "+\(Int(dailyWeatherMax))"
                 

@@ -8,8 +8,8 @@
 import Foundation
 //Форматирую dt в dd MMM YYYY формат
 extension Int {
-    func decoderDt(int: Int, format: String) -> String {
-        let date = Date(timeIntervalSince1970: TimeInterval(int))
+    func decoderDt(format: String) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(self))
         let dayTimePeriodFormatter = DateFormatter()
         dayTimePeriodFormatter.dateFormat = format
         let dateString = dayTimePeriodFormatter.string(from: date as Date)
@@ -17,9 +17,9 @@ extension Int {
     }
     
     //Форматирование Int в DateComponents
-    func decoderIntToDate(int: Int) -> DateComponents {
+    func decoderIntToDate() -> DateComponents {
         
-        let timeInterval = TimeInterval(int)
+        let timeInterval = TimeInterval(self)
         let myNSDate = Date(timeIntervalSince1970: timeInterval)
         let comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: myNSDate)
         return comps

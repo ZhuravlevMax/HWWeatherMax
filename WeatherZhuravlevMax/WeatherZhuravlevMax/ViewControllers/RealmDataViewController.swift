@@ -84,7 +84,7 @@ extension RealmDataViewController: UITableViewDelegate, UITableViewDataSource {
             
          //   sortedRealmWeatherData = dBManager.obtainWeather().sorted {$0.time > $1.time}
             
-            let decodedTime = sortedRealmWeatherData[indexPath.row].time.decoderDt(int: sortedRealmWeatherData[indexPath.row].time, format: "HH:mm:ss dd MMM YYYY")
+            let decodedTime = sortedRealmWeatherData[indexPath.row].time.decoderDt(format: "HH:mm:ss dd MMM YYYY")
             
             realmDataTableViewCell.tempLabel.text = "\(Int(sortedRealmWeatherData[indexPath.row].temp))"
             realmDataTableViewCell.feelsLikeLable.text = "\(Int(sortedRealmWeatherData[indexPath.row].feelsLike))"
