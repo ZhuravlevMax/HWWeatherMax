@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4E0957C38F3BF0EAAD966E4E /* Pods_WeatherZhuravlevMax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEACD66B5F691F0021F5AF3 /* Pods_WeatherZhuravlevMax.framework */; };
+		94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */; };
+		94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */; };
 		9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23C285E5E4400ADD251 /* AppDelegate.swift */; };
 		9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23E285E5E4400ADD251 /* SceneDelegate.swift */; };
 		9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C240285E5E4400ADD251 /* WeatherViewController.swift */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		14277A8F699510830076749E /* Pods-WeatherZhuravlevMax.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZhuravlevMax.debug.xcconfig"; path = "Target Support Files/Pods-WeatherZhuravlevMax/Pods-WeatherZhuravlevMax.debug.xcconfig"; sourceTree = "<group>"; };
 		73540E9C3AC0B79A67EEEF36 /* Pods-WeatherZhuravlevMax.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZhuravlevMax.release.xcconfig"; path = "Target Support Files/Pods-WeatherZhuravlevMax/Pods-WeatherZhuravlevMax.release.xcconfig"; sourceTree = "<group>"; };
+		94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForCollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForCollectionViewTableViewCell.xib; sourceTree = "<group>"; };
 		9467C239285E5E4400ADD251 /* WeatherZhuravlevMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherZhuravlevMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9467C23C285E5E4400ADD251 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9467C23E285E5E4400ADD251 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		94076D6028757DB9001A632A /* MainTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */,
+				94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */,
+			);
+			path = MainTableViewCell;
+			sourceTree = "<group>";
+		};
 		9467C230285E5E4300ADD251 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +146,7 @@
 				9467C245285E5E4A00ADD251 /* Assets.xcassets */,
 				9467C247285E5E4A00ADD251 /* LaunchScreen.storyboard */,
 				9467C24A285E5E4A00ADD251 /* Info.plist */,
+				94076D6028757DB9001A632A /* MainTableViewCell */,
 			);
 			path = WeatherZhuravlevMax;
 			sourceTree = "<group>";
@@ -288,6 +302,7 @@
 				94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */,
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
 				94F18EFD286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard in Resources */,
+				94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */,
 				94FC8D402868B551000CDE91 /* HourlyCollectionViewCell.xib in Resources */,
 				94FC8D442868BA31000CDE91 /* DailyTableViewCell.xib in Resources */,
 			);
@@ -351,6 +366,7 @@
 				94F18F02286CA80A0092D1C0 /* RealmDataTableViewCell.swift in Sources */,
 				94F18EF0286C580B0092D1C0 /* RealmData.swift in Sources */,
 				94F18EFB286C6A490092D1C0 /* RealmDataViewController.swift in Sources */,
+				94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */,
 				94FC8D1F2866FC99000CDE91 /* AlamofireProvider.swift in Sources */,
 				9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */,
 				94F18F0A286DA9540092D1C0 /* DBManager.swift in Sources */,

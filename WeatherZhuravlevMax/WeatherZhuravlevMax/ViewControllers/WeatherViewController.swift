@@ -11,6 +11,8 @@ import UserNotifications
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var mainTableView: UITableView!
+    
     @IBOutlet weak var weatherImage: UIImageView!
     
     @IBOutlet weak var cityNameLabel: UILabel!
@@ -37,34 +39,37 @@ class WeatherViewController: UIViewController {
         
         view.layoutSubviews()
         
-        cityNameLabel.text = ""
-        tempLabel.text = ""
-        feelsLikeTempLabel.text = ""
-        descriptionWeatherLabel.text = ""
+//        cityNameLabel.text = ""
+//        tempLabel.text = ""
+//        feelsLikeTempLabel.text = ""
+//        descriptionWeatherLabel.text = ""
         
         apiProvider = AlamofireProvider()
         dBManager = DBManager()
         
         getCoordByCityName(searchCity: defaultCity)
         
-        hourlyCollectionView.delegate = self
-        hourlyCollectionView.dataSource = self
+//        hourlyCollectionView.delegate = self
+//        hourlyCollectionView.dataSource = self
+//
+//        hourlyCollectionView.register(UINib(nibName: "HourlyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: HourlyCollectionViewCell.key)
+//
+//        dailyTableView.delegate = self
+//        dailyTableView.dataSource = self
+//
+//        dailyTableView.register(UINib(nibName: "DailyTableViewCell", bundle: nil), forCellReuseIdentifier: DailyTableViewCell.key)
         
-        hourlyCollectionView.register(UINib(nibName: "HourlyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: HourlyCollectionViewCell.key)
-        
-        dailyTableView.delegate = self
-        dailyTableView.dataSource = self
-        
-        dailyTableView.register(UINib(nibName: "DailyTableViewCell", bundle: nil), forCellReuseIdentifier: DailyTableViewCell.key)
-        
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        mainTableView.register(UINib(nibName: "ForCollectionViewTableViewCell", bundle: nil), forCellReuseIdentifier: ForCollectionViewTableViewCell.key)
         
         
     }
     
-    @IBAction func searchButtonPressed(_ sender: Any) {
-        guard let checkedSearchCity = searchTextField.text else {return}
-        getCoordByCityName(searchCity: checkedSearchCity)
-    }
+//    @IBAction func searchButtonPressed(_ sender: Any) {
+//        guard let checkedSearchCity = searchTextField.text else {return}
+//        getCoordByCityName(searchCity: checkedSearchCity)
+//    }
     
     func getCoordByCityName(searchCity: String) {
         apiProvider.getCoordinatesByCityName(name: searchCity) { [weak self] result in
@@ -74,7 +79,7 @@ class WeatherViewController: UIViewController {
                 if let city = value.first {
                     self.getWeatherByCoordinates(city: city)
                     DispatchQueue.main.async {
-                        self.cityNameLabel.text = city.cityName
+                        //self.cityNameLabel.text = city.cityName
                     }
                     
                 }
@@ -122,37 +127,36 @@ class WeatherViewController: UIViewController {
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
-                    //guard let badWeather = value.hourly?.first?.weather?.first?.id else {return}
-                    // self.weatherNotification(badWeather: badWeather)
                     guard let hourlyWeatherDataArray = value.hourly else {return}
                     self.weatherIdCheck(hourlyWeatherData: hourlyWeatherDataArray)
                     
                    
-                  //MARK: - работа с UI
+                  
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly
                     }
                     if let daily = value.daily {
                         self.dailyWeatherArray = daily
                     }
-                    guard let temp = value.current?.temp else {return}
+                    //MARK: - работа с UI
+//                    guard let temp = value.current?.temp else {return}
                     
-                    self.tempLabel.text = "+\(Int(temp))"
-                    
-                    guard let feelsLikeTemp = value.current?.feelsLike else {return}
-                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))"
-                    
-                    guard let descriptionWeather = value.current?.weather?.first?.description else {return}
-                    self.descriptionWeatherLabel.text = descriptionWeather
-                    
-                    guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@2x.png") else {return}
-                    if let data = try? Data(contentsOf: imageUrl) {
-                        self.weatherImage.image = UIImage(data: data)
-                        
-                    }
-                    
-                    self.hourlyCollectionView.reloadData()
-                    self.dailyTableView.reloadData()
+//                    self.tempLabel.text = "+\(Int(temp))"
+//
+//                    guard let feelsLikeTemp = value.current?.feelsLike else {return}
+//                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))"
+//
+//                    guard let descriptionWeather = value.current?.weather?.first?.description else {return}
+//                    self.descriptionWeatherLabel.text = descriptionWeather
+//
+//                    guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@2x.png") else {return}
+//                    if let data = try? Data(contentsOf: imageUrl) {
+//                        self.weatherImage.image = UIImage(data: data)
+//
+//                    }
+//
+//                    self.hourlyCollectionView.reloadData()
+//                    self.dailyTableView.reloadData()
                     print(value)
                 }
                 
@@ -165,60 +169,82 @@ class WeatherViewController: UIViewController {
 }
 
 
-extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        hourlyWeatherArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if let collectionCell = hourlyCollectionView.dequeueReusableCell(withReuseIdentifier: HourlyCollectionViewCell.key, for: indexPath) as? HourlyCollectionViewCell {
-            
-            if let hourlyTemp = hourlyWeatherArray[indexPath.row].temp,
-               let hourlyIconId = hourlyWeatherArray[indexPath.row].weather?.first?.icon,
-               let hourlyTime = hourlyWeatherArray[indexPath.row].dt,
-               let imageUrl = URL(string: "\(Constants.imageURL)\(hourlyIconId)@2x.png"),
-               let data = try? Data(contentsOf: imageUrl) {
-                
-                let decodedTime = hourlyTime.decoderDt(format: "HH mm ss")
-                collectionCell.timeLabel.text = "\(decodedTime)"
-                collectionCell.hourlyLabel.text = "+\(Int(hourlyTemp))"
-                collectionCell.hourlyImageView.image = UIImage(data: data)
-                
-            }
-            
-            return collectionCell
-        }
-        return UICollectionViewCell()
-    }
-    
-}
-
-
+//extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        hourlyWeatherArray.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//
+//        if let collectionCell = hourlyCollectionView.dequeueReusableCell(withReuseIdentifier: HourlyCollectionViewCell.key, for: indexPath) as? HourlyCollectionViewCell {
+//
+//            if let hourlyTemp = hourlyWeatherArray[indexPath.row].temp,
+//               let hourlyIconId = hourlyWeatherArray[indexPath.row].weather?.first?.icon,
+//               let hourlyTime = hourlyWeatherArray[indexPath.row].dt,
+//               let imageUrl = URL(string: "\(Constants.imageURL)\(hourlyIconId)@2x.png"),
+//               let data = try? Data(contentsOf: imageUrl) {
+//
+//                let decodedTime = hourlyTime.decoderDt(format: "HH mm ss")
+//                collectionCell.timeLabel.text = "\(decodedTime)"
+//                collectionCell.hourlyLabel.text = "+\(Int(hourlyTemp))"
+//                collectionCell.hourlyImageView.image = UIImage(data: data)
+//
+//            }
+//
+//            return collectionCell
+//        }
+//        return UICollectionViewCell()
+//    }
+//
+//}
+//
+//
+//
+//extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        dailyWeatherArray.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if let dailyCell = dailyTableView.dequeueReusableCell(withIdentifier: DailyTableViewCell.key) as? DailyTableViewCell {
+//
+//            if let dailyWeatherDay = dailyWeatherArray[indexPath.row].dt,
+//               let dailyWeatherMax = dailyWeatherArray[indexPath.row].temp?.max {
+//
+//                let decodedDay = dailyWeatherDay.decoderDt(format: "dd MMM YYYY")
+//                dailyCell.dailyLabelDay.text = "\(decodedDay)"
+//                dailyCell.dailyLabelTemp.text = "+\(Int(dailyWeatherMax))"
+//
+//            }
+//            return dailyCell
+//        }
+//        return UITableViewCell()
+//    }
+//
+//}
 
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dailyWeatherArray.count
+        1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let dailyCell = dailyTableView.dequeueReusableCell(withIdentifier: DailyTableViewCell.key) as? DailyTableViewCell {
-            
-            if let dailyWeatherDay = dailyWeatherArray[indexPath.row].dt,
-               let dailyWeatherMax = dailyWeatherArray[indexPath.row].temp?.max {
-                
-                let decodedDay = dailyWeatherDay.decoderDt(format: "dd MMM YYYY")
-                dailyCell.dailyLabelDay.text = "\(decodedDay)"
-                dailyCell.dailyLabelTemp.text = "+\(Int(dailyWeatherMax))"
-                
-            }
-            return dailyCell
+       if let collectionCell = mainTableView.dequeueReusableCell(withIdentifier: ForCollectionViewTableViewCell.key) as? ForCollectionViewTableViewCell {
+           
+           DispatchQueue.main.async {
+               collectionCell.hourlyWeatherData = self.hourlyWeatherArray
+               return collectionCell
+           }
+           
         }
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250.0
+    }
+    
 }
-
 
 
 
