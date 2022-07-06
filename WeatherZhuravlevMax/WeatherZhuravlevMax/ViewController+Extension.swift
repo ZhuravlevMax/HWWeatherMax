@@ -13,28 +13,16 @@ extension UIViewController {
     
     func weatherIdCheck(hourlyWeatherData: [HourlyWeatherData]) {
         
-        for hour in hourlyWeatherData {
-            
-            guard let id = hour.weather?.first?.id,
-                  let time = hour.dt
-            else {return}
-            
-            switch id {
-            case 200...232:
-                setNotification(time: time, body: "Thunderstorm starts in 30 minutes")
-                return
-            case 500...531:
-                setNotification(time: time, body: "Rain starts in 30 minutes")
-                return
-            case 600...622:
-                setNotification(time: time, body: "Snow starts in 30 minutes")
-                return
-            default: break
-            }
+        let weather = hourlyWeatherData.first {
+            guard let id = $0.weather?.first?.id else {return false}
+            return (200...232).contains(id) || (500...531).contains(id) || (200...232).contains(id)
         }
+        guard let weather = weather else {return}
+
+        setNotification(weather: weather)
     }
     
-    func setNotification(time: Int, body: String) {
+    func setNotification(weather: HourlyWeatherData) {
         
         let notificationCenter = UNUserNotificationCenter.current()
         
@@ -44,11 +32,14 @@ extension UIViewController {
                 let content = UNMutableNotificationContent()
                 content.title = "Weather"
                 content.subtitle = "About weather"
-                content.body = body
+                
+                guard let body = weather.weather?.first?.main else {return}
+                content.body = "\(body) in 30 minutes"
                 content.sound = UNNotificationSound.default
                 
                 //MARK: Нотификация за 30 минут
                 //time - время начала плохой погоды
+                guard let time = weather.dt else {return}
                 var timeForTrigger = time - 1800
                 let date = timeForTrigger.decoderIntToDate()
                 let timeTrigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
