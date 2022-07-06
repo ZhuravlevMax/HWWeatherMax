@@ -33,7 +33,7 @@ extension UIViewController {
                 content.title = "Weather"
                 content.subtitle = "About weather"
                 
-                guard let body = weather.weather?.first?.main else {return}
+                guard let body = weather.weather?.first?.description else {return}
                 content.body = "\(body) in 30 minutes"
                 content.sound = UNNotificationSound.default
                 
