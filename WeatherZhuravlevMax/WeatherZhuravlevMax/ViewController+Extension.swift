@@ -25,21 +25,20 @@ extension UIViewController {
     func setNotification(weather: HourlyWeatherData) {
         
         let notificationCenter = UNUserNotificationCenter.current()
-        
+        guard let time = weather.dt,
+              let body = weather.weather?.first?.description else {return}
+
         notificationCenter.requestAuthorization(options: [.alert, .sound]) { isAuthorized, error in
             if isAuthorized {
                 
                 let content = UNMutableNotificationContent()
                 content.title = "Weather"
                 content.subtitle = "About weather"
-                
-                guard let body = weather.weather?.first?.description else {return}
-                content.body = "\(body) in 30 minutes"
+                content.body = "\(body) через 30 минут"
                 content.sound = UNNotificationSound.default
                 
                 //MARK: Нотификация за 30 минут
                 //time - время начала плохой погоды
-                guard let time = weather.dt else {return}
                 var timeForTrigger = time - 1800
                 let date = timeForTrigger.decoderIntToDate()
                 let timeTrigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
