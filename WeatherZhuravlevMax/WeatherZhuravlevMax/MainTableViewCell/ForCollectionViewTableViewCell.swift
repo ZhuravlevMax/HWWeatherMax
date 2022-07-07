@@ -11,7 +11,8 @@ class ForCollectionViewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var inTableCellCollectionView: UICollectionView!
     
-    var models = [HourlyWeatherData]()
+    var models: [HourlyWeatherData] = []
+    //сюда дидсет
     
     static let key = "ForCollectionViewTableViewCell"
     

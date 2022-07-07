@@ -10,6 +10,7 @@
 		4E0957C38F3BF0EAAD966E4E /* Pods_WeatherZhuravlevMax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEACD66B5F691F0021F5AF3 /* Pods_WeatherZhuravlevMax.framework */; };
 		94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */; };
 		94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */; };
+		94076D6828774986001A632A /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6728774985001A632A /* Image+Extension.swift */; };
 		9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23C285E5E4400ADD251 /* AppDelegate.swift */; };
 		9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23E285E5E4400ADD251 /* SceneDelegate.swift */; };
 		9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C240285E5E4400ADD251 /* WeatherViewController.swift */; };
@@ -46,6 +47,7 @@
 		73540E9C3AC0B79A67EEEF36 /* Pods-WeatherZhuravlevMax.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZhuravlevMax.release.xcconfig"; path = "Target Support Files/Pods-WeatherZhuravlevMax/Pods-WeatherZhuravlevMax.release.xcconfig"; sourceTree = "<group>"; };
 		94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForCollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 		94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForCollectionViewTableViewCell.xib; sourceTree = "<group>"; };
+		94076D6728774985001A632A /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		9467C239285E5E4400ADD251 /* WeatherZhuravlevMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherZhuravlevMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9467C23C285E5E4400ADD251 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9467C23E285E5E4400ADD251 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */,
 				94F18F05286CDE5E0092D1C0 /* Int+Extension.swift */,
 				94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */,
+				94076D6728774985001A632A /* Image+Extension.swift */,
 				94076D6028757DB9001A632A /* MainTableViewCell */,
 				94FC8D452868FB58000CDE91 /* HourlyWeather */,
 				94F18F04286CA8110092D1C0 /* RealmDataTableViewCell */,
@@ -372,6 +375,7 @@
 				94F18F0A286DA9540092D1C0 /* DBManager.swift in Sources */,
 				94FC8D1D2866FB5E000CDE91 /* Constants.swift in Sources */,
 				94FC8D162866F99A000CDE91 /* Geocoding.swift in Sources */,
+				94076D6828774986001A632A /* Image+Extension.swift in Sources */,
 				94BF6A432871AD6E006BD3C3 /* ViewController+Extension.swift in Sources */,
 				94FC8D432868BA31000CDE91 /* DailyTableViewCell.swift in Sources */,
 				94FC8D1A2866F99E000CDE91 /* WeatherData.swift in Sources */,

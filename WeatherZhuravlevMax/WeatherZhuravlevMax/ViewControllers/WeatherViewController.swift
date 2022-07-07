@@ -10,13 +10,16 @@ import RealmSwift
 import UserNotifications
 
 class WeatherViewController: UIViewController {
+    //MARK: - добавление outlets
+    //loading view
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingLabel: UILabel!
     
-    
+    //main view с таблицей
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var mainTableView: UITableView!
     
+    //хедер таблицы
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
@@ -26,10 +29,11 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     
-    @IBOutlet weak var hourlyCollectionView: UICollectionView!
+//    @IBOutlet weak var hourlyCollectionView: UICollectionView!
+//
+//    @IBOutlet weak var dailyTableView: UITableView!
     
-    @IBOutlet weak var dailyTableView: UITableView!
-    
+    //MARK: - создание переменных
     private var apiProvider: RestAPIProviderProtocol!
     private var dBManager: DBManagerProtocol!
     
@@ -38,6 +42,10 @@ class WeatherViewController: UIViewController {
     var defaultCity: String = "Minsk"
     var searchCity: String!
     
+    //enum для выбора ячейки
+    enum cellType: Int {
+        case collectionWeather = 0
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,6 +92,8 @@ class WeatherViewController: UIViewController {
         mainTableView.reloadData()
         sender.endRefreshing()
     }
+    
+    
     @IBAction func searchButtonPressed(_ sender: Any) {
         guard let checkedSearchCity = searchTextField.text else {return}
         getCoordByCityName(searchCity: checkedSearchCity)
@@ -172,10 +182,7 @@ class WeatherViewController: UIViewController {
                     self.descriptionWeatherLabel.text = descriptionWeather
 
                     guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@4x.png") else {return}
-                    if let data = try? Data(contentsOf: imageUrl) {
-                        self.weatherImage.image = UIImage(data: data)
-
-                   }
+                    self.weatherImage.load(url: imageUrl)
 //
 //                    self.hourlyCollectionView.reloadData()
 //                    self.dailyTableView.reloadData()

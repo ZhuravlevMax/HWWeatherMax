@@ -24,15 +24,14 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     
         if let hourlyIconId = model.weather?.first?.icon,
            let imageUrl = URL(string: "\(Constants.imageURL)\(hourlyIconId)@2x.png"),
-           let data = try? Data(contentsOf: imageUrl),
            let hourlyTime = model.dt,
            let decodedTime = model.dt?.decoderDt(format: "HH:mm"),
            let hourlyTemp = model.temp {
             
-            
-            self.hourlyImageView.image = UIImage(data: data)
+            self.hourlyImageView.load(url: imageUrl)
             self.hourlyLabel.text = "+\(Int(hourlyTemp))"
             self.timeLabel.text = decodedTime
+
         }
 
     }
