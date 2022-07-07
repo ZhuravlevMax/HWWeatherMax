@@ -74,14 +74,15 @@ class WeatherViewController: UIViewController {
     
     @objc private func refresher(sender: UIRefreshControl) {
         
-        getCoordByCityName(searchCity: defaultCity)
+        guard let city = cityNameLabel.text else {return}
+        getCoordByCityName(searchCity: city)
         mainTableView.reloadData()
         sender.endRefreshing()
     }
-//    @IBAction func searchButtonPressed(_ sender: Any) {
-//        guard let checkedSearchCity = searchTextField.text else {return}
-//        getCoordByCityName(searchCity: checkedSearchCity)
-//    }
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        guard let checkedSearchCity = searchTextField.text else {return}
+        getCoordByCityName(searchCity: checkedSearchCity)
+    }
     
     func getCoordByCityName(searchCity: String) {
         apiProvider.getCoordinatesByCityName(name: searchCity) { [weak self] result in
@@ -90,10 +91,6 @@ class WeatherViewController: UIViewController {
             case .success(let value):
                 if let city = value.first {
                     self.getWeatherByCoordinates(city: city)
-                    DispatchQueue.main.async {
-                        self.cityNameLabel.text = city.cityName
-                    }
-                    
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -151,6 +148,9 @@ class WeatherViewController: UIViewController {
                         self.dailyWeatherArray = daily
                     }
                     //MARK: - работа с UI
+                    
+                    self.cityNameLabel.text = city.cityName
+                    
                     guard let temp = value.current?.temp else {return}
                     
                     self.tempLabel.text = "+\(Int(temp))°"
