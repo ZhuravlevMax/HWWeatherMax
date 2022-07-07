@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         RealmDataVC.tabBarItem.title = "WeatherRequestInfo"
         RealmDataVC.tabBarItem.image = UIImage(systemName: "tablecells")
         
-        tabBarController.tabBar.backgroundColor = UIColor.yellow
+        tabBarController.tabBar.backgroundColor = UIColor.white
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         

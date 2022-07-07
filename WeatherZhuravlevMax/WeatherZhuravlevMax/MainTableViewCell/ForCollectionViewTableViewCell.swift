@@ -22,6 +22,7 @@ class ForCollectionViewTableViewCell: UITableViewCell {
         inTableCellCollectionView.delegate = self
         inTableCellCollectionView.dataSource = self
         inTableCellCollectionView.register(UINib(nibName: "HourlyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: HourlyCollectionViewCell.key)
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

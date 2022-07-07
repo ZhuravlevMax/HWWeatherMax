@@ -13,6 +13,7 @@ class WeatherViewController: UIViewController {
     
     @IBOutlet weak var mainTableView: UITableView!
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     
     @IBOutlet weak var cityNameLabel: UILabel!
@@ -39,10 +40,11 @@ class WeatherViewController: UIViewController {
         
         view.layoutSubviews()
         
-//        cityNameLabel.text = ""
-//        tempLabel.text = ""
+        dateLabel.text = ""
+        cityNameLabel.text = ""
+        tempLabel.text = ""
 //        feelsLikeTempLabel.text = ""
-//        descriptionWeatherLabel.text = ""
+        descriptionWeatherLabel.text = ""
         
         apiProvider = AlamofireProvider()
         dBManager = DBManager()
@@ -62,13 +64,19 @@ class WeatherViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.register(UINib(nibName: "ForCollectionViewTableViewCell", bundle: nil), forCellReuseIdentifier: ForCollectionViewTableViewCell.key)
-        //MARK: Работа с header
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 300))
-        header.backgroundColor = .brown
-        mainTableView.tableHeaderView = header
-
+        
+        //MARK: - Добавляю refresher to mainTableView
+        let refresh = UIRefreshControl()
+        mainTableView.refreshControl = refresh
+        refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
+    
     }
     
+    @objc private func refresher() {
+        
+        getCoordByCityName(searchCity: defaultCity)
+        mainTableView.reloadData()
+    }
 //    @IBAction func searchButtonPressed(_ sender: Any) {
 //        guard let checkedSearchCity = searchTextField.text else {return}
 //        getCoordByCityName(searchCity: checkedSearchCity)
@@ -82,7 +90,7 @@ class WeatherViewController: UIViewController {
                 if let city = value.first {
                     self.getWeatherByCoordinates(city: city)
                     DispatchQueue.main.async {
-                        //self.cityNameLabel.text = city.cityName
+                        self.cityNameLabel.text = city.cityName
                     }
                     
                 }
@@ -142,21 +150,23 @@ class WeatherViewController: UIViewController {
                         self.dailyWeatherArray = daily
                     }
                     //MARK: - работа с UI
-//                    guard let temp = value.current?.temp else {return}
+                    guard let temp = value.current?.temp else {return}
                     
-//                    self.tempLabel.text = "+\(Int(temp))"
+                    self.tempLabel.text = "+\(Int(temp))°"
 //
 //                    guard let feelsLikeTemp = value.current?.feelsLike else {return}
 //                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))"
 //
-//                    guard let descriptionWeather = value.current?.weather?.first?.description else {return}
-//                    self.descriptionWeatherLabel.text = descriptionWeather
-//
-//                    guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@2x.png") else {return}
-//                    if let data = try? Data(contentsOf: imageUrl) {
-//                        self.weatherImage.image = UIImage(data: data)
-//
-//                    }
+                    let currentDate =  Int(Date().timeIntervalSince1970).decoderDt(format: "EEEE, d MMMM")
+                    self.dateLabel.text = currentDate
+                    guard let descriptionWeather = value.current?.weather?.first?.description else {return}
+                    self.descriptionWeatherLabel.text = descriptionWeather
+
+                    guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@4x.png") else {return}
+                    if let data = try? Data(contentsOf: imageUrl) {
+                        self.weatherImage.image = UIImage(data: data)
+
+                   }
 //
 //                    self.hourlyCollectionView.reloadData()
 //                    self.dailyTableView.reloadData()
