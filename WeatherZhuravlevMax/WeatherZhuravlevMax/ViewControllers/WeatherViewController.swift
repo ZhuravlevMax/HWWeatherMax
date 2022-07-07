@@ -68,14 +68,15 @@ class WeatherViewController: UIViewController {
         //MARK: - Добавляю refresher to mainTableView
         let refresh = UIRefreshControl()
         mainTableView.refreshControl = refresh
-        refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
+        refresh.addTarget(self, action: #selector(refresher(sender: )), for: .valueChanged)
     
     }
     
-    @objc private func refresher() {
+    @objc private func refresher(sender: UIRefreshControl) {
         
         getCoordByCityName(searchCity: defaultCity)
         mainTableView.reloadData()
+        sender.endRefreshing()
     }
 //    @IBAction func searchButtonPressed(_ sender: Any) {
 //        guard let checkedSearchCity = searchTextField.text else {return}
@@ -157,7 +158,7 @@ class WeatherViewController: UIViewController {
 //                    guard let feelsLikeTemp = value.current?.feelsLike else {return}
 //                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))"
 //
-                    let currentDate =  Int(Date().timeIntervalSince1970).decoderDt(format: "EEEE, d MMMM")
+                    let currentDate =  Int(Date().timeIntervalSince1970).decoderDt(format: "EEEE, d MMMM, HH:mm")
                     self.dateLabel.text = currentDate
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
                     self.descriptionWeatherLabel.text = descriptionWeather
