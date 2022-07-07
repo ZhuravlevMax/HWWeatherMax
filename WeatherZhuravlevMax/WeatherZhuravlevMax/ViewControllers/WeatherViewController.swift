@@ -10,12 +10,15 @@ import RealmSwift
 import UserNotifications
 
 class WeatherViewController: UIViewController {
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingLabel: UILabel!
     
+    
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var mainTableView: UITableView!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
-    
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var feelsLikeTempLabel: UILabel!
@@ -39,7 +42,9 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         view.layoutSubviews()
-        
+        loadingLabel.text = "Загрузка данных..."
+
+        mainView.isHidden = true
         dateLabel.text = ""
         cityNameLabel.text = ""
         tempLabel.text = ""
@@ -148,6 +153,9 @@ class WeatherViewController: UIViewController {
                         self.dailyWeatherArray = daily
                     }
                     //MARK: - работа с UI
+                    
+                    self.mainView.isHidden = false
+                    self.loadingView.isHidden = true
                     
                     self.cityNameLabel.text = city.cityName
                     
