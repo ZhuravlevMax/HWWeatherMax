@@ -18,30 +18,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kG7-GI-WjR">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rt0-FC-2IS">
-                                        <rect key="frame" x="182" y="372" width="50" height="74"/>
-                                        <subviews>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="wzt-h0-b3V">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="EOv-Dl-zOB"/>
-                                                    <constraint firstAttribute="width" constant="50" id="G1p-mh-PMq"/>
-                                                </constraints>
-                                            </activityIndicatorView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zq0-RI-Vd5">
-                                                <rect key="frame" x="0.0" y="50" width="50" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="IQY-od-vDo">
+                                        <rect key="frame" x="189" y="391" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2588235438" green="0.58431375029999999" blue="0.88235294819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstItem="rt0-FC-2IS" firstAttribute="centerY" secondItem="kG7-GI-WjR" secondAttribute="centerY" id="65N-5z-Tka"/>
-                                    <constraint firstItem="rt0-FC-2IS" firstAttribute="centerX" secondItem="kG7-GI-WjR" secondAttribute="centerX" id="XBA-xR-XOF"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8B-Pm-jfH">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
@@ -191,7 +173,6 @@
                         <outlet property="cityNameLabel" destination="Y1G-dt-dEO" id="Pun-ba-sbq"/>
                         <outlet property="dateLabel" destination="V1t-gP-zzf" id="Sc4-xs-3kH"/>
                         <outlet property="descriptionWeatherLabel" destination="fKi-6v-pW1" id="PcQ-f2-Kb2"/>
-                        <outlet property="loadingLabel" destination="zq0-RI-Vd5" id="JIy-rl-bzO"/>
                         <outlet property="loadingView" destination="kG7-GI-WjR" id="ivc-t8-7e8"/>
                         <outlet property="mainTableView" destination="tKQ-5u-zTG" id="qxW-Pu-sjU"/>
                         <outlet property="mainView" destination="G8B-Pm-jfH" id="UfJ-Fv-Npl"/>
