@@ -199,11 +199,13 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             if let collectionCell = mainTableView.dequeueReusableCell(withIdentifier: ForCollectionViewTableViewCell.key) as? ForCollectionViewTableViewCell {
                 collectionCell.models = self.hourlyWeatherArray
+                collectionCell.inTableCellCollectionView.reloadData()
                 return collectionCell
             }
         } else {
             if let tableCell = mainTableView.dequeueReusableCell(withIdentifier: ForTableVIewTableViewCell.key) as? ForTableVIewTableViewCell {
                 tableCell.models = self.dailyWeatherArray
+                tableCell.inTableCellTableView.reloadData()
                 return tableCell
             }
         }

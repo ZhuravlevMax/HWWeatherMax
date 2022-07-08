@@ -27,7 +27,7 @@ class ForTableVIewTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        inTableCellTableView.reloadData() //Работает
+        //inTableCellTableView.reloadData() //Работает
         // Configure the view for the selected state
     }
     

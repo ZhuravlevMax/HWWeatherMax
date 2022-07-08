@@ -30,7 +30,7 @@ class ForCollectionViewTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
-        inTableCellCollectionView.reloadData() //Работает
+        //inTableCellCollectionView.reloadData() //Работает
     }
     
     func configure( with models: [HourlyWeatherData]) {
