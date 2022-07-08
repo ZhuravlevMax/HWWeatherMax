@@ -62,6 +62,7 @@ class WeatherViewController: UIViewController {
         dBManager = DBManager()
         
         getCoordByCityName(searchCity: defaultCity)
+        hideKeyboardWhenTappedAround()
 
         mainTableView.delegate = self
         mainTableView.dataSource = self
