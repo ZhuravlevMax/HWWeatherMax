@@ -86,10 +86,10 @@ extension MapViewController: GMSMapViewDelegate {
 
                     // MARK: - работа с UI
                     guard let temp = value.current?.temp else {return}
-                    self.tempLabel.text = "+\(Int(temp))"
+                    self.tempLabel.text = "+\(Int(temp))°"
                     
                     guard let feelsLikeTemp = value.current?.feelsLike else {return}
-                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))"
+                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))°"
                     
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
                     self.descriptionWeatherLabel.text = "\(descriptionWeather)"
