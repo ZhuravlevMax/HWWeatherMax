@@ -38,7 +38,7 @@
             <connections>
                 <outlet property="inTableCellCollectionView" destination="rfn-mx-rrG" id="9zA-b2-cTS"/>
             </connections>
-            <point key="canvasLocation" x="133" y="94"/>
+            <point key="canvasLocation" x="176.81159420289856" y="65.625"/>
         </tableViewCell>
     </objects>
 </document>

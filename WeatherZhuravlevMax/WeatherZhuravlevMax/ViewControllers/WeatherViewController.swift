@@ -29,9 +29,9 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     
-//    @IBOutlet weak var hourlyCollectionView: UICollectionView!
-//
-//    @IBOutlet weak var dailyTableView: UITableView!
+    //    @IBOutlet weak var hourlyCollectionView: UICollectionView!
+    //
+    //    @IBOutlet weak var dailyTableView: UITableView!
     
     //MARK: - создание переменных
     private var apiProvider: RestAPIProviderProtocol!
@@ -43,20 +43,21 @@ class WeatherViewController: UIViewController {
     var searchCity: String!
     
     //enum для выбора ячейки
-    enum cellType: Int {
-        case collectionWeather = 0
+    enum CellType: Int {
+        case collectionView = 0
+        case tableView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.layoutSubviews()
-        loadingLabel.text = "Загрузка данных..."
-
+        loadingLabel.text = "Загрузка данных о погоде..."
+        
         mainView.isHidden = true
         dateLabel.text = ""
         cityNameLabel.text = ""
         tempLabel.text = ""
-//        feelsLikeTempLabel.text = ""
+        //        feelsLikeTempLabel.text = ""
         descriptionWeatherLabel.text = ""
         
         apiProvider = AlamofireProvider()
@@ -64,25 +65,27 @@ class WeatherViewController: UIViewController {
         
         getCoordByCityName(searchCity: defaultCity)
         
-//        hourlyCollectionView.delegate = self
-//        hourlyCollectionView.dataSource = self
-//
-//        hourlyCollectionView.register(UINib(nibName: "HourlyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: HourlyCollectionViewCell.key)
-//
-//        dailyTableView.delegate = self
-//        dailyTableView.dataSource = self
-//
-//        dailyTableView.register(UINib(nibName: "DailyTableViewCell", bundle: nil), forCellReuseIdentifier: DailyTableViewCell.key)
+        //        hourlyCollectionView.delegate = self
+        //        hourlyCollectionView.dataSource = self
+        //
+        //        hourlyCollectionView.register(UINib(nibName: "HourlyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: HourlyCollectionViewCell.key)
+        //
+        //        dailyTableView.delegate = self
+        //        dailyTableView.dataSource = self
+        //
+        //        dailyTableView.register(UINib(nibName: "DailyTableViewCell", bundle: nil), forCellReuseIdentifier: DailyTableViewCell.key)
         
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.register(UINib(nibName: "ForCollectionViewTableViewCell", bundle: nil), forCellReuseIdentifier: ForCollectionViewTableViewCell.key)
         
+        mainTableView.register(UINib(nibName: "ForTableVIewTableViewCell", bundle: nil), forCellReuseIdentifier: ForTableVIewTableViewCell.key)
+        
         //MARK: - Добавляю refresher to mainTableView
         let refresh = UIRefreshControl()
         mainTableView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(refresher(sender: )), for: .valueChanged)
-    
+        
     }
     
     @objc private func refresher(sender: UIRefreshControl) {
@@ -122,7 +125,7 @@ class WeatherViewController: UIViewController {
                 DispatchQueue.main.async {
                     // MARK: - работа с БД
                     //Сохраняю в таблицу RealmResponseData
-
+                    
                     guard let lonData = value.lon,
                           let latData = value.lat
                     else {return}
@@ -133,7 +136,7 @@ class WeatherViewController: UIViewController {
                     coordRealmData.time = Int(date.timeIntervalSince1970)
                     
                     self.dBManager.saveCoordinate(coordinateData: coordRealmData)
- 
+                    
                     print(coordRealmData)
                     
                     // Сохраняем в таблицу RealmWeatherData
@@ -154,8 +157,8 @@ class WeatherViewController: UIViewController {
                     guard let hourlyWeatherDataArray = value.hourly else {return}
                     self.weatherIdCheck(hourlyWeatherData: hourlyWeatherDataArray)
                     
-                   
-                  
+                    
+                    
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly
                     }
@@ -172,20 +175,20 @@ class WeatherViewController: UIViewController {
                     guard let temp = value.current?.temp else {return}
                     
                     self.tempLabel.text = "+\(Int(temp))°"
-//
-//                    guard let feelsLikeTemp = value.current?.feelsLike else {return}
-//                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))"
-//
-                    let currentDate =  Int(Date().timeIntervalSince1970).decoderDt(format: "EEEE, d MMMM, HH:mm")
+                    //
+                    //                    guard let feelsLikeTemp = value.current?.feelsLike else {return}
+                    //                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))"
+                    //
+                    let currentDate =  Int(Date().timeIntervalSince1970).decoderDt(format: "EEEE, d MMMM")
                     self.dateLabel.text = currentDate
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
                     self.descriptionWeatherLabel.text = descriptionWeather
-
+                    
                     guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@4x.png") else {return}
                     self.weatherImage.load(url: imageUrl)
-//
-//                    self.hourlyCollectionView.reloadData()
-//                    self.dailyTableView.reloadData()
+                    //
+                    //                    self.hourlyCollectionView.reloadData()
+                    //                    self.dailyTableView.reloadData()
                     self.mainTableView.reloadData()
                     print(value)
                 }
@@ -256,29 +259,38 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        2
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        20
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        20
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       if let collectionCell = mainTableView.dequeueReusableCell(withIdentifier: ForCollectionViewTableViewCell.key) as? ForCollectionViewTableViewCell {
-           
-               collectionCell.models = self.hourlyWeatherArray
-               return collectionCell
-           
-           
+        if indexPath.section == 0 {
+            if let collectionCell = mainTableView.dequeueReusableCell(withIdentifier: ForCollectionViewTableViewCell.key) as? ForCollectionViewTableViewCell {
+                collectionCell.models = self.hourlyWeatherArray
+                return collectionCell
+            }
+        } else {
+            if let tableCell = mainTableView.dequeueReusableCell(withIdentifier: ForTableVIewTableViewCell.key) as? ForTableVIewTableViewCell {
+                tableCell.models = self.dailyWeatherArray
+                return tableCell
+            }
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
+        
+        if indexPath.section == 0 {
+            return 150.0
+        } else {
+            return 900.0
+        }
     }
     
 }
