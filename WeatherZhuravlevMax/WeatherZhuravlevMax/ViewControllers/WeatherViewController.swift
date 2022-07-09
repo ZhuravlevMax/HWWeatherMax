@@ -63,6 +63,7 @@ class WeatherViewController: UIViewController {
         
         dateLabel.text = ""
         locationLabel.text = ""
+        cityNameLabel.text = defaultCity
         tempLabel.text = ""
         descriptionWeatherLabel.text = ""
         
@@ -101,11 +102,13 @@ class WeatherViewController: UIViewController {
         coreManager.startUpdatingLocation()
         
         
+        
     }
     
     //MARK: - Работа с кнопкой поиска
     @IBAction func searchButtonPressed(_ sender: Any) {
         
+        //MARK: - AlertController для поиска города
         let findCityAlertController = UIAlertController(title: "Выбор города", message: "Погода по названию города", preferredStyle: .alert)
         findCityAlertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Введите название города"
@@ -115,7 +118,7 @@ class WeatherViewController: UIViewController {
             
             let findCityTextField = (findCityAlertController.textFields?[0] ?? UITextField()) as UITextField
             guard let cityName = findCityTextField.text else {return}
-            
+
             getCoordByCityName(searchCity: cityName)
             
             coreManager.stopUpdatingLocation()
@@ -142,7 +145,13 @@ class WeatherViewController: UIViewController {
             case .success(let value):
                 if let city = value.first {
                     self.getWeatherByCoordinates(lat: city.lat, lon: city.lon)
-
+                    self.cityNameLabel.text = city.cityName
+                } else {
+                    //MARK: - AlertController для ошибки
+                    let cityNotExistAlertController = UIAlertController(title: "Ошибка!", message: "Проверьте правильность названия города!", preferredStyle: .alert)
+                    let okButtonCityNotExistAction = UIAlertAction(title: "Ok", style: .default)
+                    cityNotExistAlertController.addAction(okButtonCityNotExistAction)
+                    self.present(cityNotExistAlertController, animated: true)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -276,7 +285,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
         if manager.authorizationStatus == .authorizedAlways ||
             manager.authorizationStatus == .authorizedWhenInUse {
             
-            coreManager.startUpdatingLocation()
+            //coreManager.startUpdatingLocation()
 
             currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
             
@@ -293,7 +302,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
         currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
         currentPositionButton.tintColor = .orange
         searchButton.tintColor = .white
-        
+        cityNameLabel.text = "Вокруг меня"
         coreManager.stopUpdatingLocation()
        print(" ЛОКАЦИЯ: \(location)")
     }
