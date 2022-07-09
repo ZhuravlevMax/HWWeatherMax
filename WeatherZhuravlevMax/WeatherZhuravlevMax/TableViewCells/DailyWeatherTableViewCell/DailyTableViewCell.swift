@@ -29,7 +29,7 @@ class DailyTableViewCell: UITableViewCell {
            let MinTemp = model.temp?.min
         {
             
-            dailyLabelDay.text = model.dt?.decoderDt(format: "EEEE, d")
+            dailyLabelDay.text = model.dt?.decoderDt(format: "EEEE")
             
             dailyImageView.load(url: imageUrl)
             dailyLabelMinTemp.text = String("+\(Int(MinTemp))°")
