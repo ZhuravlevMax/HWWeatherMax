@@ -26,9 +26,9 @@ class MapViewController: UIViewController {
         
         view.layoutSubviews()
         
-        tempLabel.text = "--"
-        feelsLikeTempLabel.text = "--"
-        descriptionWeatherLabel.text = "--"
+        tempLabel.text = "Нажмите на карту"
+        feelsLikeTempLabel.text = "для определения"
+        descriptionWeatherLabel.text = "погоды в выбранной точке"
         
         apiProviderMap = AlamofireProvider()
         dBManager = DBManager()
@@ -68,7 +68,6 @@ extension MapViewController: GMSMapViewDelegate {
 
                     self.dBManager.saveCoordinate(coordinateData: coordRealmData)
                 
-                    
                     // Сохраняем в таблицу RealmWeatherData
                     guard let tempData = value.current?.temp,
                           let feelsLikeData = value.current?.feelsLike,
@@ -94,7 +93,7 @@ extension MapViewController: GMSMapViewDelegate {
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
                     self.descriptionWeatherLabel.text = descriptionWeather
                     
-                    guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@2x.png") else {return}
+                    guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@4x.png") else {return}
                     if let data = try? Data(contentsOf: imageUrl) {
                         self.weatherImage.image = UIImage(data: data)
                     }

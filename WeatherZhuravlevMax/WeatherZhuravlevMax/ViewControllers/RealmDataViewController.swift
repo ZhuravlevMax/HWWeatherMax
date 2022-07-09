@@ -49,8 +49,7 @@ class RealmDataViewController: UIViewController {
                 fatalError("\(error)")
                 
             }
-            
-    
+
         }
         
         //MARK: - Регистрация ячеек
@@ -60,30 +59,23 @@ class RealmDataViewController: UIViewController {
         
         realmDataTableView.register(UINib(nibName: "RealmDataTableViewCell", bundle: nil), forCellReuseIdentifier: RealmDataTableViewCell.key)
         realmDataTableView.reloadData()
-        
-        
     }
     
     deinit {
         notificationToken?.invalidate()
     }
-        
-    
 }
 
 extension RealmDataViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        sortedRealmWeatherData = dBManager.obtainWeather()
-//       return
+
         sortedRealmWeatherData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let realmDataTableViewCell = realmDataTableView.dequeueReusableCell(withIdentifier: RealmDataTableViewCell.key) as? RealmDataTableViewCell {
-            
-         //   sortedRealmWeatherData = dBManager.obtainWeather().sorted {$0.time > $1.time}
-            
+
             let decodedTime = sortedRealmWeatherData[indexPath.row].time.decoderDt(format: "HH:mm:ss dd MMM YYYY")
             
             realmDataTableViewCell.tempLabel.text = "\(Int(sortedRealmWeatherData[indexPath.row].temp))"
