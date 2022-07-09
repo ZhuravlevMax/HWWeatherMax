@@ -122,9 +122,7 @@ class WeatherViewController: UIViewController {
             case .success(let value):
                 if let city = value.first {
                     self.getWeatherByCoordinates(lat: city.lat, lon: city.lon)
-                    DispatchQueue.main.async {
-                        self.cityNameLabel.text = city.cityName
-                    }
+
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -185,6 +183,7 @@ class WeatherViewController: UIViewController {
                     self.loadingView.isHidden = true
                     
                     
+                    self.cityNameLabel.text = value.timeZone
                     
                     guard let temp = value.current?.temp else {return}
                     
@@ -263,7 +262,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
        guard let location = locations.first else {return}
 
-        //getWeatherByCoordinates(city: location)
+        getWeatherByCoordinates(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
+        
         coreManager.stopUpdatingLocation()
        print(" ЛОКАЦИЯ: \(location)")
     }
