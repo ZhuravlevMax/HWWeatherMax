@@ -121,7 +121,10 @@ class WeatherViewController: UIViewController {
             switch result {
             case .success(let value):
                 if let city = value.first {
-                    self.getWeatherByCoordinates(city: city)
+                    self.getWeatherByCoordinates(lat: city.lat, lon: city.lon)
+                    DispatchQueue.main.async {
+                        self.cityNameLabel.text = city.cityName
+                    }
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -129,8 +132,8 @@ class WeatherViewController: UIViewController {
         }
     }
     //MARK: - Получение погоды по координатам
-    func getWeatherByCoordinates(city: Geocoding) {
-        apiProvider.getWeatherForCityCoordinates(lat: city.lat, lon: city.lon) { result in
+    func getWeatherByCoordinates(lat: Double, lon: Double) {
+        apiProvider.getWeatherForCityCoordinates(lat: lat, lon: lon) { result in
             switch result {
             case .success(let value):
                 guard let weatherIconId = value.current?.weather?.first?.icon else {return}
@@ -181,7 +184,7 @@ class WeatherViewController: UIViewController {
                     self.mainView.isHidden = false
                     self.loadingView.isHidden = true
                     
-                    self.cityNameLabel.text = city.cityName
+                    
                     
                     guard let temp = value.current?.temp else {return}
                     
