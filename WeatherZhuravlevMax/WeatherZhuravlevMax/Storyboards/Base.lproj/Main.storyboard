@@ -59,10 +59,18 @@
                                                                         <action selector="currentPositionButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WyG-KG-gFl"/>
                                                                     </connections>
                                                                 </button>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaI-Pu-udN">
+                                                                    <rect key="frame" x="173" y="13" width="48" height="24"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.26274511220000002" green="0.59215688710000003" blue="0.89803922179999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="tUV-dP-IG6" secondAttribute="trailing" constant="10" id="EfV-w6-Xtm"/>
+                                                                <constraint firstItem="VaI-Pu-udN" firstAttribute="centerX" secondItem="GpO-3Q-3wd" secondAttribute="centerX" id="Jfp-gM-JJK"/>
+                                                                <constraint firstItem="VaI-Pu-udN" firstAttribute="centerY" secondItem="GpO-3Q-3wd" secondAttribute="centerY" id="Mb2-1O-Jjb"/>
                                                                 <constraint firstItem="tUV-dP-IG6" firstAttribute="leading" secondItem="bW9-E6-Q0a" secondAttribute="trailing" constant="20" id="YdB-8Y-5Vd"/>
                                                                 <constraint firstAttribute="bottom" secondItem="bW9-E6-Q0a" secondAttribute="bottom" constant="1" id="d7d-Pj-HDn"/>
                                                                 <constraint firstItem="tUV-dP-IG6" firstAttribute="top" secondItem="GpO-3Q-3wd" secondAttribute="top" constant="1" id="eoM-AW-zgK"/>
@@ -114,14 +122,8 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="cDb-nV-olm">
                                                                     <rect key="frame" x="0.0" y="0.0" width="197" height="106"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1G-dt-dEO">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="197" height="26.5"/>
-                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csO-G1-2p7">
-                                                                            <rect key="frame" x="0.0" y="26.5" width="197" height="79.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="197" height="106"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -136,7 +138,7 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20.5" id="uKH-ef-vRd"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -207,7 +209,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cityNameLabel" destination="Y1G-dt-dEO" id="Pun-ba-sbq"/>
+                        <outlet property="cityNameLabel" destination="VaI-Pu-udN" id="oJs-rR-6V7"/>
                         <outlet property="currentPositionButton" destination="bW9-E6-Q0a" id="7cu-kZ-9z5"/>
                         <outlet property="dateLabel" destination="V1t-gP-zzf" id="Sc4-xs-3kH"/>
                         <outlet property="descriptionWeatherLabel" destination="fKi-6v-pW1" id="PcQ-f2-Kb2"/>
