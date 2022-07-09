@@ -92,7 +92,7 @@ extension MapViewController: GMSMapViewDelegate {
                     self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))°"
                     
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
-                    self.descriptionWeatherLabel.text = "\(descriptionWeather)"
+                    self.descriptionWeatherLabel.text = descriptionWeather
                     
                     guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@2x.png") else {return}
                     if let data = try? Data(contentsOf: imageUrl) {

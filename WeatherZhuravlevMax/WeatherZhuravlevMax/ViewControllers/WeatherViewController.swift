@@ -81,7 +81,6 @@ class WeatherViewController: UIViewController {
         
         guard let city = cityNameLabel.text else {return}
         getCoordByCityName(searchCity: city)
-        mainTableView.reloadData()
         sender.endRefreshing()
     }
     
@@ -145,8 +144,6 @@ class WeatherViewController: UIViewController {
                     
                     guard let hourlyWeatherDataArray = value.hourly else {return}
                     self.weatherIdCheck(hourlyWeatherData: hourlyWeatherDataArray)
-                    
-                    
                     
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly
