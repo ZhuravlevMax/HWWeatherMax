@@ -20,11 +20,11 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     
     //хедер таблицы
-    
     @IBOutlet weak var currentPositionButton: UIButton!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
@@ -62,7 +62,7 @@ class WeatherViewController: UIViewController {
         mainView.isHidden = true
         
         dateLabel.text = ""
-        cityNameLabel.text = ""
+        locationLabel.text = ""
         tempLabel.text = ""
         descriptionWeatherLabel.text = ""
         
@@ -88,7 +88,7 @@ class WeatherViewController: UIViewController {
     
     @objc private func refresher(sender: UIRefreshControl) {
         
-        guard let city = cityNameLabel.text else {return}
+        guard let city = locationLabel.text else {return}
         getCoordByCityName(searchCity: city)
         sender.endRefreshing()
     }
@@ -98,14 +98,40 @@ class WeatherViewController: UIViewController {
         
         //Запрашиваем авторизацию у юзера
         coreManager.requestWhenInUseAuthorization()
+        coreManager.startUpdatingLocation()
         
         
     }
     
     //MARK: - Работа с кнопкой поиска
     @IBAction func searchButtonPressed(_ sender: Any) {
-        guard let checkedSearchCity = searchTextField.text else {return}
-        getCoordByCityName(searchCity: checkedSearchCity)
+        
+        let findCityAlertController = UIAlertController(title: "Выбор города", message: "Погода по названию города", preferredStyle: .alert)
+        findCityAlertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Введите название города"
+        }
+        
+        let okButtonFindCityAction = UIAlertAction(title: "Выбрать", style: .default) { [self] _ in
+            
+            let findCityTextField = (findCityAlertController.textFields?[0] ?? UITextField()) as UITextField
+            guard let cityName = findCityTextField.text else {return}
+            
+            getCoordByCityName(searchCity: cityName)
+            
+            coreManager.stopUpdatingLocation()
+            searchButton.tintColor = .orange
+            currentPositionButton.setImage(UIImage(systemName: "location"), for: .normal)
+            currentPositionButton.tintColor = .white
+            
+            
+            
+        }
+        let cancelButtonFindCityAction = UIAlertAction(title: "Отмена", style: .cancel)
+        
+        findCityAlertController.addAction(okButtonFindCityAction)
+        findCityAlertController.addAction(cancelButtonFindCityAction)
+        self.present(findCityAlertController, animated: true)
+
     }
     
     //MARK: - Получение координат по названию города
@@ -177,7 +203,7 @@ class WeatherViewController: UIViewController {
                     self.loadingView.isHidden = true
                     
                     
-                    self.cityNameLabel.text = value.timeZone
+                    self.locationLabel.text = value.timeZone
                     
                     guard let temp = value.current?.temp else {return}
                     
@@ -246,12 +272,14 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - Для работы с локацией пользователя
 extension WeatherViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
         if manager.authorizationStatus == .authorizedAlways ||
             manager.authorizationStatus == .authorizedWhenInUse {
+            
             coreManager.startUpdatingLocation()
 
             currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
-            currentPositionButton.tintColor = .orange
+            
         } else if manager.authorizationStatus == .denied {
             currentPositionButton.isEnabled = false
         }
@@ -261,6 +289,10 @@ extension WeatherViewController: CLLocationManagerDelegate {
        guard let location = locations.first else {return}
 
         getWeatherByCoordinates(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
+        
+        currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
+        currentPositionButton.tintColor = .orange
+        searchButton.tintColor = .white
         
         coreManager.stopUpdatingLocation()
        print(" ЛОКАЦИЯ: \(location)")
