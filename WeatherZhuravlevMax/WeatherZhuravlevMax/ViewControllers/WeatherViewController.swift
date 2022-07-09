@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 import UserNotifications
+import CoreLocation
 
 class WeatherViewController: UIViewController {
     //MARK: - добавление outlets
@@ -20,6 +21,9 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     
     //хедер таблицы
+    
+    @IBOutlet weak var currentPositionButton: UIButton!
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
@@ -47,6 +51,16 @@ class WeatherViewController: UIViewController {
         case collectionView = 0
         case tableView
     }
+    
+    //Для работы с GPS пользователя
+    private lazy var coreManager: CLLocationManager = {
+        let manager = CLLocationManager()
+        //точность передвижения
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        return manager
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +74,7 @@ class WeatherViewController: UIViewController {
         
         apiProvider = AlamofireProvider()
         dBManager = DBManager()
+        coreManager.delegate = self
         
         getCoordByCityName(searchCity: defaultCity)
         hideKeyboardWhenTappedAround()
@@ -70,7 +85,7 @@ class WeatherViewController: UIViewController {
         
         mainTableView.register(UINib(nibName: "ForTableVIewTableViewCell", bundle: nil), forCellReuseIdentifier: ForTableVIewTableViewCell.key)
         
-        //MARK: - Добавляю refresher to mainTableView
+        //MARK: - Работа с refresher to mainTableView
         let refresh = UIRefreshControl()
         mainTableView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(refresher(sender: )), for: .valueChanged)
@@ -84,12 +99,22 @@ class WeatherViewController: UIViewController {
         sender.endRefreshing()
     }
     
+    //MARK: - Работа с кнопкой текущей позиции
+    @IBAction func currentPositionButtonPressed(_ sender: Any) {
+        
+        //Запрашиваем авторизацию у юзера
+        coreManager.requestWhenInUseAuthorization()
+        
+        
+    }
     
+    //MARK: - Работа с кнопкой поиска
     @IBAction func searchButtonPressed(_ sender: Any) {
         guard let checkedSearchCity = searchTextField.text else {return}
         getCoordByCityName(searchCity: checkedSearchCity)
     }
     
+    //MARK: - Получение координат по названию города
     func getCoordByCityName(searchCity: String) {
         apiProvider.getCoordinatesByCityName(name: searchCity) { [weak self] result in
             guard let self = self else {return}
@@ -103,7 +128,7 @@ class WeatherViewController: UIViewController {
             }
         }
     }
-    
+    //MARK: - Получение погоды по координатам
     func getWeatherByCoordinates(city: Geocoding) {
         apiProvider.getWeatherForCityCoordinates(lat: city.lat, lon: city.lon) { result in
             switch result {
@@ -182,6 +207,8 @@ class WeatherViewController: UIViewController {
     }
 }
 
+
+//MARK: - Работа с таблицей
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -220,6 +247,25 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+//MARK: - Для работы с локацией пользователя
+extension WeatherViewController: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if manager.authorizationStatus == .authorizedAlways ||
+            manager.authorizationStatus == .authorizedWhenInUse {
+            coreManager.startUpdatingLocation()
+   
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+       guard let location = locations.first else {return}
+
+        //getWeatherByCoordinates(city: location)
+        coreManager.stopUpdatingLocation()
+       print(" ЛОКАЦИЯ: \(location)")
+    }
+    
+}
 
 
 
