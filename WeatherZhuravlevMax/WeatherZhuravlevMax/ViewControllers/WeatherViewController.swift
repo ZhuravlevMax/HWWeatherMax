@@ -14,7 +14,6 @@ class WeatherViewController: UIViewController {
     //MARK: - добавление outlets
     //loading view
     @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var loadingLabel: UILabel!
     
     //main view с таблицей
     @IBOutlet weak var mainView: UIView!
@@ -28,15 +27,10 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var feelsLikeTempLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
-    
-    //    @IBOutlet weak var hourlyCollectionView: UICollectionView!
-    //
-    //    @IBOutlet weak var dailyTableView: UITableView!
-    
+
     //MARK: - создание переменных
     private var apiProvider: RestAPIProviderProtocol!
     private var dBManager: DBManagerProtocol!
@@ -58,7 +52,6 @@ class WeatherViewController: UIViewController {
         //точность передвижения
         manager.desiredAccuracy = kCLLocationAccuracyBest
         return manager
-        
     }()
     
     override func viewDidLoad() {
@@ -67,6 +60,7 @@ class WeatherViewController: UIViewController {
         view.layoutSubviews()
         
         mainView.isHidden = true
+        
         dateLabel.text = ""
         cityNameLabel.text = ""
         tempLabel.text = ""
@@ -255,7 +249,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
         if manager.authorizationStatus == .authorizedAlways ||
             manager.authorizationStatus == .authorizedWhenInUse {
             coreManager.startUpdatingLocation()
-   
+
+            currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
+            currentPositionButton.tintColor = .orange
+        } else if manager.authorizationStatus == .denied {
+            currentPositionButton.isEnabled = false
         }
     }
     
