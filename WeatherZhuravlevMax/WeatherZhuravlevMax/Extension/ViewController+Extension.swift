@@ -13,38 +13,28 @@ extension UIViewController {
     
     func weatherIdCheck(hourlyWeatherData: [HourlyWeatherData]) {
         
-        for hour in hourlyWeatherData {
-            
-            guard let id = hour.weather?.first?.id,
-                  let time = hour.dt
-            else {return}
-            
-            switch id {
-            case 200...232:
-                setNotification(time: time, body: "Thunderstorm starts in 30 minutes")
-                return
-            case 500...531:
-                setNotification(time: time, body: "Rain starts in 30 minutes")
-                return
-            case 600...622:
-                setNotification(time: time, body: "Snow starts in 30 minutes")
-                return
-            default: break
-            }
+        let weather = hourlyWeatherData.first {
+            guard let id = $0.weather?.first?.id else {return false}
+            return (200...232).contains(id) || (500...531).contains(id) || (200...232).contains(id)
         }
+        guard let weather = weather else {return}
+
+        setNotification(weather: weather)
     }
     
-    func setNotification(time: Int, body: String) {
+    func setNotification(weather: HourlyWeatherData) {
         
         let notificationCenter = UNUserNotificationCenter.current()
-        
+        guard let time = weather.dt,
+              let body = weather.weather?.first?.description else {return}
+
         notificationCenter.requestAuthorization(options: [.alert, .sound]) { isAuthorized, error in
             if isAuthorized {
                 
                 let content = UNMutableNotificationContent()
                 content.title = "Weather"
                 content.subtitle = "About weather"
-                content.body = body
+                content.body = "\(body) через 30 минут"
                 content.sound = UNNotificationSound.default
                 
                 //MARK: Нотификация за 30 минут
