@@ -30,7 +30,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
-
+    
     //MARK: - создание переменных
     private var apiProvider: RestAPIProviderProtocol!
     private var dBManager: DBManagerProtocol!
@@ -44,6 +44,14 @@ class WeatherViewController: UIViewController {
     enum CellType: Int {
         case collectionView = 0
         case tableView
+    }
+    
+    //enum для кнопок поиска и локации
+    enum StateButtons: String {
+        case search
+        case location
+        case city
+        case state
     }
     
     //Для работы с GPS пользователя
@@ -66,14 +74,30 @@ class WeatherViewController: UIViewController {
         cityNameLabel.text = defaultCity
         tempLabel.text = ""
         descriptionWeatherLabel.text = ""
-        
         apiProvider = AlamofireProvider()
         dBManager = DBManager()
         coreManager.delegate = self
         
-        getCoordByCityName(searchCity: defaultCity)
+        if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.location.rawValue {
+            //Запрашиваем авторизацию у юзера
+            DispatchQueue.main.async {
+                self.coreManager.requestWhenInUseAuthorization()
+                self.coreManager.startUpdatingLocation()
+            }
+        } else if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.search.rawValue {
+            
+            guard let city = UserDefaults.standard.string(forKey: StateButtons.city.rawValue) else {return}
+            
+            DispatchQueue.main.async {
+                self.getCoordByCityName(searchCity: city)
+                self.searchButtonOnState()
+            }
+        } else {
+            self.getCoordByCityName(searchCity: defaultCity)
+        }
+        
         hideKeyboardWhenTappedAround()
-
+        
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.register(UINib(nibName: "ForCollectionViewTableViewCell", bundle: nil), forCellReuseIdentifier: ForCollectionViewTableViewCell.key)
@@ -89,7 +113,7 @@ class WeatherViewController: UIViewController {
     
     @objc private func refresher(sender: UIRefreshControl) {
         
-        guard let city = locationLabel.text else {return}
+        guard let city = cityNameLabel.text else {return}
         getCoordByCityName(searchCity: city)
         sender.endRefreshing()
     }
@@ -101,6 +125,7 @@ class WeatherViewController: UIViewController {
         coreManager.requestWhenInUseAuthorization()
         coreManager.startUpdatingLocation()
         
+        UserDefaults.standard.set(StateButtons.location.rawValue, forKey: StateButtons.state.rawValue)
         
         
     }
@@ -118,14 +143,13 @@ class WeatherViewController: UIViewController {
             
             let findCityTextField = (findCityAlertController.textFields?[0] ?? UITextField()) as UITextField
             guard let cityName = findCityTextField.text else {return}
-
+            
             getCoordByCityName(searchCity: cityName)
             
-            coreManager.stopUpdatingLocation()
-            searchButton.tintColor = .orange
-            currentPositionButton.setImage(UIImage(systemName: "location"), for: .normal)
-            currentPositionButton.tintColor = .white
+            searchButtonOnState()
             
+            UserDefaults.standard.set(StateButtons.search.rawValue, forKey: StateButtons.state.rawValue)
+            UserDefaults.standard.set(cityName, forKey: StateButtons.city.rawValue)
             
             
         }
@@ -134,8 +158,17 @@ class WeatherViewController: UIViewController {
         findCityAlertController.addAction(okButtonFindCityAction)
         findCityAlertController.addAction(cancelButtonFindCityAction)
         self.present(findCityAlertController, animated: true)
-
+        
     }
+    
+    func searchButtonOnState() {
+        coreManager.stopUpdatingLocation()
+        searchButton.tintColor = .orange
+        currentPositionButton.setImage(UIImage(systemName: "location"), for: .normal)
+        currentPositionButton.tintColor = .white
+    }
+    
+    
     
     //MARK: - Получение координат по названию города
     func getCoordByCityName(searchCity: String) {
@@ -217,7 +250,7 @@ class WeatherViewController: UIViewController {
                     guard let temp = value.current?.temp else {return}
                     
                     self.tempLabel.text = "+\(Int(temp))°"
-
+                    
                     let currentDate =  Int(Date().timeIntervalSince1970).decoderDt(format: "EEEE, d MMMM")
                     self.dateLabel.text = currentDate
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
@@ -225,7 +258,7 @@ class WeatherViewController: UIViewController {
                     
                     guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@4x.png") else {return}
                     self.weatherImage.load(url: imageUrl)
-
+                    
                     self.mainTableView.reloadData()
                     print(value)
                 }
@@ -245,7 +278,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
@@ -286,7 +319,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             manager.authorizationStatus == .authorizedWhenInUse {
             
             //coreManager.startUpdatingLocation()
-
+            
             currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
             
         } else if manager.authorizationStatus == .denied {
@@ -295,16 +328,19 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-       guard let location = locations.first else {return}
-
+        guard let location = locations.first else {return}
+        
         getWeatherByCoordinates(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
         
-        currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
-        currentPositionButton.tintColor = .orange
-        searchButton.tintColor = .white
-        cityNameLabel.text = "Вокруг меня"
-        coreManager.stopUpdatingLocation()
-       print(" ЛОКАЦИЯ: \(location)")
+        DispatchQueue.main.async {
+            self.currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
+            self.currentPositionButton.tintColor = .orange
+            self.searchButton.tintColor = .white
+            self.cityNameLabel.text = "Вокруг меня"
+            self.coreManager.stopUpdatingLocation()
+        }
+        
+        print(" ЛОКАЦИЯ: \(location)")
     }
     
 }
