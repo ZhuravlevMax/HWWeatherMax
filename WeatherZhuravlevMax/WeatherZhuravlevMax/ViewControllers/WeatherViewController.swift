@@ -113,9 +113,15 @@ class WeatherViewController: UIViewController {
     
     @objc private func refresher(sender: UIRefreshControl) {
         
-        guard let city = cityNameLabel.text else {return}
-        getCoordByCityName(searchCity: city)
-        sender.endRefreshing()
+        if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.search.rawValue || UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == nil {
+            guard let city = cityNameLabel.text else {return}
+            getCoordByCityName(searchCity: city)
+            sender.endRefreshing()
+        } else if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.location.rawValue {
+            self.coreManager.startUpdatingLocation()
+            sender.endRefreshing()
+        }
+    
     }
     
     //MARK: - Работа с кнопкой текущей позиции
@@ -126,8 +132,7 @@ class WeatherViewController: UIViewController {
         coreManager.startUpdatingLocation()
         
         UserDefaults.standard.set(StateButtons.location.rawValue, forKey: StateButtons.state.rawValue)
-        
-        
+
     }
     
     //MARK: - Работа с кнопкой поиска
