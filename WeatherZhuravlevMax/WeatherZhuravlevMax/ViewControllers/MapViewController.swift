@@ -34,9 +34,9 @@ class MapViewController: UIViewController {
         
         view.layoutSubviews()
         
-        tempLabel.text = "Нажмите на карту"
-        feelsLikeTempLabel.text = "для определения"
-        descriptionWeatherLabel.text = "погоды в выбранной точке"
+//        tempLabel.text = "Нажмите на карту"
+//        feelsLikeTempLabel.text = "для определения"
+//        descriptionWeatherLabel.text = "погоды в выбранной точке"
         
         apiProviderMap = AlamofireProvider()
         dBManager = DBManager()
@@ -108,17 +108,17 @@ extension MapViewController: GMSMapViewDelegate {
                     
                     self.windSpeedForMarker = "\(windSpeed)"
                     
-                    self.tempLabel.text = "+\(Int(temp))°"
+                    //self.tempLabel.text = "+\(Int(temp))°"
                     self.currentTemp = "+\(Int(temp))°"
                     
-                    guard let feelsLikeTemp = value.current?.feelsLike else {return}
-                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))°"
+//                    guard let feelsLikeTemp = value.current?.feelsLike else {return}
+//                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))°"
                     
-                    guard let descriptionWeather = value.current?.weather?.first?.description else {return}
-                    self.descriptionWeatherLabel.text = descriptionWeather
+//                    guard let descriptionWeather = value.current?.weather?.first?.description else {return}
+//                    self.descriptionWeatherLabel.text = descriptionWeather
 
                     if let data = try? Data(contentsOf: imageUrl) {
-                        self.weatherImage.image = UIImage(data: data)
+                        //self.weatherImage.image = UIImage(data: data)
                         self.imageWeather = UIImage(data: data)
                     }
                     print(value)
