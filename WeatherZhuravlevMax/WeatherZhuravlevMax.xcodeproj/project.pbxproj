@@ -157,6 +157,7 @@
 				94F18F0B286DB4490092D1C0 /* RealmManager+Objects */,
 				94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */,
 				949F6A1728776F4700AF472B /* Extension */,
+				941F8C0F287ABA5F0067D9FA /* MarkerWindow */,
 				949F6A1828776FA800AF472B /* TableViewCells */,
 				949F6A1928776FB400AF472B /* CollectionViewCells */,
 				94FC8D472868FB92000CDE91 /* ViewControllers */,
@@ -165,7 +166,6 @@
 				9467C245285E5E4A00ADD251 /* Assets.xcassets */,
 				9467C247285E5E4A00ADD251 /* LaunchScreen.storyboard */,
 				9467C24A285E5E4A00ADD251 /* Info.plist */,
-				941F8C0F287ABA5F0067D9FA /* MarkerWindow */,
 			);
 			path = WeatherZhuravlevMax;
 			sourceTree = "<group>";

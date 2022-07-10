@@ -25,6 +25,9 @@ class MapViewController: UIViewController {
     
     //Переменные для хранения значений погоды
     var windSpeedForMarker = ""
+    var currentTemp = ""
+    var imageWeather: UIImage!
+    var descriptionWeather = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +61,7 @@ extension MapViewController: GMSMapViewDelegate {
         apiProviderMap.getWeatherForCityCoordinates(lat: coordinate.latitude, lon: coordinate.longitude) { result in
             switch result {
             case .success(let value):
+                
                 guard let weatherIconId = value.current?.weather?.first?.icon else {return}
                 DispatchQueue.main.async {
                     
@@ -94,7 +98,7 @@ extension MapViewController: GMSMapViewDelegate {
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
-                    //MARK: -работа с маркером
+                    //MARK: - работа с маркером
                     mapView.clear()
                     let marker = GMSMarker()
                     marker.position = CLLocationCoordinate2D(latitude: latData, longitude: lonData)
@@ -103,7 +107,9 @@ extension MapViewController: GMSMapViewDelegate {
                     // MARK: - работа с UI
                     
                     self.windSpeedForMarker = "\(windSpeed)"
+                    
                     self.tempLabel.text = "+\(Int(temp))°"
+                    self.currentTemp = "+\(Int(temp))°"
                     
                     guard let feelsLikeTemp = value.current?.feelsLike else {return}
                     self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))°"
@@ -113,6 +119,7 @@ extension MapViewController: GMSMapViewDelegate {
 
                     if let data = try? Data(contentsOf: imageUrl) {
                         self.weatherImage.image = UIImage(data: data)
+                        self.imageWeather = UIImage(data: data)
                     }
                     print(value)
                 }
@@ -123,14 +130,14 @@ extension MapViewController: GMSMapViewDelegate {
         
     }
     
-    //метод работы с маркером
+    //MARK: - метод работы с маркером
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let markerView = Bundle.main.loadNibNamed(MarkerWindowUIView.key, owner: self, options: nil)![0] as? MarkerWindowUIView
 
         markerView?.markerMainView.layer.cornerRadius = 10
         markerView?.markerWindSpeedLabel.text = "Ветер: \(windSpeedForMarker) м/с"
-        markerView?.markerTempLabel.text = tempLabel.text
-        markerView?.markerImageView.image = weatherImage.image
+        markerView?.markerTempLabel.text = currentTemp
+        markerView?.markerImageView.image = imageWeather
         return markerView
     }
 }
