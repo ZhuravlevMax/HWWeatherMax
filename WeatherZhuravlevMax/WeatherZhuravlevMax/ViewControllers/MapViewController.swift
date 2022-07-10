@@ -133,11 +133,11 @@ extension MapViewController: GMSMapViewDelegate {
     //MARK: - метод работы с маркером
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let markerView = Bundle.main.loadNibNamed(MarkerWindowUIView.key, owner: self, options: nil)![0] as? MarkerWindowUIView
-
-        markerView?.markerMainView.layer.cornerRadius = 10
-        markerView?.markerWindSpeedLabel.text = "Ветер: \(windSpeedForMarker) м/с"
-        markerView?.markerTempLabel.text = currentTemp
-        markerView?.markerImageView.image = imageWeather
+        guard let markerViewChecked = markerView else {return UIView()}
+        markerViewChecked.markerMainView.layer.cornerRadius = 10
+        markerViewChecked.markerWindSpeedLabel.text = "Ветер: \(windSpeedForMarker) м/с"
+        markerViewChecked.markerTempLabel.text = currentTemp
+        markerViewChecked.markerImageView.image = imageWeather
         return markerView
     }
 }
