@@ -150,13 +150,7 @@ class WeatherViewController: UIViewController {
             guard let cityName = findCityTextField.text else {return}
             
             getCoordByCityName(searchCity: cityName)
-            
-            searchButtonOnState()
-            
-            UserDefaults.standard.set(StateButtons.search.rawValue, forKey: StateButtons.state.rawValue)
-            UserDefaults.standard.set(cityName, forKey: StateButtons.city.rawValue)
-            
-            
+
         }
         let cancelButtonFindCityAction = UIAlertAction(title: "Отмена", style: .cancel)
         
@@ -184,6 +178,9 @@ class WeatherViewController: UIViewController {
                 if let city = value.first {
                     self.getWeatherByCoordinates(lat: city.lat, lon: city.lon)
                     self.cityNameLabel.text = city.cityName
+                    self.searchButtonOnState()
+                    UserDefaults.standard.set(StateButtons.search.rawValue, forKey: StateButtons.state.rawValue)
+                    UserDefaults.standard.set(searchCity, forKey: StateButtons.city.rawValue)
                 } else {
                     //MARK: - AlertController для ошибки
                     let cityNotExistAlertController = UIAlertController(title: "Ошибка!", message: "Проверьте правильность названия города!", preferredStyle: .alert)
