@@ -11,6 +11,7 @@ import RealmSwift
 
 class MapViewController: UIViewController {
     
+    //MARK: - Привязка outlets
     @IBOutlet weak var forMapView: UIView!
     
     @IBOutlet weak var tempLabel: UILabel!
@@ -18,8 +19,12 @@ class MapViewController: UIViewController {
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     
+    //MARK: - Создание переменных
     private var apiProviderMap: RestAPIProviderProtocol!
     private var dBManager: DBManagerProtocol!
+    
+    //Переменные для хранения значений погоды
+    var windSpeedForMarker = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +40,17 @@ class MapViewController: UIViewController {
         
         view.layoutSubviews()
         
+        //Дефолтный вид карты
         let camera = GMSCameraPosition.camera(withLatitude: 54.029, longitude: 27.597, zoom: 9.0)
         let mapView = GMSMapView.map(withFrame: forMapView.frame, camera: camera)
         forMapView.addSubview(mapView)
         mapView.delegate = self
+    
     }
     
     
 }
-
+//MARK: - extension для работы с картой
 extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print(coordinate.latitude)
@@ -53,10 +60,14 @@ extension MapViewController: GMSMapViewDelegate {
             case .success(let value):
                 guard let weatherIconId = value.current?.weather?.first?.icon else {return}
                 DispatchQueue.main.async {
+                    
                     // MARK: - работа с БД
                     //Сохраняю в таблицу RealmResponseData
                     guard let lonData = value.lon,
-                          let latData = value.lat
+                          let latData = value.lat,
+                          let temp = value.current?.temp,
+                          let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@4x.png"),
+                          let windSpeed = value.current?.windSpeed
                     else {return}
                     
                     //Значение текущего времени
@@ -82,9 +93,16 @@ extension MapViewController: GMSMapViewDelegate {
                     weatherRealmData.coordinate = coordRealmData
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
+                    
+                    //MARK: -работа с маркером
+                    mapView.clear()
+                    let marker = GMSMarker()
+                    marker.position = CLLocationCoordinate2D(latitude: latData, longitude: lonData)
+                    marker.map = mapView
 
                     // MARK: - работа с UI
-                    guard let temp = value.current?.temp else {return}
+                    
+                    self.windSpeedForMarker = "\(windSpeed)"
                     self.tempLabel.text = "+\(Int(temp))°"
                     
                     guard let feelsLikeTemp = value.current?.feelsLike else {return}
@@ -92,8 +110,7 @@ extension MapViewController: GMSMapViewDelegate {
                     
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
                     self.descriptionWeatherLabel.text = descriptionWeather
-                    
-                    guard let imageUrl = URL(string: "\(Constants.imageURL)\(weatherIconId)@4x.png") else {return}
+
                     if let data = try? Data(contentsOf: imageUrl) {
                         self.weatherImage.image = UIImage(data: data)
                     }
@@ -104,5 +121,16 @@ extension MapViewController: GMSMapViewDelegate {
             }
         }
         
+    }
+    
+    //метод работы с маркером
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        let markerView = Bundle.main.loadNibNamed(MarkerWindowUIView.key, owner: self, options: nil)![0] as? MarkerWindowUIView
+
+        markerView?.markerMainView.layer.cornerRadius = 10
+        markerView?.markerWindSpeedLabel.text = "Ветер: \(windSpeedForMarker) м/с"
+        markerView?.markerTempLabel.text = tempLabel.text
+        markerView?.markerImageView.image = weatherImage.image
+        return markerView
     }
 }

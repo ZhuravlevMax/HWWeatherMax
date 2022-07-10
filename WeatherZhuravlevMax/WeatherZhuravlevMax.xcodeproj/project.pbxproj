@@ -11,6 +11,8 @@
 		94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */; };
 		94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */; };
 		94076D6828774986001A632A /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6728774985001A632A /* Image+Extension.swift */; };
+		941F8C0C287AB8B90067D9FA /* MarkerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */; };
+		941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */; };
 		9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23C285E5E4400ADD251 /* AppDelegate.swift */; };
 		9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23E285E5E4400ADD251 /* SceneDelegate.swift */; };
 		9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C240285E5E4400ADD251 /* WeatherViewController.swift */; };
@@ -50,6 +52,8 @@
 		94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForCollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 		94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForCollectionViewTableViewCell.xib; sourceTree = "<group>"; };
 		94076D6728774985001A632A /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
+		941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkerWindow.xib; sourceTree = "<group>"; };
+		941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerWindowUIView.swift; sourceTree = "<group>"; };
 		9467C239285E5E4400ADD251 /* WeatherZhuravlevMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherZhuravlevMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9467C23C285E5E4400ADD251 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9467C23E285E5E4400ADD251 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +121,15 @@
 			path = MainTableViewCell;
 			sourceTree = "<group>";
 		};
+		941F8C0F287ABA5F0067D9FA /* MarkerWindow */ = {
+			isa = PBXGroup;
+			children = (
+				941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */,
+				941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */,
+			);
+			path = MarkerWindow;
+			sourceTree = "<group>";
+		};
 		9467C230285E5E4300ADD251 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +165,7 @@
 				9467C245285E5E4A00ADD251 /* Assets.xcassets */,
 				9467C247285E5E4A00ADD251 /* LaunchScreen.storyboard */,
 				9467C24A285E5E4A00ADD251 /* Info.plist */,
+				941F8C0F287ABA5F0067D9FA /* MarkerWindow */,
 			);
 			path = WeatherZhuravlevMax;
 			sourceTree = "<group>";
@@ -336,6 +350,7 @@
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
 				94F18EFD286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard in Resources */,
 				94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */,
+				941F8C0C287AB8B90067D9FA /* MarkerWindow.xib in Resources */,
 				949F6A212878033900AF472B /* ForTableVIewTableViewCell.xib in Resources */,
 				94FC8D402868B551000CDE91 /* HourlyCollectionViewCell.xib in Resources */,
 				94FC8D442868BA31000CDE91 /* DailyTableViewCell.xib in Resources */,
@@ -395,6 +410,7 @@
 				94F18F06286CDE5E0092D1C0 /* Int+Extension.swift in Sources */,
 				9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */,
 				94FC8D3F2868B551000CDE91 /* HourlyCollectionViewCell.swift in Sources */,
+				941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */,
 				9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */,
 				94FC8D262867349F000CDE91 /* MapViewController.swift in Sources */,
 				94F18F02286CA80A0092D1C0 /* RealmDataTableViewCell.swift in Sources */,
