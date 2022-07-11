@@ -78,24 +78,23 @@ class WeatherViewController: UIViewController {
         dBManager = DBManager()
         coreManager.delegate = self
         
-        if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.location.rawValue {
+        switch UserDefaults.standard.string(forKey: StateButtons.state.rawValue) {
+        case StateButtons.location.rawValue:
             //Запрашиваем авторизацию у юзера
             DispatchQueue.main.async {
                 self.coreManager.requestWhenInUseAuthorization()
                 self.coreManager.startUpdatingLocation()
             }
-        } else if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.search.rawValue {
-            
+        case StateButtons.search.rawValue:
             guard let city = UserDefaults.standard.string(forKey: StateButtons.city.rawValue) else {return}
             
             DispatchQueue.main.async {
                 self.getCoordByCityName(searchCity: city)
                 self.searchButtonOnState()
             }
-        } else {
-            self.getCoordByCityName(searchCity: defaultCity)
+        default: self.getCoordByCityName(searchCity: defaultCity)
         }
-        
+
         hideKeyboardWhenTappedAround()
         
         mainTableView.delegate = self
@@ -121,7 +120,7 @@ class WeatherViewController: UIViewController {
             self.coreManager.startUpdatingLocation()
             sender.endRefreshing()
         }
-    
+        
     }
     
     //MARK: - Работа с кнопкой текущей позиции
@@ -132,7 +131,7 @@ class WeatherViewController: UIViewController {
         coreManager.startUpdatingLocation()
         
         
-
+        
     }
     
     //MARK: - Работа с кнопкой поиска
@@ -155,7 +154,7 @@ class WeatherViewController: UIViewController {
             guard let cityName = findCityTextField.text else {return}
             
             getCoordByCityName(searchCity: cityName)
-
+            
         }
         let cancelButtonFindCityAction = UIAlertAction(title: "Отмена", style: .cancel)
         
@@ -329,7 +328,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             
         } else if manager.authorizationStatus == .denied {
             if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) != nil && UserDefaults.standard.string(forKey: StateButtons.state.rawValue) != StateButtons.search.rawValue {
-            currentPositionButton.isEnabled = false
+                currentPositionButton.isEnabled = false
                 doFindCityAlert()
             } else if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) != nil {
                 currentPositionButton.isEnabled = false
