@@ -103,19 +103,13 @@ extension MapViewController: GMSMapViewDelegate {
                     let marker = GMSMarker()
                     marker.position = CLLocationCoordinate2D(latitude: latData, longitude: lonData)
                     marker.map = mapView
+                    mapView.selectedMarker = marker
 
                     // MARK: - работа с UI
                     
                     self.windSpeedForMarker = "\(windSpeed)"
-                    
-                    //self.tempLabel.text = "+\(Int(temp))°"
+
                     self.currentTemp = "+\(Int(temp))°"
-                    
-//                    guard let feelsLikeTemp = value.current?.feelsLike else {return}
-//                    self.feelsLikeTempLabel.text = "ощущается как +\(Int(feelsLikeTemp))°"
-                    
-//                    guard let descriptionWeather = value.current?.weather?.first?.description else {return}
-//                    self.descriptionWeatherLabel.text = descriptionWeather
 
                     if let data = try? Data(contentsOf: imageUrl) {
                         //self.weatherImage.image = UIImage(data: data)
