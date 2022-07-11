@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E0957C38F3BF0EAAD966E4E /* Pods_WeatherZhuravlevMax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEACD66B5F691F0021F5AF3 /* Pods_WeatherZhuravlevMax.framework */; };
+		5023904C077797B2EF8CF1D3 /* Pods_WeatherZhuravlevMax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B601C799C55260148EAFF3B9 /* Pods_WeatherZhuravlevMax.framework */; };
+		94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */; };
+		94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */; };
+		94076D6828774986001A632A /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6728774985001A632A /* Image+Extension.swift */; };
+		941F8C0C287AB8B90067D9FA /* MarkerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */; };
+		941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */; };
 		9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23C285E5E4400ADD251 /* AppDelegate.swift */; };
 		9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23E285E5E4400ADD251 /* SceneDelegate.swift */; };
 		9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C240285E5E4400ADD251 /* WeatherViewController.swift */; };
 		9467C244285E5E4400ADD251 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9467C242285E5E4400ADD251 /* Main.storyboard */; };
 		9467C246285E5E4A00ADD251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9467C245285E5E4A00ADD251 /* Assets.xcassets */; };
 		9467C249285E5E4A00ADD251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9467C247285E5E4A00ADD251 /* LaunchScreen.storyboard */; };
+		949F6A202878033900AF472B /* ForTableVIewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F6A1E2878033900AF472B /* ForTableVIewTableViewCell.swift */; };
+		949F6A212878033900AF472B /* ForTableVIewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949F6A1F2878033900AF472B /* ForTableVIewTableViewCell.xib */; };
 		94BF6A432871AD6E006BD3C3 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */; };
 		94F18EF0286C580B0092D1C0 /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F18EEF286C580B0092D1C0 /* RealmData.swift */; };
 		94F18EF3286C59580092D1C0 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 94F18EF2286C59580092D1C0 /* Realm */; };
@@ -40,8 +47,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14277A8F699510830076749E /* Pods-WeatherZhuravlevMax.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZhuravlevMax.debug.xcconfig"; path = "Target Support Files/Pods-WeatherZhuravlevMax/Pods-WeatherZhuravlevMax.debug.xcconfig"; sourceTree = "<group>"; };
-		73540E9C3AC0B79A67EEEF36 /* Pods-WeatherZhuravlevMax.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZhuravlevMax.release.xcconfig"; path = "Target Support Files/Pods-WeatherZhuravlevMax/Pods-WeatherZhuravlevMax.release.xcconfig"; sourceTree = "<group>"; };
+		94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForCollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForCollectionViewTableViewCell.xib; sourceTree = "<group>"; };
+		94076D6728774985001A632A /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
+		941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkerWindow.xib; sourceTree = "<group>"; };
+		941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerWindowUIView.swift; sourceTree = "<group>"; };
 		9467C239285E5E4400ADD251 /* WeatherZhuravlevMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherZhuravlevMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9467C23C285E5E4400ADD251 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9467C23E285E5E4400ADD251 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +60,8 @@
 		9467C245285E5E4A00ADD251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9467C248285E5E4A00ADD251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9467C24A285E5E4A00ADD251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		949F6A1E2878033900AF472B /* ForTableVIewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForTableVIewTableViewCell.swift; sourceTree = "<group>"; };
+		949F6A1F2878033900AF472B /* ForTableVIewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForTableVIewTableViewCell.xib; sourceTree = "<group>"; };
 		94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		94F18EEF286C580B0092D1C0 /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
 		94F18EFA286C6A480092D1C0 /* RealmDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +82,9 @@
 		94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyCollectionViewCell.xib; sourceTree = "<group>"; };
 		94FC8D412868BA31000CDE91 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		94FC8D422868BA31000CDE91 /* DailyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyTableViewCell.xib; sourceTree = "<group>"; };
-		EBEACD66B5F691F0021F5AF3 /* Pods_WeatherZhuravlevMax.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherZhuravlevMax.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98213ED444C5B69B732AD536 /* Pods-WeatherZhuravlevMax.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZhuravlevMax.release.xcconfig"; path = "Target Support Files/Pods-WeatherZhuravlevMax/Pods-WeatherZhuravlevMax.release.xcconfig"; sourceTree = "<group>"; };
+		ADA209ACBB012235F516624A /* Pods-WeatherZhuravlevMax.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZhuravlevMax.debug.xcconfig"; path = "Target Support Files/Pods-WeatherZhuravlevMax/Pods-WeatherZhuravlevMax.debug.xcconfig"; sourceTree = "<group>"; };
+		B601C799C55260148EAFF3B9 /* Pods_WeatherZhuravlevMax.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherZhuravlevMax.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,19 +95,39 @@
 				94F18EF5286C59580092D1C0 /* RealmSwift in Frameworks */,
 				94F18EF3286C59580092D1C0 /* Realm in Frameworks */,
 				94FC8D102866F90A000CDE91 /* Alamofire in Frameworks */,
-				4E0957C38F3BF0EAAD966E4E /* Pods_WeatherZhuravlevMax.framework in Frameworks */,
+				5023904C077797B2EF8CF1D3 /* Pods_WeatherZhuravlevMax.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3E08613DEBFC8974671F730B /* Frameworks */ = {
+		7DC9E864C1B0E3B9F500BE51 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBEACD66B5F691F0021F5AF3 /* Pods_WeatherZhuravlevMax.framework */,
+				B601C799C55260148EAFF3B9 /* Pods_WeatherZhuravlevMax.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94076D6028757DB9001A632A /* MainTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */,
+				94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */,
+				949F6A1E2878033900AF472B /* ForTableVIewTableViewCell.swift */,
+				949F6A1F2878033900AF472B /* ForTableVIewTableViewCell.xib */,
+			);
+			path = MainTableViewCell;
+			sourceTree = "<group>";
+		};
+		941F8C0F287ABA5F0067D9FA /* MarkerWindow */ = {
+			isa = PBXGroup;
+			children = (
+				941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */,
+				941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */,
+			);
+			path = MarkerWindow;
 			sourceTree = "<group>";
 		};
 		9467C230285E5E4300ADD251 = {
@@ -102,7 +136,7 @@
 				9467C23B285E5E4400ADD251 /* WeatherZhuravlevMax */,
 				9467C23A285E5E4400ADD251 /* Products */,
 				C8D0CEA43EEB1D786D9FDDA5 /* Pods */,
-				3E08613DEBFC8974671F730B /* Frameworks */,
+				7DC9E864C1B0E3B9F500BE51 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,11 +156,10 @@
 				94FC8D1C2866FB5E000CDE91 /* Constants.swift */,
 				94F18F0B286DB4490092D1C0 /* RealmManager+Objects */,
 				94FC8D1E2866FC99000CDE91 /* AlamofireProvider.swift */,
-				94F18F05286CDE5E0092D1C0 /* Int+Extension.swift */,
-				94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */,
-				94F18F04286CA8110092D1C0 /* RealmDataTableViewCell */,
-				94FC8D452868FB58000CDE91 /* HourlyWeather */,
-				94FC8D462868FB6C000CDE91 /* DailyWeather */,
+				949F6A1728776F4700AF472B /* Extension */,
+				941F8C0F287ABA5F0067D9FA /* MarkerWindow */,
+				949F6A1828776FA800AF472B /* TableViewCells */,
+				949F6A1928776FB400AF472B /* CollectionViewCells */,
 				94FC8D472868FB92000CDE91 /* ViewControllers */,
 				94FC8D482868FBA5000CDE91 /* Storyboards */,
 				94FC8D1B2866F9A5000CDE91 /* Struct */,
@@ -135,6 +168,34 @@
 				9467C24A285E5E4A00ADD251 /* Info.plist */,
 			);
 			path = WeatherZhuravlevMax;
+			sourceTree = "<group>";
+		};
+		949F6A1728776F4700AF472B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				94F18F05286CDE5E0092D1C0 /* Int+Extension.swift */,
+				94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */,
+				94076D6728774985001A632A /* Image+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		949F6A1828776FA800AF472B /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				94076D6028757DB9001A632A /* MainTableViewCell */,
+				94FC8D462868FB6C000CDE91 /* DailyWeatherTableViewCell */,
+				94F18F04286CA8110092D1C0 /* RealmDataTableViewCell */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		949F6A1928776FB400AF472B /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				94FC8D452868FB58000CDE91 /* HourlyWeatherCollectionCell */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 		94F18F04286CA8110092D1C0 /* RealmDataTableViewCell */ = {
@@ -166,22 +227,22 @@
 			path = Struct;
 			sourceTree = "<group>";
 		};
-		94FC8D452868FB58000CDE91 /* HourlyWeather */ = {
+		94FC8D452868FB58000CDE91 /* HourlyWeatherCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
 				94FC8D3D2868B551000CDE91 /* HourlyCollectionViewCell.swift */,
 				94FC8D3E2868B551000CDE91 /* HourlyCollectionViewCell.xib */,
 			);
-			path = HourlyWeather;
+			path = HourlyWeatherCollectionCell;
 			sourceTree = "<group>";
 		};
-		94FC8D462868FB6C000CDE91 /* DailyWeather */ = {
+		94FC8D462868FB6C000CDE91 /* DailyWeatherTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				94FC8D412868BA31000CDE91 /* DailyTableViewCell.swift */,
 				94FC8D422868BA31000CDE91 /* DailyTableViewCell.xib */,
 			);
-			path = DailyWeather;
+			path = DailyWeatherTableViewCell;
 			sourceTree = "<group>";
 		};
 		94FC8D472868FB92000CDE91 /* ViewControllers */ = {
@@ -207,8 +268,8 @@
 		C8D0CEA43EEB1D786D9FDDA5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				14277A8F699510830076749E /* Pods-WeatherZhuravlevMax.debug.xcconfig */,
-				73540E9C3AC0B79A67EEEF36 /* Pods-WeatherZhuravlevMax.release.xcconfig */,
+				ADA209ACBB012235F516624A /* Pods-WeatherZhuravlevMax.debug.xcconfig */,
+				98213ED444C5B69B732AD536 /* Pods-WeatherZhuravlevMax.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -220,11 +281,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9467C24D285E5E4A00ADD251 /* Build configuration list for PBXNativeTarget "WeatherZhuravlevMax" */;
 			buildPhases = (
-				0FD2E36C022CA114DF6F0CBB /* [CP] Check Pods Manifest.lock */,
+				9773BF87DD71B1B9709073E2 /* [CP] Check Pods Manifest.lock */,
 				9467C235285E5E4400ADD251 /* Sources */,
 				9467C236285E5E4400ADD251 /* Frameworks */,
 				9467C237285E5E4400ADD251 /* Resources */,
-				895C77410F536592A5D0F265 /* [CP] Copy Pods Resources */,
+				A2EE93EBB6AE38E4BC00B3DD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,7 +326,7 @@
 			);
 			mainGroup = 9467C230285E5E4300ADD251;
 			packageReferences = (
-				94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
 				94F18EF1286C59580092D1C0 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 9467C23A285E5E4400ADD251 /* Products */;
@@ -288,6 +349,9 @@
 				94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */,
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
 				94F18EFD286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard in Resources */,
+				94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */,
+				941F8C0C287AB8B90067D9FA /* MarkerWindow.xib in Resources */,
+				949F6A212878033900AF472B /* ForTableVIewTableViewCell.xib in Resources */,
 				94FC8D402868B551000CDE91 /* HourlyCollectionViewCell.xib in Resources */,
 				94FC8D442868BA31000CDE91 /* DailyTableViewCell.xib in Resources */,
 			);
@@ -296,7 +360,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0FD2E36C022CA114DF6F0CBB /* [CP] Check Pods Manifest.lock */ = {
+		9773BF87DD71B1B9709073E2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -318,7 +382,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		895C77410F536592A5D0F265 /* [CP] Copy Pods Resources */ = {
+		A2EE93EBB6AE38E4BC00B3DD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -346,17 +410,21 @@
 				94F18F06286CDE5E0092D1C0 /* Int+Extension.swift in Sources */,
 				9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */,
 				94FC8D3F2868B551000CDE91 /* HourlyCollectionViewCell.swift in Sources */,
+				941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */,
 				9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */,
 				94FC8D262867349F000CDE91 /* MapViewController.swift in Sources */,
 				94F18F02286CA80A0092D1C0 /* RealmDataTableViewCell.swift in Sources */,
 				94F18EF0286C580B0092D1C0 /* RealmData.swift in Sources */,
 				94F18EFB286C6A490092D1C0 /* RealmDataViewController.swift in Sources */,
+				94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */,
 				94FC8D1F2866FC99000CDE91 /* AlamofireProvider.swift in Sources */,
 				9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */,
 				94F18F0A286DA9540092D1C0 /* DBManager.swift in Sources */,
 				94FC8D1D2866FB5E000CDE91 /* Constants.swift in Sources */,
 				94FC8D162866F99A000CDE91 /* Geocoding.swift in Sources */,
+				94076D6828774986001A632A /* Image+Extension.swift in Sources */,
 				94BF6A432871AD6E006BD3C3 /* ViewController+Extension.swift in Sources */,
+				949F6A202878033900AF472B /* ForTableVIewTableViewCell.swift in Sources */,
 				94FC8D432868BA31000CDE91 /* DailyTableViewCell.swift in Sources */,
 				94FC8D1A2866F99E000CDE91 /* WeatherData.swift in Sources */,
 				94FC8D182866F99C000CDE91 /* HourlyWeatherData.swift in Sources */,
@@ -501,7 +569,7 @@
 		};
 		9467C24E285E5E4A00ADD251 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14277A8F699510830076749E /* Pods-WeatherZhuravlevMax.debug.xcconfig */;
+			baseConfigurationReference = ADA209ACBB012235F516624A /* Pods-WeatherZhuravlevMax.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -530,7 +598,7 @@
 		};
 		9467C24F285E5E4A00ADD251 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73540E9C3AC0B79A67EEEF36 /* Pods-WeatherZhuravlevMax.release.xcconfig */;
+			baseConfigurationReference = 98213ED444C5B69B732AD536 /* Pods-WeatherZhuravlevMax.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -589,7 +657,7 @@
 				minimumVersion = 10.19.0;
 			};
 		};
-		94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -612,7 +680,7 @@
 		};
 		94FC8D0F2866F90A000CDE91 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
