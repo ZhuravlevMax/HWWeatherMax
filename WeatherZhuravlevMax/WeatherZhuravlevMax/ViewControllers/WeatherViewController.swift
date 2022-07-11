@@ -131,13 +131,18 @@ class WeatherViewController: UIViewController {
         coreManager.requestWhenInUseAuthorization()
         coreManager.startUpdatingLocation()
         
-        UserDefaults.standard.set(StateButtons.location.rawValue, forKey: StateButtons.state.rawValue)
+        
 
     }
     
     //MARK: - Работа с кнопкой поиска
     @IBAction func searchButtonPressed(_ sender: Any) {
         
+        doFindCityAlert()
+        
+    }
+    
+    func doFindCityAlert() {
         //MARK: - AlertController для поиска города
         let findCityAlertController = UIAlertController(title: "Выбор города", message: "Погода по названию города", preferredStyle: .alert)
         findCityAlertController.addTextField { (textField : UITextField!) -> Void in
@@ -157,9 +162,7 @@ class WeatherViewController: UIViewController {
         findCityAlertController.addAction(okButtonFindCityAction)
         findCityAlertController.addAction(cancelButtonFindCityAction)
         self.present(findCityAlertController, animated: true)
-        
     }
-    
     func searchButtonOnState() {
         coreManager.stopUpdatingLocation()
         searchButton.tintColor = .orange
@@ -320,12 +323,17 @@ extension WeatherViewController: CLLocationManagerDelegate {
         if manager.authorizationStatus == .authorizedAlways ||
             manager.authorizationStatus == .authorizedWhenInUse {
             
-            //coreManager.startUpdatingLocation()
+            coreManager.startUpdatingLocation()
             
             currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
             
         } else if manager.authorizationStatus == .denied {
+            if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) != nil && UserDefaults.standard.string(forKey: StateButtons.state.rawValue) != StateButtons.search.rawValue {
             currentPositionButton.isEnabled = false
+                doFindCityAlert()
+            } else if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) != nil {
+                currentPositionButton.isEnabled = false
+            }
         }
     }
     
@@ -339,7 +347,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
             self.currentPositionButton.tintColor = .orange
             self.searchButton.tintColor = .white
             self.cityNameLabel.text = "Вокруг меня"
-            self.coreManager.stopUpdatingLocation()
+            UserDefaults.standard.set(StateButtons.location.rawValue, forKey: StateButtons.state.rawValue)
+            //self.coreManager.stopUpdatingLocation()
         }
         
         print(" ЛОКАЦИЯ: \(location)")
