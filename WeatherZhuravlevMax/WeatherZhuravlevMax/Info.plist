@@ -25,5 +25,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Сoordinates are required to determine the location</string>
 </dict>
 </plist>
