@@ -27,9 +27,8 @@ class RealmDataViewController: UIViewController {
         dBManager = DBManager()
         
        //MARK: - Наблюдатель за изменением БД и обновление таблицы
-        let realm = try! Realm()
         
-        sortedRealmWeatherData = realm.objects(RealmWeatherData.self).sorted(byKeyPath: "time", ascending: false)
+        sortedRealmWeatherData = dBManager.weatherData().sorted(byKeyPath: "time", ascending: false)
         
         notificationToken = sortedRealmWeatherData.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.realmDataTableView else {return}
