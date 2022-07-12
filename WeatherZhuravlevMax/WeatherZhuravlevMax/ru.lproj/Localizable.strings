@@ -13,7 +13,7 @@
 //MARK: - City choise alert
 "WeatherViewController.findCityAlertController.title" = "Выбор города";
 "WeatherViewController.findCityAlertController.message" = "Погода по названию города";
-"WeatherViewController.findCityAlertControllerTextField.placegolder" = "Введите название города";
+"WeatherViewController.findCityAlertControllerTextField.placeholder" = "Введите название города";
 "WeatherViewController.okButtonFindCityAction.title" = "Выбрать";
 "WeatherViewController.cancelButtonFindCityAction.title" = "Отмена";
 

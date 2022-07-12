@@ -147,7 +147,7 @@ class WeatherViewController: UIViewController {
         
         findCityAlertController.addTextField { (textField : UITextField!) -> Void in
             textField.delegate = self
-            textField.placeholder = NSLocalizedString("WeatherViewController.findCityAlertControllerTextField.placegolder", comment: "")
+            textField.placeholder = NSLocalizedString("WeatherViewController.findCityAlertControllerTextField.placeholder", comment: "")
         }
         
         let okButtonFindCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.okButtonFindCityAction.title", comment: ""), style: .default) { [self] _ in
