@@ -5,6 +5,24 @@
   Created by Максим Журавлев on 12.07.22.
   
 */
-"WeatherTitle" = "Weather";
-"MapTitle" = "Map";
-"WeatherRequestInfoTitle" = "WeatherRequestInfo";
+//MARK: - TabBar items
+"SceneDelegate.tabBarController.currentWeatherVC.tabBarItem.title" = "Weather";
+"SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Map";
+"SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "WeatherRequestInfo";
+
+//MARK: - City choise alert
+"WeatherViewController.findCityAlertController.title" = "City Choise";
+"WeatherViewController.findCityAlertController.message" = "Weather by City Name";
+"WeatherViewController.findCityAlertControllerTextField.placegolder" = "Enter the city name";
+"WeatherViewController.okButtonFindCityAction.title" = "Choose";
+"WeatherViewController.cancelButtonFindCityAction.title" = "Cancel";
+
+//MARK: - Error city name alert
+"WeatherViewController.cityNotExistAlertController.title" = "Oops!";
+"WeatherViewController.cityNotExistAlertController.message" = "Please check the city name";
+
+//MARK: - Error data alert
+"WeatherViewController.noDataAlertController.title" = "Oops!";
+"WeatherViewController.noDataAlertController.message" = "Please check your internet connection";
+//MARK: - City name label at WeatherVC if use location
+"WeatherViewController.cityNameLabel.text" = "Around me";

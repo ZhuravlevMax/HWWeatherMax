@@ -143,13 +143,14 @@ class WeatherViewController: UIViewController {
     
     func doFindCityAlert() {
         //MARK: - AlertController для поиска города
-        let findCityAlertController = UIAlertController(title: "Выбор города", message: "Погода по названию города", preferredStyle: .alert)
+        let findCityAlertController = UIAlertController(title:NSLocalizedString("WeatherViewController.findCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.findCityAlertController.message", comment: ""), preferredStyle: .alert)
+        
         findCityAlertController.addTextField { (textField : UITextField!) -> Void in
             textField.delegate = self
-            textField.placeholder = "Введите название города"
+            textField.placeholder = NSLocalizedString("WeatherViewController.findCityAlertControllerTextField.placegolder", comment: "")
         }
         
-        let okButtonFindCityAction = UIAlertAction(title: "Выбрать", style: .default) { [self] _ in
+        let okButtonFindCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.okButtonFindCityAction.title", comment: ""), style: .default) { [self] _ in
             
             let findCityTextField = (findCityAlertController.textFields?[0] ?? UITextField()) as UITextField
             guard let cityName = findCityTextField.text else {return}
@@ -157,7 +158,8 @@ class WeatherViewController: UIViewController {
             getCoordByCityName(searchCity: cityName)
             
         }
-        let cancelButtonFindCityAction = UIAlertAction(title: "Отмена", style: .cancel)
+
+        let cancelButtonFindCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.cancelButtonFindCityAction.title", comment: ""), style: .cancel)
         
         findCityAlertController.addAction(okButtonFindCityAction)
         findCityAlertController.addAction(cancelButtonFindCityAction)
@@ -185,14 +187,19 @@ class WeatherViewController: UIViewController {
                     UserDefaults.standard.set(StateButtons.search.rawValue, forKey: StateButtons.state.rawValue)
                     UserDefaults.standard.set(searchCity, forKey: StateButtons.city.rawValue)
                 } else {
-                    //MARK: - AlertController для ошибки
-                    let cityNotExistAlertController = UIAlertController(title: "Ошибка!", message: "Проверьте правильность названия города!", preferredStyle: .alert)
+                    //MARK: - AlertController для ошибки ввода города
+                    let cityNotExistAlertController = UIAlertController(title: NSLocalizedString("WeatherViewController.cityNotExistAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.cityNotExistAlertController.message", comment: ""), preferredStyle: .alert)
                     let okButtonCityNotExistAction = UIAlertAction(title: "Ok", style: .default)
                     cityNotExistAlertController.addAction(okButtonCityNotExistAction)
                     self.present(cityNotExistAlertController, animated: true)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                //MARK: - AlertController для отсутствия данных
+                let noDataAlertController = UIAlertController(title: NSLocalizedString("WeatherViewController.noDataAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.noDataAlertController.message", comment: ""), preferredStyle: .alert)
+                let okButtonCityNotExistAction = UIAlertAction(title: "Ok", style: .default)
+                noDataAlertController.addAction(okButtonCityNotExistAction)
+                self.present(noDataAlertController, animated: true)
             }
         }
     }
@@ -346,7 +353,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             self.currentPositionButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
             self.currentPositionButton.tintColor = .orange
             self.searchButton.tintColor = .white
-            self.cityNameLabel.text = "Вокруг меня"
+            self.cityNameLabel.text = NSLocalizedString("WeatherViewController.cityNameLabel.text", comment: "")
             UserDefaults.standard.set(StateButtons.location.rawValue, forKey: StateButtons.state.rawValue)
             //self.coreManager.stopUpdatingLocation()
         }
