@@ -145,6 +145,7 @@ class WeatherViewController: UIViewController {
         //MARK: - AlertController для поиска города
         let findCityAlertController = UIAlertController(title: "Выбор города", message: "Погода по названию города", preferredStyle: .alert)
         findCityAlertController.addTextField { (textField : UITextField!) -> Void in
+            textField.delegate = self
             textField.placeholder = "Введите название города"
         }
         
@@ -352,10 +353,20 @@ extension WeatherViewController: CLLocationManagerDelegate {
         
         print(" ЛОКАЦИЯ: \(location)")
     }
-    
+
 }
 
-
+//MARK: - extension для работы с текстовым полем
+extension WeatherViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: string)) {
+            return true
+        }
+        return false
+            
+    }
+    
+}
 
 
 
