@@ -26,10 +26,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers([currentWeatherVC, MapVC, RealmDataVC], animated: true)
         currentWeatherVC.tabBarItem.title = "Weather"
+        currentWeatherVC.tabBarItem.title = NSLocalizedString("WeatherTitle", comment: "")
         currentWeatherVC.tabBarItem.image = UIImage(systemName: "cloud.sun")
         MapVC.tabBarItem.title = "Map"
+        MapVC.tabBarItem.title = NSLocalizedString("MapTitle", comment: "")
         MapVC.tabBarItem.image = UIImage(systemName: "map")
         RealmDataVC.tabBarItem.title = "WeatherRequestInfo"
+        RealmDataVC.tabBarItem.title = NSLocalizedString("WeatherRequestInfoTitle", comment: "")
         RealmDataVC.tabBarItem.image = UIImage(systemName: "tablecells")
         
         tabBarController.tabBar.backgroundColor = UIColor.white

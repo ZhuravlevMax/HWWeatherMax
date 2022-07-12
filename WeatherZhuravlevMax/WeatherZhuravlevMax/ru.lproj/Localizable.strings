@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  WeatherZhuravlevMax
+
+  Created by Максим Журавлев on 12.07.22.
+  
+*/
+"WeatherTitle" = "Погода";
+"MapTitle" = "Карта";
+"WeatherRequestInfoTitle" = "История запросов";
