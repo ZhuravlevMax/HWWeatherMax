@@ -28,7 +28,7 @@
 "WeatherViewController.cancelButtonFindCityAction.title" = "Отмена";
 
 //MARK: - Error city name alert
-"WeatherViewController.wrongCityAlertController.title" = "Выбор города";
+"WeatherViewController.wrongCityAlertController.title" = "Упс!";
 "WeatherViewController.wrongCityAlertController.message" = "Проверьте название города!";
 "WeatherViewController.wrongCityAlertControllerTextField.placeholder" = "Введите название города";
 "WeatherViewController.okButtonWrongCityAction.title" = "Выбрать";
