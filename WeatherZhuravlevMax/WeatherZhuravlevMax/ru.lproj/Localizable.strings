@@ -10,6 +10,16 @@
 "SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Карта";
 "SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "История запросов";
 
+//MARK: - AlamofireProvider
+"AlamofireProvider.language" = "ru";
+"AlamofireProvider.units" = "metric";
+
+//MARK: - tempLabel
+"WeatherViewController.tempLabe.text" = "%d%°C";
+
+//MARK: - MapVC.windSpeedForMarker
+"MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Скорость ветра %.2f м/с";
+
 //MARK: - City choise alert
 "WeatherViewController.findCityAlertController.title" = "Выбор города";
 "WeatherViewController.findCityAlertController.message" = "Погода по названию города";

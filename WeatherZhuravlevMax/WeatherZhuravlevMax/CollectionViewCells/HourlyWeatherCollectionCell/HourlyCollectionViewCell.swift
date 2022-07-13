@@ -29,7 +29,7 @@ class HourlyCollectionViewCell: UICollectionViewCell {
            let hourlyTemp = model.temp {
             
             self.hourlyImageView.load(url: imageUrl)
-            self.hourlyLabel.text = "+\(Int(hourlyTemp))"
+            self.hourlyLabel.text = "\(Int(hourlyTemp))°"
             self.timeLabel.text = decodedTime
 
         }

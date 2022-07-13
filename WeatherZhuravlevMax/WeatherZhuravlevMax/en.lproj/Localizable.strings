@@ -10,6 +10,16 @@
 "SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Map";
 "SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "WeatherRequestInfo";
 
+//MARK: - AlamofireProvider
+"AlamofireProvider.language" = "en";
+"AlamofireProvider.units" = "imperial";
+
+//MARK: - WeatherViewController.tempLabel
+"WeatherViewController.tempLabe.text" = "%d%°F";
+
+//MARK: - MapVC.windSpeedForMarker
+"MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Wind Speed %.2f m/s";
+
 //MARK: - City choise alert
 "WeatherViewController.findCityAlertController.title" = "City Choise";
 "WeatherViewController.findCityAlertController.message" = "Weather by City Name";

@@ -31,7 +31,6 @@ let minutely = Exclude.minutely
 let alerts = Exclude.alerts
 let metric = Units.metric
 
-
 protocol RestAPIProviderProtocol {
     
     func getCoordinatesByCityName(name: String, completion: @escaping (Result<[Geocoding], Error>) -> Void)
@@ -41,7 +40,7 @@ protocol RestAPIProviderProtocol {
 
 class AlamofireProvider: RestAPIProviderProtocol {
     func getCoordinatesByCityName(name: String, completion: @escaping (Result<[Geocoding], Error>) -> Void) {
-        let params = addParams(queryItems: ["q" : name, "lang": "\(russian)"])
+        let params = addParams(queryItems: ["q" : name, "lang": NSLocalizedString("AlamofireProvider.language", comment: "")])
         
         AF.request(Constants.getCodingURL, method: .get, parameters: params).responseDecodable(of: [Geocoding].self) { response in
             switch response.result {
@@ -55,7 +54,7 @@ class AlamofireProvider: RestAPIProviderProtocol {
     
     func getWeatherForCityCoordinates(lat: Double, lon: Double, completion: @escaping (Result<WeatherData, Error>) -> Void) {
         
-        let params = addParams(queryItems: ["lat": lat.description, "lon": lon.description, "exclude": "\(minutely),\(alerts)", "lang": "\(russian)", "units": "\(metric)"])
+        let params = addParams(queryItems: ["lat": lat.description, "lon": lon.description, "exclude": "\(minutely),\(alerts)", "lang": NSLocalizedString("AlamofireProvider.language", comment: ""), "units": NSLocalizedString("AlamofireProvider.units", comment: "")])
         
         AF.request(Constants.weatherURL, method: .get, parameters: params).responseDecodable(of: WeatherData.self) {response in
             switch response.result {

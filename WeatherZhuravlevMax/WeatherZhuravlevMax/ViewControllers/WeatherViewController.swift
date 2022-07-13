@@ -261,8 +261,9 @@ class WeatherViewController: UIViewController {
                     
                     guard let temp = value.current?.temp else {return}
                     
-                    self.tempLabel.text = "+\(Int(temp))°"
-                    
+                    let tempLabeText = NSLocalizedString("WeatherViewController.tempLabe.text", comment: "")
+                    //self.tempLabel.text = "+\(Int(temp))°"
+                    self.tempLabel.text = String.localizedStringWithFormat(tempLabeText, Int(temp))
                     let currentDate =  Int(Date().timeIntervalSince1970).decoderDt(format: "EEEE, d MMMM")
                     self.dateLabel.text = currentDate
                     guard let descriptionWeather = value.current?.weather?.first?.description else {return}
