@@ -94,7 +94,7 @@ class WeatherViewController: UIViewController {
             }
         default: self.getCoordByCityName(searchCity: defaultCity)
         }
-
+        
         hideKeyboardWhenTappedAround()
         
         mainTableView.delegate = self
@@ -129,20 +129,40 @@ class WeatherViewController: UIViewController {
         //Запрашиваем авторизацию у юзера
         coreManager.requestWhenInUseAuthorization()
         coreManager.startUpdatingLocation()
-        
-        
-        
+      
     }
     
     //MARK: - Работа с кнопкой поиска
     @IBAction func searchButtonPressed(_ sender: Any) {
-        
         doFindCityAlert()
+    }
+    //MARK: - AlertController для ошибки ввода города
+    func doWrongCityErrorAlert() {
+        let wrongCityAlertController = UIAlertController(title:NSLocalizedString("WeatherViewController.wrongCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""), preferredStyle: .alert)
         
+        wrongCityAlertController.addTextField { (textField : UITextField!) -> Void in
+            textField.delegate = self
+            textField.placeholder = NSLocalizedString("WeatherViewController.wrongCityAlertControllerTextField.placeholder", comment: "")
+        }
+        
+        let okButtonWrongCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.okButtonWrongCityAction.title", comment: ""), style: .default) { [self] _ in
+            
+            let wrongCityTextField = (wrongCityAlertController.textFields?[0] ?? UITextField()) as UITextField
+            guard let cityName = wrongCityTextField.text else {return}
+            
+            getCoordByCityName(searchCity: cityName)
+            
+        }
+        
+        let cancelButtonWrongCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.cancelButtonWrongCityAction.title", comment: ""), style: .cancel)
+        
+        wrongCityAlertController.addAction(okButtonWrongCityAction)
+        wrongCityAlertController.addAction(cancelButtonWrongCityAction)
+        self.present(wrongCityAlertController, animated: true)
     }
     
+    //MARK: - AlertController для поиска города
     func doFindCityAlert() {
-        //MARK: - AlertController для поиска города
         let findCityAlertController = UIAlertController(title:NSLocalizedString("WeatherViewController.findCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.findCityAlertController.message", comment: ""), preferredStyle: .alert)
         
         findCityAlertController.addTextField { (textField : UITextField!) -> Void in
@@ -158,7 +178,7 @@ class WeatherViewController: UIViewController {
             getCoordByCityName(searchCity: cityName)
             
         }
-
+        
         let cancelButtonFindCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.cancelButtonFindCityAction.title", comment: ""), style: .cancel)
         
         findCityAlertController.addAction(okButtonFindCityAction)
@@ -172,8 +192,6 @@ class WeatherViewController: UIViewController {
         currentPositionButton.tintColor = .white
     }
     
-    
-    
     //MARK: - Получение координат по названию города
     func getCoordByCityName(searchCity: String) {
         apiProvider.getCoordinatesByCityName(name: searchCity) { [weak self] result in
@@ -181,17 +199,36 @@ class WeatherViewController: UIViewController {
             switch result {
             case .success(let value):
                 if let city = value.first {
-                    self.getWeatherByCoordinates(lat: city.lat, lon: city.lon)
-                    self.cityNameLabel.text = city.cityName
+                    if (city.localNames?.ru) != nil {
+                        self.getWeatherByCoordinates(lat: city.lat, lon: city.lon)
+                        guard let currentLangauge = Locale.current.languageCode else {return}
+                        switch currentLangauge {
+                        case "en":
+                            if let localName = city.localNames?.en {
+                                self.cityNameLabel.text = localName
+                            } else {
+                                self.cityNameLabel.text = city.cityName
+                            }
+                        case "ru":
+                            if let localName = city.localNames?.ru {
+                                self.cityNameLabel.text = localName
+                            } else {
+                                self.cityNameLabel.text = city.cityName
+                            }
+                        default:
+                            self.cityNameLabel.text = city.cityName
+                        }
+                    } else {
+                       self.doWrongCityErrorAlert()
+                        
+                    }
+                    
                     self.searchButtonOnState()
                     UserDefaults.standard.set(StateButtons.search.rawValue, forKey: StateButtons.state.rawValue)
                     UserDefaults.standard.set(searchCity, forKey: StateButtons.city.rawValue)
                 } else {
-                    //MARK: - AlertController для ошибки ввода города
-                    let cityNotExistAlertController = UIAlertController(title: NSLocalizedString("WeatherViewController.cityNotExistAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.cityNotExistAlertController.message", comment: ""), preferredStyle: .alert)
-                    let okButtonCityNotExistAction = UIAlertAction(title: "Ok", style: .default)
-                    cityNotExistAlertController.addAction(okButtonCityNotExistAction)
-                    self.present(cityNotExistAlertController, animated: true)
+                    self.doWrongCityErrorAlert()
+                    
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -203,6 +240,7 @@ class WeatherViewController: UIViewController {
             }
         }
     }
+    
     //MARK: - Получение погоды по координатам
     func getWeatherByCoordinates(lat: Double, lon: Double) {
         apiProvider.getWeatherForCityCoordinates(lat: lat, lon: lon) { result in
@@ -361,7 +399,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
         
         print(" ЛОКАЦИЯ: \(location)")
     }
-
+    
 }
 
 //MARK: - extension для работы с текстовым полем
@@ -371,7 +409,7 @@ extension WeatherViewController: UITextFieldDelegate {
             return true
         }
         return false
-            
+        
     }
     
 }

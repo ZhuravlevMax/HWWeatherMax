@@ -28,8 +28,11 @@
 "WeatherViewController.cancelButtonFindCityAction.title" = "Отмена";
 
 //MARK: - Error city name alert
-"WeatherViewController.cityNotExistAlertController.title" = "Упс!";
-"WeatherViewController.cityNotExistAlertController.message" = "Проверьте название введенного города!";
+"WeatherViewController.wrongCityAlertController.title" = "Выбор города";
+"WeatherViewController.wrongCityAlertController.message" = "Проверьте название города!";
+"WeatherViewController.wrongCityAlertControllerTextField.placeholder" = "Введите название города";
+"WeatherViewController.okButtonWrongCityAction.title" = "Выбрать";
+"WeatherViewController.cancelButtonWrongCityAction.title" = "Отмена";
 
 //MARK: - Error data alert
 "WeatherViewController.noDataAlertController.title" = "Упс!";

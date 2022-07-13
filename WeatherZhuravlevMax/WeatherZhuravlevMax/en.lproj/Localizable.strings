@@ -28,11 +28,15 @@
 "WeatherViewController.cancelButtonFindCityAction.title" = "Cancel";
 
 //MARK: - Error city name alert
-"WeatherViewController.cityNotExistAlertController.title" = "Oops!";
-"WeatherViewController.cityNotExistAlertController.message" = "Please check the city name";
+"WeatherViewController.wrongCityAlertController.title" = "City Choise";
+"WeatherViewController.wrongCityAlertController.message" = "Please check the city name!";
+"WeatherViewController.wrongCityAlertControllerTextField.placeholder" = "Enter the city name";
+"WeatherViewController.okButtonWrongCityAction.title" = "Choose";
+"WeatherViewController.cancelButtonWrongCityAction.title" = "Cancel";
 
 //MARK: - Error data alert
 "WeatherViewController.noDataAlertController.title" = "Oops!";
 "WeatherViewController.noDataAlertController.message" = "Please check your internet connection";
+
 //MARK: - City name label at WeatherVC if use location
 "WeatherViewController.cityNameLabel.text" = "Around me";
