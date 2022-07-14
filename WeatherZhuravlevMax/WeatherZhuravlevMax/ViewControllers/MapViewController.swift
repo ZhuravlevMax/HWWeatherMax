@@ -54,6 +54,8 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print(coordinate.latitude)
         
+        addMarker(mapView: mapView, latData: coordinate.latitude, lonData: coordinate.longitude)
+        
         apiProviderMap.getWeatherForCityCoordinates(lat: coordinate.latitude, lon: coordinate.longitude) { result in
             switch result {
             case .success(let value):
@@ -95,12 +97,7 @@ extension MapViewController: GMSMapViewDelegate {
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
-                    //MARK: - работа с маркером
-                    mapView.clear()
-                    let marker = GMSMarker()
-                    marker.position = CLLocationCoordinate2D(latitude: latData, longitude: lonData)
-                    marker.map = mapView
-                    mapView.selectedMarker = marker
+                    
 
                     // MARK: - работа с UI
                     
@@ -119,6 +116,15 @@ extension MapViewController: GMSMapViewDelegate {
             }
         }
         
+    }
+    
+    func addMarker(mapView: GMSMapView, latData: Double, lonData: Double) {
+        //MARK: - работа с маркером
+        mapView.clear()
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: latData, longitude: lonData)
+        marker.map = mapView
+        mapView.selectedMarker = marker
     }
     
     //MARK: - метод работы с маркером
