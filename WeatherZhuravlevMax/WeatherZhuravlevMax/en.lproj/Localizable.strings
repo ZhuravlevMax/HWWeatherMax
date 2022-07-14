@@ -10,10 +10,6 @@
 "SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Map";
 "SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "WeatherRequestInfo";
 
-//MARK: - AlamofireProvider
-"AlamofireProvider.language" = "en";
-"AlamofireProvider.units" = "imperial";
-
 //MARK: - WeatherViewController.tempLabel
 "WeatherViewController.tempLabe.text" = "%d°F";
 

@@ -10,10 +10,6 @@
 "SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Карта";
 "SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "История запросов";
 
-//MARK: - AlamofireProvider
-"AlamofireProvider.language" = "ru";
-"AlamofireProvider.units" = "metric";
-
 //MARK: - tempLabel
 "WeatherViewController.tempLabe.text" = "%d°C";
 
