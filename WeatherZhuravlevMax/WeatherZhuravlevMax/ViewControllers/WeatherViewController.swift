@@ -134,36 +134,12 @@ class WeatherViewController: UIViewController {
     
     //MARK: - Работа с кнопкой поиска
     @IBAction func searchButtonPressed(_ sender: Any) {
-        doFindCityAlert()
+        doFindCityAlert(title: NSLocalizedString("WeatherViewController.findCityAlertController.title", comment: ""),message: NSLocalizedString("WeatherViewController.findCityAlertController.message", comment: ""))
     }
-    //MARK: - AlertController для ошибки ввода города
-    func doWrongCityErrorAlert() {
-        let wrongCityAlertController = UIAlertController(title:NSLocalizedString("WeatherViewController.wrongCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""), preferredStyle: .alert)
-        
-        wrongCityAlertController.addTextField { (textField : UITextField!) -> Void in
-            textField.delegate = self
-            textField.placeholder = NSLocalizedString("WeatherViewController.wrongCityAlertControllerTextField.placeholder", comment: "")
-        }
-        
-        let okButtonWrongCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.okButtonWrongCityAction.title", comment: ""), style: .default) { [self] _ in
-            
-            let wrongCityTextField = (wrongCityAlertController.textFields?[0] ?? UITextField()) as UITextField
-            guard let cityName = wrongCityTextField.text else {return}
-            
-            getCoordByCityName(searchCity: cityName)
-            
-        }
-        
-        let cancelButtonWrongCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.cancelButtonWrongCityAction.title", comment: ""), style: .cancel)
-        
-        wrongCityAlertController.addAction(okButtonWrongCityAction)
-        wrongCityAlertController.addAction(cancelButtonWrongCityAction)
-        self.present(wrongCityAlertController, animated: true)
-    }
-    
-    //MARK: - AlertController для поиска города
-    func doFindCityAlert() {
-        let findCityAlertController = UIAlertController(title:NSLocalizedString("WeatherViewController.findCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.findCityAlertController.message", comment: ""), preferredStyle: .alert)
+
+    //MARK: - AlertController для поиска города и ошибки
+    func doFindCityAlert(title: String, message: String) {
+        let findCityAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         findCityAlertController.addTextField { (textField : UITextField!) -> Void in
             textField.delegate = self
@@ -219,7 +195,7 @@ class WeatherViewController: UIViewController {
                             self.cityNameLabel.text = city.cityName
                         }
                     } else {
-                       self.doWrongCityErrorAlert()
+                        self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.wrongCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""))
                         
                     }
                     
@@ -227,7 +203,7 @@ class WeatherViewController: UIViewController {
                     UserDefaults.standard.set(StateButtons.search.rawValue, forKey: StateButtons.state.rawValue)
                     UserDefaults.standard.set(searchCity, forKey: StateButtons.city.rawValue)
                 } else {
-                    self.doWrongCityErrorAlert()
+                    self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.wrongCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""))
                     
                 }
             case .failure(let error):
@@ -376,7 +352,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
         } else if manager.authorizationStatus == .denied {
             if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) != nil && UserDefaults.standard.string(forKey: StateButtons.state.rawValue) != StateButtons.search.rawValue {
                 currentPositionButton.isEnabled = false
-                doFindCityAlert()
+                doFindCityAlert(title: NSLocalizedString("WeatherViewController.wrongCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""))
             } else if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) != nil {
                 currentPositionButton.isEnabled = false
             }
