@@ -15,7 +15,7 @@
 "AlamofireProvider.units" = "imperial";
 
 //MARK: - WeatherViewController.tempLabel
-"WeatherViewController.tempLabe.text" = "%d%°F";
+"WeatherViewController.tempLabe.text" = "%d°F";
 
 //MARK: - MapVC.windSpeedForMarker
 "MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Wind Speed %.2f m/s";
@@ -23,19 +23,16 @@
 //MARK: - City choise alert
 "WeatherViewController.findCityAlertController.title" = "City Choise";
 "WeatherViewController.findCityAlertController.message" = "Weather by City Name";
-"WeatherViewController.findCityAlertControllerTextField.placeholder" = "Enter the city name";
-"WeatherViewController.okButtonFindCityAction.title" = "Choose";
-"WeatherViewController.cancelButtonFindCityAction.title" = "Cancel";
+"WeatherViewController.AlertControllerTextField.placeholder" = "Enter the city name";
+"WeatherViewController.okButtonAction.title" = "Choose";
+"WeatherViewController.cancelButtonAction.title" = "Cancel";
 
 //MARK: - Error city name alert
-"WeatherViewController.wrongCityAlertController.title" = "Oops!";
-"WeatherViewController.wrongCityAlertController.message" = "Please check the city name!";
-"WeatherViewController.wrongCityAlertControllerTextField.placeholder" = "Enter the city name";
-"WeatherViewController.okButtonWrongCityAction.title" = "Choose";
-"WeatherViewController.cancelButtonWrongCityAction.title" = "Cancel";
+"WeatherViewController.errorAlertController.title" = "Oops!";
+"WeatherViewController.errorAlertController.message" = "Please check the city name!";
 
 //MARK: - Error data alert
-"WeatherViewController.noDataAlertController.title" = "Oops!";
+
 "WeatherViewController.noDataAlertController.message" = "Please check your internet connection";
 
 //MARK: - City name label at WeatherVC if use location

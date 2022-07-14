@@ -143,10 +143,10 @@ class WeatherViewController: UIViewController {
         
         findCityAlertController.addTextField { (textField : UITextField!) -> Void in
             textField.delegate = self
-            textField.placeholder = NSLocalizedString("WeatherViewController.findCityAlertControllerTextField.placeholder", comment: "")
+            textField.placeholder = NSLocalizedString("WeatherViewController.AlertControllerTextField.placeholder", comment: "")
         }
         
-        let okButtonFindCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.okButtonFindCityAction.title", comment: ""), style: .default) { [self] _ in
+        let okButtonFindCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.okButtonAction.title", comment: ""), style: .default) { [self] _ in
             
             let findCityTextField = (findCityAlertController.textFields?[0] ?? UITextField()) as UITextField
             guard let cityName = findCityTextField.text else {return}
@@ -155,7 +155,7 @@ class WeatherViewController: UIViewController {
             
         }
         
-        let cancelButtonFindCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.cancelButtonFindCityAction.title", comment: ""), style: .cancel)
+        let cancelButtonFindCityAction = UIAlertAction(title: NSLocalizedString("WeatherViewController.cancelButtonAction.title", comment: ""), style: .cancel)
         
         findCityAlertController.addAction(okButtonFindCityAction)
         findCityAlertController.addAction(cancelButtonFindCityAction)
@@ -175,7 +175,7 @@ class WeatherViewController: UIViewController {
             switch result {
             case .success(let value):
                 if let city = value.first {
-                    if (city.localNames?.ru) != nil {
+                    if let cityLocal = city.localNames?.ru {
                         self.getWeatherByCoordinates(lat: city.lat, lon: city.lon)
                         guard let currentLangauge = Locale.current.languageCode else {return}
                         switch currentLangauge {
@@ -195,7 +195,7 @@ class WeatherViewController: UIViewController {
                             self.cityNameLabel.text = city.cityName
                         }
                     } else {
-                        self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.wrongCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""))
+                        self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.errorAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""))
                         
                     }
                     
@@ -203,13 +203,13 @@ class WeatherViewController: UIViewController {
                     UserDefaults.standard.set(StateButtons.search.rawValue, forKey: StateButtons.state.rawValue)
                     UserDefaults.standard.set(searchCity, forKey: StateButtons.city.rawValue)
                 } else {
-                    self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.wrongCityAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""))
+                    self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.errorAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""))
                     
                 }
             case .failure(let error):
                 print(error.localizedDescription)
                 //MARK: - AlertController для отсутствия данных
-                let noDataAlertController = UIAlertController(title: NSLocalizedString("WeatherViewController.noDataAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.noDataAlertController.message", comment: ""), preferredStyle: .alert)
+                let noDataAlertController = UIAlertController(title: NSLocalizedString("WeatherViewController.errorAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.noDataAlertController.message", comment: ""), preferredStyle: .alert)
                 let okButtonCityNotExistAction = UIAlertAction(title: "Ok", style: .default)
                 noDataAlertController.addAction(okButtonCityNotExistAction)
                 self.present(noDataAlertController, animated: true)

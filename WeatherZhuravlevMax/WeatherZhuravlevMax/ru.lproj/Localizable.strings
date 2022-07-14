@@ -15,7 +15,7 @@
 "AlamofireProvider.units" = "metric";
 
 //MARK: - tempLabel
-"WeatherViewController.tempLabe.text" = "%d%°C";
+"WeatherViewController.tempLabe.text" = "%d°C";
 
 //MARK: - MapVC.windSpeedForMarker
 "MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Скорость ветра %.2f м/с";
@@ -23,19 +23,16 @@
 //MARK: - City choise alert
 "WeatherViewController.findCityAlertController.title" = "Выбор города";
 "WeatherViewController.findCityAlertController.message" = "Погода по названию города";
-"WeatherViewController.findCityAlertControllerTextField.placeholder" = "Введите название города";
-"WeatherViewController.okButtonFindCityAction.title" = "Выбрать";
-"WeatherViewController.cancelButtonFindCityAction.title" = "Отмена";
+"WeatherViewController.AlertControllerTextField.placeholder" = "Введите название города";
+"WeatherViewController.okButtonAction.title" = "Выбрать";
+"WeatherViewController.cancelButtonAction.title" = "Отмена";
 
 //MARK: - Error city name alert
-"WeatherViewController.wrongCityAlertController.title" = "Упс!";
+"WeatherViewController.errorAlertController.title" = "Упс!";
 "WeatherViewController.wrongCityAlertController.message" = "Проверьте название города!";
-"WeatherViewController.wrongCityAlertControllerTextField.placeholder" = "Введите название города";
-"WeatherViewController.okButtonWrongCityAction.title" = "Выбрать";
-"WeatherViewController.cancelButtonWrongCityAction.title" = "Отмена";
+
 
 //MARK: - Error data alert
-"WeatherViewController.noDataAlertController.title" = "Упс!";
 "WeatherViewController.noDataAlertController.message" = "Проверьте подключение к интернету!";
 
 //MARK: - City name label at WeatherVC if use location
