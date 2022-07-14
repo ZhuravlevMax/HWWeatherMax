@@ -253,7 +253,6 @@ class WeatherViewController: UIViewController {
                     weatherRealmData.descriptionWeather = descriptionData
                     weatherRealmData.time = Int(date.timeIntervalSince1970)
                     weatherRealmData.coordinate = coordRealmData
-                    weatherRealmData.from = "from WeatherVC"
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     

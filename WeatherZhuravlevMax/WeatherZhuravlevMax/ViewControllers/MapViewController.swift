@@ -91,7 +91,7 @@ extension MapViewController: GMSMapViewDelegate {
                     weatherRealmData.descriptionWeather = descriptionData
                     weatherRealmData.time = Int(date.timeIntervalSince1970)
                     weatherRealmData.coordinate = coordRealmData
-                    weatherRealmData.from = "from MapVC"
+                    weatherRealmData.fromMapVC = true
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     

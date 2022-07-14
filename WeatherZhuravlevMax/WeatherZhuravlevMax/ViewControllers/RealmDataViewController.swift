@@ -80,7 +80,7 @@ extension RealmDataViewController: UITableViewDelegate, UITableViewDataSource {
             realmDataTableViewCell.tempLabel.text = "\(Int(sortedRealmWeatherData[indexPath.row].temp))"
             realmDataTableViewCell.feelsLikeLable.text = "\(Int(sortedRealmWeatherData[indexPath.row].feelsLike))"
             realmDataTableViewCell.descriptionLabel.text = sortedRealmWeatherData[indexPath.row].descriptionWeather
-            realmDataTableViewCell.fromLabel.text = sortedRealmWeatherData[indexPath.row].from
+            realmDataTableViewCell.fromLabel.text = "\(sortedRealmWeatherData[indexPath.row].fromMapVC)"
             
             realmDataTableViewCell.timeLabel.text = decodedTime
             
