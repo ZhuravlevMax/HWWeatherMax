@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-enum Language {
+enum Language{
     case ru
     case en
 }
@@ -26,11 +26,11 @@ enum Units {
     case imperial
 }
 
-let russian = Language.ru
+var userLanguage = "\(Language.en)"
+var userUnits = "\(Units.imperial)"
 let minutely = Exclude.minutely
 let alerts = Exclude.alerts
 let metric = Units.metric
-
 
 protocol RestAPIProviderProtocol {
     
@@ -41,7 +41,12 @@ protocol RestAPIProviderProtocol {
 
 class AlamofireProvider: RestAPIProviderProtocol {
     func getCoordinatesByCityName(name: String, completion: @escaping (Result<[Geocoding], Error>) -> Void) {
-        let params = addParams(queryItems: ["q" : name, "lang": "\(russian)"])
+        
+        if Locale.current.languageCode == "\(Language.ru)" {
+            userLanguage = "\(Language.ru)"
+        }
+        
+        let params = addParams(queryItems: ["q" : name, "lang": userLanguage])
         
         AF.request(Constants.getCodingURL, method: .get, parameters: params).responseDecodable(of: [Geocoding].self) { response in
             switch response.result {
@@ -55,7 +60,11 @@ class AlamofireProvider: RestAPIProviderProtocol {
     
     func getWeatherForCityCoordinates(lat: Double, lon: Double, completion: @escaping (Result<WeatherData, Error>) -> Void) {
         
-        let params = addParams(queryItems: ["lat": lat.description, "lon": lon.description, "exclude": "\(minutely),\(alerts)", "lang": "\(russian)", "units": "\(metric)"])
+        if Locale.current.languageCode == "\(Language.ru)" {
+            userUnits = "\(Units.metric)"
+        }
+        
+        let params = addParams(queryItems: ["lat": lat.description, "lon": lon.description, "exclude": "\(minutely),\(alerts)", "lang": userLanguage, "units": userUnits])
         
         AF.request(Constants.weatherURL, method: .get, parameters: params).responseDecodable(of: WeatherData.self) {response in
             switch response.result {

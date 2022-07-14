@@ -27,9 +27,8 @@ class RealmDataViewController: UIViewController {
         dBManager = DBManager()
         
        //MARK: - Наблюдатель за изменением БД и обновление таблицы
-        let realm = try! Realm()
         
-        sortedRealmWeatherData = realm.objects(RealmWeatherData.self).sorted(byKeyPath: "time", ascending: false)
+        sortedRealmWeatherData = dBManager.weatherData().sorted(byKeyPath: "time", ascending: false)
         
         notificationToken = sortedRealmWeatherData.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.realmDataTableView else {return}
@@ -80,14 +79,16 @@ extension RealmDataViewController: UITableViewDelegate, UITableViewDataSource {
             
             realmDataTableViewCell.tempLabel.text = "\(Int(sortedRealmWeatherData[indexPath.row].temp))"
             realmDataTableViewCell.feelsLikeLable.text = "\(Int(sortedRealmWeatherData[indexPath.row].feelsLike))"
-            realmDataTableViewCell.descriptionLabel.text = "\(sortedRealmWeatherData[indexPath.row].descriptionWeather)"
+            realmDataTableViewCell.descriptionLabel.text = sortedRealmWeatherData[indexPath.row].descriptionWeather
+            realmDataTableViewCell.fromLabel.text = "\(sortedRealmWeatherData[indexPath.row].fromMapVC)"
             
             realmDataTableViewCell.timeLabel.text = decodedTime
             
             if let latCoord = sortedRealmWeatherData[indexPath.row].coordinate?.lat,
-               let lonCoord = sortedRealmWeatherData[indexPath.row].coordinate?.lon {
+               let lonCoord = sortedRealmWeatherData[indexPath.row].coordinate?.lon{
             realmDataTableViewCell.latLabel.text = "\(latCoord)"
             realmDataTableViewCell.lonLabel.text = "\(lonCoord)"
+            
             }
             return realmDataTableViewCell
         }

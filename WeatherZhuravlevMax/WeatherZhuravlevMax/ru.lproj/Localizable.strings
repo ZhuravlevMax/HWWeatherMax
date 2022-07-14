@@ -1,0 +1,35 @@
+/* 
+  Localizable.strings
+  WeatherZhuravlevMax
+
+  Created by Максим Журавлев on 12.07.22.
+  
+*/
+//MARK: - TabBar items
+"SceneDelegate.tabBarController.currentWeatherVC.tabBarItem.title" = "Погода";
+"SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Карта";
+"SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "История запросов";
+
+//MARK: - tempLabel
+"WeatherViewController.tempLabe.text" = "%d°C";
+
+//MARK: - MapVC.windSpeedForMarker
+"MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Скорость ветра %.2f м/с";
+
+//MARK: - City choise alert
+"WeatherViewController.findCityAlertController.title" = "Выбор города";
+"WeatherViewController.findCityAlertController.message" = "Погода по названию города";
+"WeatherViewController.AlertControllerTextField.placeholder" = "Введите название города";
+"WeatherViewController.okButtonAction.title" = "Выбрать";
+"WeatherViewController.cancelButtonAction.title" = "Отмена";
+
+//MARK: - Error city name alert
+"WeatherViewController.errorAlertController.title" = "Упс!";
+"WeatherViewController.wrongCityAlertController.message" = "Проверьте название города!";
+
+
+//MARK: - Error data alert
+"WeatherViewController.noDataAlertController.message" = "Проверьте подключение к интернету!";
+
+//MARK: - City name label at WeatherVC if use location
+"WeatherViewController.cityNameLabel.text" = "Вокруг меня";
