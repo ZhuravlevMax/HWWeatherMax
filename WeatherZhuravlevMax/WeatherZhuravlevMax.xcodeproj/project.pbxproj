@@ -22,6 +22,8 @@
 		949F6A202878033900AF472B /* ForTableVIewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F6A1E2878033900AF472B /* ForTableVIewTableViewCell.swift */; };
 		949F6A212878033900AF472B /* ForTableVIewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949F6A1F2878033900AF472B /* ForTableVIewTableViewCell.xib */; };
 		94BF6A432871AD6E006BD3C3 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */; };
+		94C69AA6287DDE2700FE3EAD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94C69AA8287DDE2700FE3EAD /* Localizable.strings */; };
+		94C69AB0287DE0D300FE3EAD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94C69AAE287DDF3C00FE3EAD /* InfoPlist.strings */; };
 		94F18EF0286C580B0092D1C0 /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F18EEF286C580B0092D1C0 /* RealmData.swift */; };
 		94F18EF3286C59580092D1C0 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 94F18EF2286C59580092D1C0 /* Realm */; };
 		94F18EF5286C59580092D1C0 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 94F18EF4286C59580092D1C0 /* RealmSwift */; };
@@ -63,6 +65,12 @@
 		949F6A1E2878033900AF472B /* ForTableVIewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForTableVIewTableViewCell.swift; sourceTree = "<group>"; };
 		949F6A1F2878033900AF472B /* ForTableVIewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForTableVIewTableViewCell.xib; sourceTree = "<group>"; };
 		94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
+		94C69AA7287DDE2700FE3EAD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		94C69AA9287DDE6700FE3EAD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		94C69AAA287DDE6700FE3EAD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		94C69AAB287DDE6700FE3EAD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		94C69AAD287DDF3C00FE3EAD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		94C69AAF287DDF3E00FE3EAD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		94F18EEF286C580B0092D1C0 /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
 		94F18EFA286C6A480092D1C0 /* RealmDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataViewController.swift; sourceTree = "<group>"; };
 		94F18EFC286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealmDataStoryboard.storyboard; sourceTree = "<group>"; };
@@ -166,6 +174,8 @@
 				9467C245285E5E4A00ADD251 /* Assets.xcassets */,
 				9467C247285E5E4A00ADD251 /* LaunchScreen.storyboard */,
 				9467C24A285E5E4A00ADD251 /* Info.plist */,
+				94C69AAE287DDF3C00FE3EAD /* InfoPlist.strings */,
+				94C69AA8287DDE2700FE3EAD /* Localizable.strings */,
 			);
 			path = WeatherZhuravlevMax;
 			sourceTree = "<group>";
@@ -248,9 +258,9 @@
 		94FC8D472868FB92000CDE91 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
 				94FC8D252867349F000CDE91 /* MapViewController.swift */,
 				94F18EFA286C6A480092D1C0 /* RealmDataViewController.swift */,
-				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -258,9 +268,9 @@
 		94FC8D482868FBA5000CDE91 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				9467C242285E5E4400ADD251 /* Main.storyboard */,
 				94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */,
 				94F18EFC286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard */,
-				9467C242285E5E4400ADD251 /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -323,10 +333,11 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 9467C230285E5E4300ADD251;
 			packageReferences = (
-				94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
+				94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				94F18EF1286C59580092D1C0 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 9467C23A285E5E4400ADD251 /* Products */;
@@ -344,7 +355,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9467C249285E5E4A00ADD251 /* LaunchScreen.storyboard in Resources */,
+				94C69AA6287DDE2700FE3EAD /* Localizable.strings in Resources */,
 				94F18F03286CA80A0092D1C0 /* RealmDataTableViewCell.xib in Resources */,
+				94C69AB0287DE0D300FE3EAD /* InfoPlist.strings in Resources */,
 				9467C246285E5E4A00ADD251 /* Assets.xcassets in Resources */,
 				94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */,
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
@@ -438,6 +451,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9467C243285E5E4400ADD251 /* Base */,
+				94C69AA9287DDE6700FE3EAD /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -446,8 +460,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				9467C248285E5E4A00ADD251 /* Base */,
+				94C69AAA287DDE6700FE3EAD /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		94C69AA8287DDE2700FE3EAD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94C69AA7287DDE2700FE3EAD /* en */,
+				94C69AAB287DDE6700FE3EAD /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		94C69AAE287DDF3C00FE3EAD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94C69AAD287DDF3C00FE3EAD /* ru */,
+				94C69AAF287DDF3E00FE3EAD /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -457,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -517,6 +551,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -657,7 +692,7 @@
 				minimumVersion = 10.19.0;
 			};
 		};
-		94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
+		94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -680,7 +715,7 @@
 		};
 		94FC8D0F2866F90A000CDE91 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = 94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */

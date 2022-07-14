@@ -13,6 +13,7 @@ protocol DBManagerProtocol {
     func obtainCoordinate() -> [RealmCoordinateData]
     func saveWeather (weatherData: RealmWeatherData)
     func obtainWeather() -> [RealmWeatherData]
+    func weatherData() -> Results<RealmWeatherData>
 }
 
 class DBManager: DBManagerProtocol {
@@ -34,6 +35,7 @@ class DBManager: DBManagerProtocol {
     func saveWeather(weatherData: RealmWeatherData) {
         try! realm.write {
             realm.add(weatherData)
+            //print("ЗДЕСЬ!!! \(realm.configuration.fileURL)")
         }
     }
     
@@ -42,5 +44,7 @@ class DBManager: DBManagerProtocol {
         return Array(models)
     }
     
-    
+    func weatherData() -> Results<RealmWeatherData> {
+        return realm.objects(RealmWeatherData.self)
+    }
 }

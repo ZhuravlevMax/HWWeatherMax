@@ -20,5 +20,8 @@ class RealmWeatherData: Object {
     @objc dynamic var descriptionWeather: String = ""
     @objc dynamic var time: Int = 0
     @objc dynamic var coordinate: RealmCoordinateData?
+    //Добавляю свойство запрос из MapVC
+    @objc dynamic var fromMapVC: Bool = false
+    
 }
 

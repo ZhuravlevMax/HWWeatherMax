@@ -9,6 +9,7 @@ import Foundation
 
 struct Geocoding: Codable {
     var cityName: String?
+    var localNames: LocalNames?
     var lat: Double
     var lon: Double
     var country: String?
@@ -16,6 +17,11 @@ struct Geocoding: Codable {
     enum CodingKeys: String, CodingKey {
         case lat, lon, country
         case cityName = "name"
+        case localNames = "local_names"
     }
 }
 
+struct LocalNames: Codable {
+    var en: String?
+    var ru: String?
+}

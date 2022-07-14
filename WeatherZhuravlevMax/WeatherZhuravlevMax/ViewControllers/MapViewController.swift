@@ -24,7 +24,7 @@ class MapViewController: UIViewController {
     private var dBManager: DBManagerProtocol!
     
     //Переменные для хранения значений погоды
-    var windSpeedForMarker = ""
+    var windSpeedForMarker: Double = 0
     var currentTemp = ""
     var imageWeather: UIImage!
     var descriptionWeather = ""
@@ -33,11 +33,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         view.layoutSubviews()
-        
-//        tempLabel.text = "Нажмите на карту"
-//        feelsLikeTempLabel.text = "для определения"
-//        descriptionWeatherLabel.text = "погоды в выбранной точке"
-        
+
         apiProviderMap = AlamofireProvider()
         dBManager = DBManager()
         
@@ -95,6 +91,7 @@ extension MapViewController: GMSMapViewDelegate {
                     weatherRealmData.descriptionWeather = descriptionData
                     weatherRealmData.time = Int(date.timeIntervalSince1970)
                     weatherRealmData.coordinate = coordRealmData
+                    weatherRealmData.fromMapVC = true
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
@@ -107,7 +104,7 @@ extension MapViewController: GMSMapViewDelegate {
 
                     // MARK: - работа с UI
                     
-                    self.windSpeedForMarker = "\(windSpeed)"
+                    self.windSpeedForMarker = windSpeed
 
                     self.currentTemp = "+\(Int(temp))°"
 
@@ -129,7 +126,10 @@ extension MapViewController: GMSMapViewDelegate {
         let markerView = Bundle.main.loadNibNamed(MarkerWindowUIView.key, owner: self, options: nil)![0] as? MarkerWindowUIView
         guard let markerViewChecked = markerView else {return UIView()}
         markerViewChecked.markerMainView.layer.cornerRadius = 10
-        markerViewChecked.markerWindSpeedLabel.text = "Ветер: \(windSpeedForMarker) м/с"
+        let markerWindSpeedLabelText  = NSLocalizedString("MapViewController.markerViewChecked.markerWindSpeedLabel.text", comment: "")
+        markerViewChecked.markerWindSpeedLabel.text =
+        String.localizedStringWithFormat(markerWindSpeedLabelText, windSpeedForMarker)
+        //"Ветер: \(windSpeedForMarker) м/с"
         markerViewChecked.markerTempLabel.text = currentTemp
         markerViewChecked.markerImageView.image = imageWeather
         return markerView

@@ -8,6 +8,7 @@
 import UIKit
 import GoogleMaps
 import UserNotifications
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let center = UNUserNotificationCenter.current()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let config = Realm.Configuration(
+            schemaVersion: 3)
+        Realm.Configuration.defaultConfiguration = config
+   
         // Override point for customization after application launch.
         if let key = Bundle.main.object(forInfoDictionaryKey: "GoogleMapKey") as? String {
             GMSServices.provideAPIKey("\(key)")
@@ -26,8 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    print("granted")
                 }
             }
-        
-        
+
         return true
     }
     
