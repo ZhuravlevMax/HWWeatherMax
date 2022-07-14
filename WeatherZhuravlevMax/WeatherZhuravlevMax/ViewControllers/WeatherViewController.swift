@@ -382,7 +382,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
 //MARK: - extension для работы с текстовым полем
 extension WeatherViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: string)) {
+        if CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: string)) || CharacterSet.whitespaces.isSuperset(of: CharacterSet(charactersIn: string)){
             return true
         }
         return false
