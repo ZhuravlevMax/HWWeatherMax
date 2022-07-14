@@ -481,8 +481,7 @@
 				94C69AAF287DDF3E00FE3EAD /* en */,
 			);
 			name = InfoPlist.strings;
-			path = /Users/maxim/TeachMeSkills/HWWeatherMax/WeatherZhuravlevMax/WeatherZhuravlevMax;
-			sourceTree = "<absolute>";
+			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
