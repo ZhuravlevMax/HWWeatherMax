@@ -45,7 +45,6 @@ class DBManager: DBManagerProtocol {
     }
     
     func weatherData() -> Results<RealmWeatherData> {
-        let sortedRealmWeatherData = realm.objects(RealmWeatherData.self)
-        return sortedRealmWeatherData
+        return realm.objects(RealmWeatherData.self)
     }
 }

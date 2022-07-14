@@ -258,9 +258,9 @@
 		94FC8D472868FB92000CDE91 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
 				94FC8D252867349F000CDE91 /* MapViewController.swift */,
 				94F18EFA286C6A480092D1C0 /* RealmDataViewController.swift */,
-				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -268,9 +268,9 @@
 		94FC8D482868FBA5000CDE91 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				9467C242285E5E4400ADD251 /* Main.storyboard */,
 				94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */,
 				94F18EFC286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard */,
-				9467C242285E5E4400ADD251 /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
