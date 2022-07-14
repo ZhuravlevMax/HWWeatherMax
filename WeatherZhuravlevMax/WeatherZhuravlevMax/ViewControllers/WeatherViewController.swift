@@ -195,7 +195,7 @@ class WeatherViewController: UIViewController {
                             self.cityNameLabel.text = city.cityName
                         }
                     } else {
-                        self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.errorAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""))
+                        self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.errorAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.errorAlertController.message", comment: ""))
                         
                     }
                     
