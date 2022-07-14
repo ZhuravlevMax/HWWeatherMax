@@ -16,6 +16,7 @@ class RealmDataTableViewCell: UITableViewCell {
     @IBOutlet weak var latLabel: UILabel!
     @IBOutlet weak var lonLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var fromLabel: UILabel!
     
     
     override func awakeFromNib() {

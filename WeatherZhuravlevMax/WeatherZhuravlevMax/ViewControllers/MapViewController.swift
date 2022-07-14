@@ -33,11 +33,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         view.layoutSubviews()
-        
-//        tempLabel.text = "Нажмите на карту"
-//        feelsLikeTempLabel.text = "для определения"
-//        descriptionWeatherLabel.text = "погоды в выбранной точке"
-        
+
         apiProviderMap = AlamofireProvider()
         dBManager = DBManager()
         
@@ -95,6 +91,7 @@ extension MapViewController: GMSMapViewDelegate {
                     weatherRealmData.descriptionWeather = descriptionData
                     weatherRealmData.time = Int(date.timeIntervalSince1970)
                     weatherRealmData.coordinate = coordRealmData
+                    weatherRealmData.from = "from MapVC"
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     

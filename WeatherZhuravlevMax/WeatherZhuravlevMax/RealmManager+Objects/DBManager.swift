@@ -35,6 +35,7 @@ class DBManager: DBManagerProtocol {
     func saveWeather(weatherData: RealmWeatherData) {
         try! realm.write {
             realm.add(weatherData)
+            //print("ЗДЕСЬ!!! \(realm.configuration.fileURL)")
         }
     }
     

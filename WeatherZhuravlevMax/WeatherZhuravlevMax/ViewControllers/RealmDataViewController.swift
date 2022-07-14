@@ -79,14 +79,16 @@ extension RealmDataViewController: UITableViewDelegate, UITableViewDataSource {
             
             realmDataTableViewCell.tempLabel.text = "\(Int(sortedRealmWeatherData[indexPath.row].temp))"
             realmDataTableViewCell.feelsLikeLable.text = "\(Int(sortedRealmWeatherData[indexPath.row].feelsLike))"
-            realmDataTableViewCell.descriptionLabel.text = "\(sortedRealmWeatherData[indexPath.row].descriptionWeather)"
+            realmDataTableViewCell.descriptionLabel.text = sortedRealmWeatherData[indexPath.row].descriptionWeather
+            realmDataTableViewCell.fromLabel.text = sortedRealmWeatherData[indexPath.row].from
             
             realmDataTableViewCell.timeLabel.text = decodedTime
             
             if let latCoord = sortedRealmWeatherData[indexPath.row].coordinate?.lat,
-               let lonCoord = sortedRealmWeatherData[indexPath.row].coordinate?.lon {
+               let lonCoord = sortedRealmWeatherData[indexPath.row].coordinate?.lon{
             realmDataTableViewCell.latLabel.text = "\(latCoord)"
             realmDataTableViewCell.lonLabel.text = "\(lonCoord)"
+            
             }
             return realmDataTableViewCell
         }
