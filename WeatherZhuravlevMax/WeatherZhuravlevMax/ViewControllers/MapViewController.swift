@@ -63,6 +63,7 @@ extension MapViewController: GMSMapViewDelegate {
                 guard let weatherIconId = value.current?.weather?.first?.icon else {return}
                 DispatchQueue.main.async {
                     
+                    mapView.selectedMarker = marker
                     // MARK: - работа с БД
                     //Сохраняю в таблицу RealmResponseData
                     guard let lonData = value.lon,
@@ -124,7 +125,7 @@ extension MapViewController: GMSMapViewDelegate {
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: latData, longitude: lonData)
         marker.map = mapView
-        mapView.selectedMarker = marker
+        
     }
     
     //MARK: - метод работы с маркером
