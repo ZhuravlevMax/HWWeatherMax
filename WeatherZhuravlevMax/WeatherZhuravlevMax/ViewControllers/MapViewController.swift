@@ -28,12 +28,12 @@ class MapViewController: UIViewController {
     var currentTemp = ""
     var imageWeather: UIImage!
     var descriptionWeather = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.layoutSubviews()
-
+        
         apiProviderMap = AlamofireProvider()
         dBManager = DBManager()
         
@@ -44,7 +44,7 @@ class MapViewController: UIViewController {
         let mapView = GMSMapView.map(withFrame: forMapView.frame, camera: camera)
         forMapView.addSubview(mapView)
         mapView.delegate = self
-    
+        
     }
     
     
@@ -54,16 +54,16 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print(coordinate.latitude)
         
-        addMarker(mapView: mapView, latData: coordinate.latitude, lonData: coordinate.longitude)
+        
         
         apiProviderMap.getWeatherForCityCoordinates(lat: coordinate.latitude, lon: coordinate.longitude) { result in
             switch result {
+                
             case .success(let value):
                 
                 guard let weatherIconId = value.current?.weather?.first?.icon else {return}
                 DispatchQueue.main.async {
                     
-                    mapView.selectedMarker = marker
                     // MARK: - работа с БД
                     //Сохраняю в таблицу RealmResponseData
                     guard let lonData = value.lon,
@@ -79,9 +79,9 @@ extension MapViewController: GMSMapViewDelegate {
                     coordRealmData.lat = latData
                     coordRealmData.lon = lonData
                     coordRealmData.time = Int(date.timeIntervalSince1970)
-
+                    
                     self.dBManager.saveCoordinate(coordinateData: coordRealmData)
-                
+                    
                     // Сохраняем в таблицу RealmWeatherData
                     guard let tempData = value.current?.temp,
                           let feelsLikeData = value.current?.feelsLike,
@@ -98,17 +98,15 @@ extension MapViewController: GMSMapViewDelegate {
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
-                    
-
                     // MARK: - работа с UI
-                    
                     self.windSpeedForMarker = windSpeed
-
+                    
                     self.currentTemp = "+\(Int(temp))°"
-
+                    
                     if let data = try? Data(contentsOf: imageUrl) {
                         //self.weatherImage.image = UIImage(data: data)
                         self.imageWeather = UIImage(data: data)
+                        self.addMarker(mapView: mapView, latData: coordinate.latitude, lonData: coordinate.longitude)
                     }
                     print(value)
                 }
@@ -125,8 +123,10 @@ extension MapViewController: GMSMapViewDelegate {
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: latData, longitude: lonData)
         marker.map = mapView
+        mapView.selectedMarker = marker
         
     }
+    
     
     //MARK: - метод работы с маркером
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
