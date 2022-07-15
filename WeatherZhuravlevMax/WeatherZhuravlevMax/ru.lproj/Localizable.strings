@@ -25,7 +25,7 @@
 
 //MARK: - Error city name alert
 "WeatherViewController.errorAlertController.title" = "Упс!";
-"WeatherViewController.wrongCityAlertController.message" = "Проверьте название города!";
+"WeatherViewController.errorAlertController.message" = "Проверьте название города!";
 
 
 //MARK: - Error data alert
