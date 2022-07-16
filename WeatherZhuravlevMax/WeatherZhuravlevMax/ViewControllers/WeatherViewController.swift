@@ -10,7 +10,7 @@ import RealmSwift
 import UserNotifications
 import CoreLocation
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, UITabBarControllerDelegate {
     //MARK: - добавление outlets
     //loading view
     @IBOutlet weak var loadingView: UIView!
@@ -108,6 +108,12 @@ class WeatherViewController: UIViewController {
         mainTableView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(refresher(sender: )), for: .valueChanged)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.tabBarController?.delegate = self
     }
     
     @objc private func refresher(sender: UIRefreshControl) {

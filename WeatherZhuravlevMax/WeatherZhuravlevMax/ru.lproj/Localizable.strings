@@ -34,3 +34,28 @@
 
 //MARK: - City name label at WeatherVC if use location
 "WeatherViewController.cityNameLabel.text" = "Вокруг меня";
+
+//MARK: - Settings VC
+"SettingsViewController.settingsLabel.text" = "Настройки";
+"SettingsViewController.notificationButton.title" = "Уведомление о плохой погоде";
+"SettingsViewController.historyButton.title" = "История запросов";
+"SettingsViewController.unitsButton.title" = "Система измерений";
+"SettingsViewController.timeFormatButton.title" = "Формат времени";
+
+//MARK: - Notification VC
+"NotificationViewController.cancelButton.title" = "Отмена";
+"NotificationViewController.saveButton.title" = "Сохранить";
+"NotificationViewController.choiceLabel.text" = "Выбор погоды для уведомления";
+"NotificationViewController.rainLabel.text" = "Дождь";
+"NotificationViewController.snowLabel.text" = "Снег";
+"NotificationViewController.thunderstormLabel.text" = "Гроза";
+
+//MARK: - Units VC
+"UnitsViewController.choiceLabel.text" = "Выбор системы измерения";
+"UnitsViewController.unitsSegmentControl.title0" = "Метрическая";
+"UnitsViewController.unitsSegmentControl.title1" = "Имперская";
+
+//MARK: - TimeFormat VC
+"TimeFormatViewController.timeLabel.text" = "Выберите часовой формат";
+"TimeFormatViewController.timeSegmentControl.title0" = "12-ти часовой";
+"TimeFormatViewController.timeSegmentControl.title1" = "24-х часовой";

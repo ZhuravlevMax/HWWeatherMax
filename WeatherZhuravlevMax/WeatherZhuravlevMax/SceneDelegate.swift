@@ -36,7 +36,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         SettingsVC.tabBarItem.title = NSLocalizedString("SceneDelegate.tabBarController.SettingsVC.tabBarItem.title", comment: "")
         SettingsVC.tabBarItem.image = UIImage(systemName: "gearshape")
         
-        
         tabBarController.tabBar.backgroundColor = UIColor.white
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
@@ -70,7 +69,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
 
 }
 

@@ -137,11 +137,12 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="1JJ-Pm-51L" id="QWX-OV-qQO"/>
+                        <outlet property="choiceLabel" destination="SgX-l3-8Es" id="JVz-mW-wc6"/>
                         <outlet property="rainCheckButton" destination="Re2-om-FWP" id="fw5-qJ-6dv"/>
-                        <outlet property="rainLabel" destination="zHd-oT-2r2" id="YqZ-dB-5HR"/>
+                        <outlet property="rainLabel" destination="zHd-oT-2r2" id="dWn-B9-LhR"/>
                         <outlet property="saveButton" destination="jnf-iV-yRR" id="Cds-LJ-afI"/>
                         <outlet property="snowCheckButton" destination="fde-4X-LqE" id="RS8-se-vK6"/>
-                        <outlet property="snowLabel" destination="8uj-na-aL2" id="n5y-HO-rbW"/>
+                        <outlet property="snowLabel" destination="8uj-na-aL2" id="0Kc-sE-VWA"/>
                         <outlet property="thunderstormCheckButton" destination="sPD-LW-rT0" id="Agl-Sn-3nN"/>
                         <outlet property="thunderstormLabel" destination="aLQ-Sg-tSD" id="P38-p2-jFA"/>
                     </connections>

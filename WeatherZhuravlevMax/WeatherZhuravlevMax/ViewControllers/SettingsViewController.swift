@@ -19,12 +19,19 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settingsLabel.text = NSLocalizedString("SettingsViewController.settingsLabel.text", comment: "")
+        notificationButton.setTitle(NSLocalizedString("SettingsViewController.notificationButton.title", comment: ""), for: .normal)
+        historyButton.setTitle(NSLocalizedString("SettingsViewController.historyButton.title", comment: ""), for: .normal)
+        unitsButton.setTitle(NSLocalizedString("SettingsViewController.unitsButton.title", comment: ""), for: .normal)
+        timeFormatButton.setTitle(NSLocalizedString("SettingsViewController.timeFormatButton.title", comment: ""), for: .normal)
+        
         notificationButton.layer.cornerRadius = 10
         historyButton.layer.cornerRadius = 10
         unitsButton.layer.cornerRadius = 10
         timeFormatButton.layer.cornerRadius = 10
 
     }
+    
     @IBAction func notificationButtonPressed(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "NotificationStoryboard", bundle: nil)

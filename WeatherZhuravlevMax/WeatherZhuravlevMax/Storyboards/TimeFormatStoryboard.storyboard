@@ -69,6 +69,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="Rj9-HC-R1i" id="WLl-9d-1xI"/>
                         <outlet property="saveButton" destination="iWm-qo-Jan" id="PKZ-cP-vBl"/>
+                        <outlet property="timeLabel" destination="HEJ-dT-8ax" id="w9U-df-97z"/>
                         <outlet property="timeSegmentControl" destination="Xoi-T4-keL" id="Bgx-Zk-a7f"/>
                     </connections>
                 </viewController>

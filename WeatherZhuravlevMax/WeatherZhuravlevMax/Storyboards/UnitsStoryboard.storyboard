@@ -68,6 +68,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="K5d-Ra-ki5" id="iVF-Zg-DJW"/>
+                        <outlet property="choiceLabel" destination="PDs-hq-mz4" id="wVu-kq-2je"/>
                         <outlet property="saveButton" destination="YU2-IE-5dN" id="4SJ-ww-FTp"/>
                         <outlet property="unitsSegmentControl" destination="3Ma-R8-vOD" id="c7g-gJ-s8y"/>
                     </connections>

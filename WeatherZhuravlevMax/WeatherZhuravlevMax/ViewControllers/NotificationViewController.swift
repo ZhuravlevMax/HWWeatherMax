@@ -16,6 +16,8 @@ class NotificationViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var choiceLabel: UILabel!
+    
     @IBOutlet weak var rainCheckButton: UIButton!
     @IBOutlet weak var snowCheckButton: UIButton!
     @IBOutlet weak var thunderstormCheckButton: UIButton!
@@ -28,6 +30,14 @@ class NotificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cancelButton.setTitle(NSLocalizedString("NotificationViewController.cancelButton.title", comment: ""), for: .normal)
+        saveButton.setTitle(NSLocalizedString("NotificationViewController.saveButton.title", comment: ""), for: .normal)
+        
+        choiceLabel.text = NSLocalizedString("NotificationViewController.choiceLabel.text", comment: "")
+        rainLabel.text = NSLocalizedString("NotificationViewController.rainLabel.text", comment: "")
+        snowLabel.text = NSLocalizedString("NotificationViewController.snowLabel.text", comment: "")
+        thunderstormLabel.text = NSLocalizedString("NotificationViewController.thunderstormLabel.text", comment: "")
         
         dBManager = DBManager()
         if let rainChecked = dBManager.obtainBadWeather().last?.rainState {
