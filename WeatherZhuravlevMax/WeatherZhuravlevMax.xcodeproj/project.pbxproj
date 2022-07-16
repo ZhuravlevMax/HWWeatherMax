@@ -15,6 +15,10 @@
 		941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */; };
 		9427CE1B288197E70031E0BC /* NotificationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */; };
 		9427CE1D288197FE0031E0BC /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427CE1C288197FD0031E0BC /* NotificationViewController.swift */; };
+		9427CE1F2882CDA30031E0BC /* TimeFormatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9427CE1E2882CDA30031E0BC /* TimeFormatStoryboard.storyboard */; };
+		9427CE212882CDC60031E0BC /* TimeFormatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427CE202882CDC60031E0BC /* TimeFormatViewController.swift */; };
+		9427CE232882DEC80031E0BC /* UnitsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9427CE222882DEC80031E0BC /* UnitsStoryboard.storyboard */; };
+		9427CE252882DEEC0031E0BC /* UnitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427CE242882DEEC0031E0BC /* UnitsViewController.swift */; };
 		9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23C285E5E4400ADD251 /* AppDelegate.swift */; };
 		9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23E285E5E4400ADD251 /* SceneDelegate.swift */; };
 		9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C240285E5E4400ADD251 /* WeatherViewController.swift */; };
@@ -60,6 +64,10 @@
 		941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerWindowUIView.swift; sourceTree = "<group>"; };
 		9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationStoryboard.storyboard; sourceTree = "<group>"; };
 		9427CE1C288197FD0031E0BC /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		9427CE1E2882CDA30031E0BC /* TimeFormatStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeFormatStoryboard.storyboard; sourceTree = "<group>"; };
+		9427CE202882CDC60031E0BC /* TimeFormatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatViewController.swift; sourceTree = "<group>"; };
+		9427CE222882DEC80031E0BC /* UnitsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnitsStoryboard.storyboard; sourceTree = "<group>"; };
+		9427CE242882DEEC0031E0BC /* UnitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsViewController.swift; sourceTree = "<group>"; };
 		9467C239285E5E4400ADD251 /* WeatherZhuravlevMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherZhuravlevMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9467C23C285E5E4400ADD251 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9467C23E285E5E4400ADD251 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -271,6 +279,8 @@
 				94F18EFA286C6A480092D1C0 /* RealmDataViewController.swift */,
 				94C69AB328818F6C00FE3EAD /* SettingsViewController.swift */,
 				9427CE1C288197FD0031E0BC /* NotificationViewController.swift */,
+				9427CE242882DEEC0031E0BC /* UnitsViewController.swift */,
+				9427CE202882CDC60031E0BC /* TimeFormatViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -283,6 +293,8 @@
 				94F18EFC286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard */,
 				94C69AB128818F4100FE3EAD /* SettingsStoryboard.storyboard */,
 				9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */,
+				9427CE222882DEC80031E0BC /* UnitsStoryboard.storyboard */,
+				9427CE1E2882CDA30031E0BC /* TimeFormatStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -373,6 +385,8 @@
 				94C69AB0287DE0D300FE3EAD /* InfoPlist.strings in Resources */,
 				9467C246285E5E4A00ADD251 /* Assets.xcassets in Resources */,
 				94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */,
+				9427CE1F2882CDA30031E0BC /* TimeFormatStoryboard.storyboard in Resources */,
+				9427CE232882DEC80031E0BC /* UnitsStoryboard.storyboard in Resources */,
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
 				94F18EFD286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard in Resources */,
 				94C69AB228818F4100FE3EAD /* SettingsStoryboard.storyboard in Resources */,
@@ -447,12 +461,14 @@
 				94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */,
 				94FC8D1F2866FC99000CDE91 /* AlamofireProvider.swift in Sources */,
 				9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */,
+				9427CE252882DEEC0031E0BC /* UnitsViewController.swift in Sources */,
 				94F18F0A286DA9540092D1C0 /* DBManager.swift in Sources */,
 				94FC8D1D2866FB5E000CDE91 /* Constants.swift in Sources */,
 				94C69AB428818F6C00FE3EAD /* SettingsViewController.swift in Sources */,
 				94FC8D162866F99A000CDE91 /* Geocoding.swift in Sources */,
 				94076D6828774986001A632A /* Image+Extension.swift in Sources */,
 				94BF6A432871AD6E006BD3C3 /* ViewController+Extension.swift in Sources */,
+				9427CE212882CDC60031E0BC /* TimeFormatViewController.swift in Sources */,
 				949F6A202878033900AF472B /* ForTableVIewTableViewCell.swift in Sources */,
 				94FC8D432868BA31000CDE91 /* DailyTableViewCell.swift in Sources */,
 				94FC8D1A2866F99E000CDE91 /* WeatherData.swift in Sources */,

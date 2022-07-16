@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Time Format View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="TimeFormatStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="TimeFormatViewController" customModule="WeatherZhuravlevMax" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="tbu-hY-Vr4">
+                                <rect key="frame" x="20.5" y="54" width="373" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rj9-HC-R1i">
+                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="31"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4Ve-uF-kDC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWm-qo-Jan">
+                                        <rect key="frame" x="317.5" y="0.0" width="55.5" height="31"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="R6T-Og-Hhb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xoi-T4-keL">
+                                <rect key="frame" x="62" y="139" width="290" height="32"/>
+                                <segments>
+                                    <segment title="12 часовой"/>
+                                    <segment title="24 часовой"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите часовой формат" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEJ-dT-8ax">
+                                <rect key="frame" x="41.5" y="95" width="331" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.26274511220000002" green="0.59215688710000003" blue="0.89803922179999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Xoi-T4-keL" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="11V-RY-Bbc"/>
+                            <constraint firstItem="HEJ-dT-8ax" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="2gP-gB-bNk"/>
+                            <constraint firstItem="HEJ-dT-8ax" firstAttribute="top" secondItem="tbu-hY-Vr4" secondAttribute="bottom" constant="10" id="L6O-QW-vUM"/>
+                            <constraint firstItem="Xoi-T4-keL" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.7" id="RYf-FT-waB"/>
+                            <constraint firstItem="tbu-hY-Vr4" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="Xmb-5h-R5W"/>
+                            <constraint firstItem="tbu-hY-Vr4" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="a1i-l8-vdT"/>
+                            <constraint firstItem="HEJ-dT-8ax" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="fu1-hi-NOe"/>
+                            <constraint firstItem="tbu-hY-Vr4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="oKK-hN-pwy"/>
+                            <constraint firstItem="Xoi-T4-keL" firstAttribute="top" secondItem="HEJ-dT-8ax" secondAttribute="bottom" constant="20" id="uMn-Gn-3lO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Rj9-HC-R1i" id="WLl-9d-1xI"/>
+                        <outlet property="saveButton" destination="iWm-qo-Jan" id="PKZ-cP-vBl"/>
+                        <outlet property="timeSegmentControl" destination="Xoi-T4-keL" id="Bgx-Zk-a7f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64" y="74"/>
+        </scene>
+    </scenes>
+</document>

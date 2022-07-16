@@ -12,7 +12,7 @@
 "SceneDelegate.tabBarController.SettingsVC.tabBarItem.title" = "Настройки";
 
 //MARK: - tempLabel
-"WeatherViewController.tempLabe.text" = "%d°C";
+"WeatherViewController.tempLabe.text" = "%d°";
 
 //MARK: - MapVC.windSpeedForMarker
 "MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Скорость ветра %.2f м/с";

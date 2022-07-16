@@ -24,42 +24,68 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vw-43-6XP">
-                                        <rect key="frame" x="41.5" y="70" width="331" height="100"/>
-                                        <color key="backgroundColor" red="0.63137257099999999" green="0.79607844350000001" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="CC4-vN-CBq"/>
-                                        </constraints>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Уведомления о погоде"/>
-                                        <connections>
-                                            <action selector="notificationButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cqZ-Sm-VYz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnz-r2-Wn5">
-                                        <rect key="frame" x="41.5" y="190" width="331" height="100"/>
-                                        <color key="backgroundColor" red="0.63137257099999999" green="0.79607844350000001" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="xOO-Fa-s2m"/>
-                                        </constraints>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="История запросов"/>
-                                        <connections>
-                                            <action selector="historyButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tiP-Td-ett"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="YCC-dH-ZoK">
+                                        <rect key="frame" x="41.5" y="70" width="331" height="436"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vw-43-6XP">
+                                                <rect key="frame" x="0.0" y="0.0" width="331" height="100"/>
+                                                <color key="backgroundColor" red="0.63137257099999999" green="0.79607844350000001" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="CC4-vN-CBq"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Уведомления о погоде"/>
+                                                <connections>
+                                                    <action selector="notificationButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cqZ-Sm-VYz"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnz-r2-Wn5">
+                                                <rect key="frame" x="0.0" y="112" width="331" height="100"/>
+                                                <color key="backgroundColor" red="0.63137257099999999" green="0.79607844350000001" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="xOO-Fa-s2m"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="История запросов"/>
+                                                <connections>
+                                                    <action selector="historyButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tiP-Td-ett"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-d2-aNi">
+                                                <rect key="frame" x="0.0" y="224" width="331" height="100"/>
+                                                <color key="backgroundColor" red="0.63137257099999999" green="0.79607844350000001" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="DBN-Cg-gfq"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Система единиц"/>
+                                                <connections>
+                                                    <action selector="unitsButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TUi-Ah-1aA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGm-at-gWE">
+                                                <rect key="frame" x="0.0" y="336" width="331" height="100"/>
+                                                <color key="backgroundColor" red="0.63137257099999999" green="0.79607844350000001" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="PJ3-lI-Z5j"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Часовой формат"/>
+                                                <connections>
+                                                    <action selector="timeFormatButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UOc-YF-bnS"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.26274511220000002" green="0.59215688710000003" blue="0.89803922179999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="4vw-43-6XP" firstAttribute="top" secondItem="hOG-rj-Rd2" secondAttribute="bottom" constant="20" id="3PU-bB-EFf"/>
-                                    <constraint firstItem="4vw-43-6XP" firstAttribute="centerX" secondItem="rxT-Ul-E4J" secondAttribute="centerX" id="Bbp-Jy-0wy"/>
-                                    <constraint firstItem="Cnz-r2-Wn5" firstAttribute="centerX" secondItem="rxT-Ul-E4J" secondAttribute="centerX" id="DEQ-cm-Nxc"/>
+                                    <constraint firstItem="YCC-dH-ZoK" firstAttribute="centerX" secondItem="rxT-Ul-E4J" secondAttribute="centerX" id="5DZ-Rg-d8a"/>
                                     <constraint firstItem="hOG-rj-Rd2" firstAttribute="top" secondItem="rxT-Ul-E4J" secondAttribute="top" constant="20" id="Ip5-fn-UkT"/>
                                     <constraint firstItem="hOG-rj-Rd2" firstAttribute="width" secondItem="rxT-Ul-E4J" secondAttribute="width" multiplier="0.5" id="PvJ-BE-GXa"/>
-                                    <constraint firstItem="Cnz-r2-Wn5" firstAttribute="top" secondItem="4vw-43-6XP" secondAttribute="bottom" constant="20" id="UBO-GY-1nR"/>
                                     <constraint firstItem="hOG-rj-Rd2" firstAttribute="centerX" secondItem="rxT-Ul-E4J" secondAttribute="centerX" id="Yue-AK-14W"/>
-                                    <constraint firstItem="4vw-43-6XP" firstAttribute="width" secondItem="rxT-Ul-E4J" secondAttribute="width" multiplier="0.8" id="fjF-MT-9kh"/>
-                                    <constraint firstItem="Cnz-r2-Wn5" firstAttribute="width" secondItem="rxT-Ul-E4J" secondAttribute="width" multiplier="0.8" id="g5l-aC-0dR"/>
+                                    <constraint firstItem="YCC-dH-ZoK" firstAttribute="width" secondItem="rxT-Ul-E4J" secondAttribute="width" multiplier="0.8" id="kXy-hh-fyQ"/>
+                                    <constraint firstItem="YCC-dH-ZoK" firstAttribute="top" secondItem="hOG-rj-Rd2" secondAttribute="bottom" constant="20" id="mff-yU-NiV"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -76,6 +102,8 @@
                         <outlet property="historyButton" destination="Cnz-r2-Wn5" id="iWO-cJ-gZm"/>
                         <outlet property="notificationButton" destination="4vw-43-6XP" id="E55-63-nW4"/>
                         <outlet property="settingsLabel" destination="hOG-rj-Rd2" id="8af-Yg-k7B"/>
+                        <outlet property="timeFormatButton" destination="XGm-at-gWE" id="Pif-xm-G92"/>
+                        <outlet property="unitsButton" destination="IcK-d2-aNi" id="fIY-2O-jdm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
