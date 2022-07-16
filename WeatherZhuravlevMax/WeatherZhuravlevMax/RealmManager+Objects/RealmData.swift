@@ -25,3 +25,9 @@ class RealmWeatherData: Object {
     
 }
 
+class RealmBadWeatherStates: Object {
+    @objc dynamic var rainState: Bool = false
+    @objc dynamic var snowState: Bool = false
+    @objc dynamic var thunderstormState: Bool = false
+}
+

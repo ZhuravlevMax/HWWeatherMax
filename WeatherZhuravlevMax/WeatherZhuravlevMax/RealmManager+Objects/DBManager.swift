@@ -14,6 +14,8 @@ protocol DBManagerProtocol {
     func saveWeather (weatherData: RealmWeatherData)
     func obtainWeather() -> [RealmWeatherData]
     func weatherData() -> Results<RealmWeatherData>
+    func saveWeatherStates(states: RealmBadWeatherStates)
+    func obtainBadWeather() -> [RealmBadWeatherStates]
 }
 
 class DBManager: DBManagerProtocol {
@@ -46,5 +48,16 @@ class DBManager: DBManagerProtocol {
     
     func weatherData() -> Results<RealmWeatherData> {
         return realm.objects(RealmWeatherData.self)
+    }
+    
+    func saveWeatherStates(states: RealmBadWeatherStates) {
+        try! realm.write{
+            realm.add(states)
+        }
+    }
+    
+    func obtainBadWeather() -> [RealmBadWeatherStates] {
+        let models = realm.objects(RealmBadWeatherStates.self)
+        return Array(models)
     }
 }

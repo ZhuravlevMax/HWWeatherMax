@@ -13,6 +13,8 @@
 		94076D6828774986001A632A /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6728774985001A632A /* Image+Extension.swift */; };
 		941F8C0C287AB8B90067D9FA /* MarkerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */; };
 		941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */; };
+		9427CE1B288197E70031E0BC /* NotificationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */; };
+		9427CE1D288197FE0031E0BC /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427CE1C288197FD0031E0BC /* NotificationViewController.swift */; };
 		9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23C285E5E4400ADD251 /* AppDelegate.swift */; };
 		9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C23E285E5E4400ADD251 /* SceneDelegate.swift */; };
 		9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467C240285E5E4400ADD251 /* WeatherViewController.swift */; };
@@ -24,6 +26,8 @@
 		94BF6A432871AD6E006BD3C3 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BF6A422871AD6E006BD3C3 /* ViewController+Extension.swift */; };
 		94C69AA6287DDE2700FE3EAD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94C69AA8287DDE2700FE3EAD /* Localizable.strings */; };
 		94C69AB0287DE0D300FE3EAD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94C69AAE287DDF3C00FE3EAD /* InfoPlist.strings */; };
+		94C69AB228818F4100FE3EAD /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C69AB128818F4100FE3EAD /* SettingsStoryboard.storyboard */; };
+		94C69AB428818F6C00FE3EAD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C69AB328818F6C00FE3EAD /* SettingsViewController.swift */; };
 		94F18EF0286C580B0092D1C0 /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F18EEF286C580B0092D1C0 /* RealmData.swift */; };
 		94F18EF3286C59580092D1C0 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 94F18EF2286C59580092D1C0 /* Realm */; };
 		94F18EF5286C59580092D1C0 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 94F18EF4286C59580092D1C0 /* RealmSwift */; };
@@ -54,6 +58,8 @@
 		94076D6728774985001A632A /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkerWindow.xib; sourceTree = "<group>"; };
 		941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerWindowUIView.swift; sourceTree = "<group>"; };
+		9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationStoryboard.storyboard; sourceTree = "<group>"; };
+		9427CE1C288197FD0031E0BC /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		9467C239285E5E4400ADD251 /* WeatherZhuravlevMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherZhuravlevMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9467C23C285E5E4400ADD251 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9467C23E285E5E4400ADD251 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +77,8 @@
 		94C69AAB287DDE6700FE3EAD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		94C69AAD287DDF3C00FE3EAD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		94C69AAF287DDF3E00FE3EAD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		94C69AB128818F4100FE3EAD /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
+		94C69AB328818F6C00FE3EAD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		94F18EEF286C580B0092D1C0 /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
 		94F18EFA286C6A480092D1C0 /* RealmDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataViewController.swift; sourceTree = "<group>"; };
 		94F18EFC286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RealmDataStoryboard.storyboard; sourceTree = "<group>"; };
@@ -261,6 +269,8 @@
 				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
 				94FC8D252867349F000CDE91 /* MapViewController.swift */,
 				94F18EFA286C6A480092D1C0 /* RealmDataViewController.swift */,
+				94C69AB328818F6C00FE3EAD /* SettingsViewController.swift */,
+				9427CE1C288197FD0031E0BC /* NotificationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -271,6 +281,8 @@
 				9467C242285E5E4400ADD251 /* Main.storyboard */,
 				94FC8D2328673482000CDE91 /* MapStoryboard.storyboard */,
 				94F18EFC286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard */,
+				94C69AB128818F4100FE3EAD /* SettingsStoryboard.storyboard */,
+				9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -354,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9427CE1B288197E70031E0BC /* NotificationStoryboard.storyboard in Resources */,
 				9467C249285E5E4A00ADD251 /* LaunchScreen.storyboard in Resources */,
 				94C69AA6287DDE2700FE3EAD /* Localizable.strings in Resources */,
 				94F18F03286CA80A0092D1C0 /* RealmDataTableViewCell.xib in Resources */,
@@ -362,6 +375,7 @@
 				94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */,
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
 				94F18EFD286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard in Resources */,
+				94C69AB228818F4100FE3EAD /* SettingsStoryboard.storyboard in Resources */,
 				94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */,
 				941F8C0C287AB8B90067D9FA /* MarkerWindow.xib in Resources */,
 				949F6A212878033900AF472B /* ForTableVIewTableViewCell.xib in Resources */,
@@ -421,6 +435,7 @@
 			files = (
 				94FC8D142866F998000CDE91 /* DailyWeatherData.swift in Sources */,
 				94F18F06286CDE5E0092D1C0 /* Int+Extension.swift in Sources */,
+				9427CE1D288197FE0031E0BC /* NotificationViewController.swift in Sources */,
 				9467C241285E5E4400ADD251 /* WeatherViewController.swift in Sources */,
 				94FC8D3F2868B551000CDE91 /* HourlyCollectionViewCell.swift in Sources */,
 				941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */,
@@ -434,6 +449,7 @@
 				9467C23F285E5E4400ADD251 /* SceneDelegate.swift in Sources */,
 				94F18F0A286DA9540092D1C0 /* DBManager.swift in Sources */,
 				94FC8D1D2866FB5E000CDE91 /* Constants.swift in Sources */,
+				94C69AB428818F6C00FE3EAD /* SettingsViewController.swift in Sources */,
 				94FC8D162866F99A000CDE91 /* Geocoding.swift in Sources */,
 				94076D6828774986001A632A /* Image+Extension.swift in Sources */,
 				94BF6A432871AD6E006BD3C3 /* ViewController+Extension.swift in Sources */,

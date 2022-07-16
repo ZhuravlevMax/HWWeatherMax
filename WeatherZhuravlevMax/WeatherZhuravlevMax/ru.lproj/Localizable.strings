@@ -9,6 +9,7 @@
 "SceneDelegate.tabBarController.currentWeatherVC.tabBarItem.title" = "Погода";
 "SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Карта";
 "SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "История запросов";
+"SceneDelegate.tabBarController.SettingsVC.tabBarItem.title" = "Настройки";
 
 //MARK: - tempLabel
 "WeatherViewController.tempLabe.text" = "%d°C";

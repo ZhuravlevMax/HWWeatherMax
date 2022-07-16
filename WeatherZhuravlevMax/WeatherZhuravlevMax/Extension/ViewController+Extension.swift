@@ -15,7 +15,7 @@ extension UIViewController {
         
         let weather = hourlyWeatherData.first {
             guard let id = $0.weather?.first?.id else {return false}
-            return (200...232).contains(id) || (500...531).contains(id) || (200...232).contains(id)
+            return (200...232).contains(id) || (500...531).contains(id) || (600...622).contains(id)
         }
         guard let weather = weather else {return}
 

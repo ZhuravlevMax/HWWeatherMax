@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="SettingsStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SettingsViewController" customModule="WeatherZhuravlevMax" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxT-Ul-E4J">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOG-rj-Rd2">
+                                        <rect key="frame" x="103.5" y="20" width="207" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vw-43-6XP">
+                                        <rect key="frame" x="41.5" y="70" width="331" height="100"/>
+                                        <color key="backgroundColor" red="0.63137257099999999" green="0.79607844350000001" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="CC4-vN-CBq"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Уведомления о погоде"/>
+                                        <connections>
+                                            <action selector="notificationButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cqZ-Sm-VYz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnz-r2-Wn5">
+                                        <rect key="frame" x="41.5" y="190" width="331" height="100"/>
+                                        <color key="backgroundColor" red="0.63137257099999999" green="0.79607844350000001" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="xOO-Fa-s2m"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="История запросов"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.26274511220000002" green="0.59215688710000003" blue="0.89803922179999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="4vw-43-6XP" firstAttribute="top" secondItem="hOG-rj-Rd2" secondAttribute="bottom" constant="20" id="3PU-bB-EFf"/>
+                                    <constraint firstItem="4vw-43-6XP" firstAttribute="centerX" secondItem="rxT-Ul-E4J" secondAttribute="centerX" id="Bbp-Jy-0wy"/>
+                                    <constraint firstItem="Cnz-r2-Wn5" firstAttribute="centerX" secondItem="rxT-Ul-E4J" secondAttribute="centerX" id="DEQ-cm-Nxc"/>
+                                    <constraint firstItem="hOG-rj-Rd2" firstAttribute="top" secondItem="rxT-Ul-E4J" secondAttribute="top" constant="20" id="Ip5-fn-UkT"/>
+                                    <constraint firstItem="hOG-rj-Rd2" firstAttribute="width" secondItem="rxT-Ul-E4J" secondAttribute="width" multiplier="0.5" id="PvJ-BE-GXa"/>
+                                    <constraint firstItem="Cnz-r2-Wn5" firstAttribute="top" secondItem="4vw-43-6XP" secondAttribute="bottom" constant="20" id="UBO-GY-1nR"/>
+                                    <constraint firstItem="hOG-rj-Rd2" firstAttribute="centerX" secondItem="rxT-Ul-E4J" secondAttribute="centerX" id="Yue-AK-14W"/>
+                                    <constraint firstItem="4vw-43-6XP" firstAttribute="width" secondItem="rxT-Ul-E4J" secondAttribute="width" multiplier="0.8" id="fjF-MT-9kh"/>
+                                    <constraint firstItem="Cnz-r2-Wn5" firstAttribute="width" secondItem="rxT-Ul-E4J" secondAttribute="width" multiplier="0.8" id="g5l-aC-0dR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.26274511220000002" green="0.59215688710000003" blue="0.89803922179999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="rxT-Ul-E4J" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="R56-od-p4f"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="rxT-Ul-E4J" secondAttribute="bottom" id="VX0-iq-afL"/>
+                            <constraint firstItem="rxT-Ul-E4J" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="X8S-6e-1hB"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rxT-Ul-E4J" secondAttribute="trailing" id="j6W-ke-OXj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="historyButton" destination="Cnz-r2-Wn5" id="iWO-cJ-gZm"/>
+                        <outlet property="notificationButton" destination="4vw-43-6XP" id="E55-63-nW4"/>
+                        <outlet property="settingsLabel" destination="hOG-rj-Rd2" id="8af-Yg-k7B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="74"/>
+        </scene>
+    </scenes>
+</document>
