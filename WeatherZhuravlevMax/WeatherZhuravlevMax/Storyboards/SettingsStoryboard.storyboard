@@ -44,6 +44,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="История запросов"/>
+                                        <connections>
+                                            <action selector="historyButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tiP-Td-ett"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.26274511220000002" green="0.59215688710000003" blue="0.89803922179999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

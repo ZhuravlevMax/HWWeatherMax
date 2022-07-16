@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 import UserNotifications
+import RealmSwift
 
 extension UIViewController {
     
-    func weatherIdCheck(hourlyWeatherData: [HourlyWeatherData]) {
+    func weatherIdCheck(hourlyWeatherData: [HourlyWeatherData], badWeather: [RealmBadWeatherStates]) {
+        
+        
         
         let weather = hourlyWeatherData.first {
             guard let id = $0.weather?.first?.id else {return false}

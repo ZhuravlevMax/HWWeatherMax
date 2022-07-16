@@ -257,7 +257,7 @@ class WeatherViewController: UIViewController {
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
                     guard let hourlyWeatherDataArray = value.hourly else {return}
-                    self.weatherIdCheck(hourlyWeatherData: hourlyWeatherDataArray)
+                    self.weatherIdCheck(hourlyWeatherData: hourlyWeatherDataArray, badWeather: self.dBManager.obtainBadWeather())
                     
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly

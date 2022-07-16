@@ -26,5 +26,12 @@ class SettingsViewController: UIViewController {
             
     }
     
-
+    @IBAction func historyButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "RealmDataStoryboard", bundle: nil)
+        
+        if let viewController = storyboard.instantiateViewController(withIdentifier: "RealmDataStoryboard") as? RealmDataViewController {
+            present(viewController, animated: true)
+        }
+    }
+    
 }
