@@ -25,6 +25,7 @@ class NotificationViewController: UIViewController {
     var isRaining: Bool = false
     var isSnowing: Bool = false
     var isThunderstorming: Bool = false
+    var resultStateData: Results<RealmBadWeatherStates>!
     
     private var dBManager: DBManagerProtocol!
     
@@ -40,20 +41,21 @@ class NotificationViewController: UIViewController {
         thunderstormLabel.text = NSLocalizedString("NotificationViewController.thunderstormLabel.text", comment: "")
         
         dBManager = DBManager()
-        if let rainChecked = dBManager.obtainBadWeather().last?.rainState {
-        isRaining = rainChecked
+        resultStateData = dBManager.stateData()
+        
+        if let rainChecked = resultStateData.last?.rainState {
+            isRaining = rainChecked
         }
-        if let snowChecked = dBManager.obtainBadWeather().last?.snowState {
-        isSnowing = snowChecked
+        
+        if let snowChecked = resultStateData.last?.snowState {
+            isSnowing = snowChecked
         }
-        if let thunderstormchecked = dBManager.obtainBadWeather().last?.thunderstormState {
-        isThunderstorming = thunderstormchecked
+        if let thunderstormchecked = resultStateData.last?.thunderstormState {
+            isThunderstorming = thunderstormchecked
         }
         rainCheckButton.setImage(UIImage(systemName: isRaining ? "checkmark.square" : "square"), for: .normal)
         snowCheckButton.setImage(UIImage(systemName: isSnowing ? "checkmark.square" : "square"), for: .normal)
         thunderstormCheckButton.setImage(UIImage(systemName: isThunderstorming ? "checkmark.square" : "square"), for: .normal)
-   
-        
         
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {

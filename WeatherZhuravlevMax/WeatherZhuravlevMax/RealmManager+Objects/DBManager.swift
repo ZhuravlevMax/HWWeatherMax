@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftUI
 
 protocol DBManagerProtocol {
     func saveCoordinate (coordinateData: RealmCoordinateData)
@@ -16,6 +17,7 @@ protocol DBManagerProtocol {
     func weatherData() -> Results<RealmWeatherData>
     func saveWeatherStates(states: RealmBadWeatherStates)
     func obtainBadWeather() -> [RealmBadWeatherStates]
+    func stateData() -> Results<RealmBadWeatherStates>
 }
 
 class DBManager: DBManagerProtocol {
@@ -59,5 +61,9 @@ class DBManager: DBManagerProtocol {
     func obtainBadWeather() -> [RealmBadWeatherStates] {
         let models = realm.objects(RealmBadWeatherStates.self)
         return Array(models)
+    }
+    
+    func stateData() -> Results<RealmBadWeatherStates> {
+        return realm.objects(RealmBadWeatherStates.self)
     }
 }
