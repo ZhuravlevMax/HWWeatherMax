@@ -49,9 +49,10 @@ class NotificationViewController: UIViewController {
         if let thunderstormchecked = dBManager.obtainBadWeather().last?.thunderstormState {
         isThunderstorming = thunderstormchecked
         }
-        isRaining ? (rainCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (rainCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
-        isSnowing ? (snowCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (snowCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
-        isThunderstorming ? (thunderstormCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (thunderstormCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
+        rainCheckButton.setImage(UIImage(systemName: isRaining ? "checkmark.square" : "square"), for: .normal)
+        snowCheckButton.setImage(UIImage(systemName: isSnowing ? "checkmark.square" : "square"), for: .normal)
+        thunderstormCheckButton.setImage(UIImage(systemName: isThunderstorming ? "checkmark.square" : "square"), for: .normal)
+   
         
         
     }
