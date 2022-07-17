@@ -13,16 +13,33 @@ import RealmSwift
 extension UIViewController {
     
     func weatherIdCheck(hourlyWeatherData: [HourlyWeatherData], badWeather: [RealmBadWeatherStates]) {
+        guard let rainState = badWeather.last?.rainState,
+              let snowState = badWeather.last?.snowState,
+              let thunderstormState = badWeather.last?.thunderstormState else {return}
         
-        
-        
+        //выбираем элемент подходящий по условиям заданным в настройках
         let weather = hourlyWeatherData.first {
             guard let id = $0.weather?.first?.id else {return false}
-            return (200...232).contains(id) || (500...531).contains(id) || (600...622).contains(id)
+            if rainState && snowState && thunderstormState {
+                return (500...531).contains(id) || (600...622).contains(id) || (200...232).contains(id)
+            } else if rainState && snowState {
+                return (500...531).contains(id) || (600...622).contains(id)
+            } else if rainState && thunderstormState {
+                return (500...531).contains(id) || (200...232).contains(id)
+            } else if snowState && thunderstormState {
+                return (600...622).contains(id) || (200...232).contains(id)
+            } else if rainState {
+                return (500...531).contains(id)
+            } else if snowState {
+                return (600...622).contains(id)
+            } else if thunderstormState {
+                return (200...232).contains(id)
+            }
+            return false
         }
-        guard let weather = weather else {return}
-
-        setNotification(weather: weather)
+        guard let weatherChecked = weather else {return}
+        print(weatherChecked.dt?.decoderDt(format: "HH:mm"))
+        setNotification(weather: weatherChecked)
     }
     
     func setNotification(weather: HourlyWeatherData) {

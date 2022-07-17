@@ -24,7 +24,7 @@ class WeatherViewController: UIViewController, UITabBarControllerDelegate {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
-    @IBOutlet weak var locationLabel: UILabel!
+   // @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
@@ -70,7 +70,7 @@ class WeatherViewController: UIViewController, UITabBarControllerDelegate {
         mainView.isHidden = true
         
         dateLabel.text = ""
-        locationLabel.text = ""
+//        locationLabel.text = ""
         cityNameLabel.text = defaultCity
         tempLabel.text = ""
         descriptionWeatherLabel.text = ""
@@ -277,7 +277,7 @@ class WeatherViewController: UIViewController, UITabBarControllerDelegate {
                     self.loadingView.isHidden = true
                     
                     
-                    self.locationLabel.text = value.timeZone
+                   // self.locationLabel.text = value.timeZone
                     
                     guard let temp = value.current?.temp else {return}
                     

@@ -57,7 +57,7 @@ class AlamofireProvider: RestAPIProviderProtocol {
             }
         }
     }
-    
+    // https://api.openweathermap.org/data/2.5/onecall/
     func getWeatherForCityCoordinates(lat: Double, lon: Double, completion: @escaping (Result<WeatherData, Error>) -> Void) {
         
         

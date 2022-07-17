@@ -133,7 +133,10 @@ extension MapViewController: GMSMapViewDelegate {
         let markerView = Bundle.main.loadNibNamed(MarkerWindowUIView.key, owner: self, options: nil)![0] as? MarkerWindowUIView
         guard let markerViewChecked = markerView else {return UIView()}
         markerViewChecked.markerMainView.layer.cornerRadius = 10
-        let markerWindSpeedLabelText  = NSLocalizedString("MapViewController.markerViewChecked.markerWindSpeedLabel.text", comment: "")
+        let markerWindSpeedLabelText: String
+        
+        UserDefaults.standard.bool(forKey: UserDefaultsKeys.metricUnitOn.rawValue) ? (markerWindSpeedLabelText = NSLocalizedString("MapViewController.markerViewChecked.markerWindSpeedLabel.textMetric", comment: "")) : (markerWindSpeedLabelText = NSLocalizedString("MapViewController.markerViewChecked.markerWindSpeedLabel.textImperial", comment: ""))
+        
         markerViewChecked.markerWindSpeedLabel.text =
         String.localizedStringWithFormat(markerWindSpeedLabelText, windSpeedForMarker)
         //"Ветер: \(windSpeedForMarker) м/с"

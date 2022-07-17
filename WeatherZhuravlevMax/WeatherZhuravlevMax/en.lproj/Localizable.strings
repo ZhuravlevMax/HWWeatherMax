@@ -16,6 +16,8 @@
 
 //MARK: - MapVC.windSpeedForMarker
 "MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Wind Speed %.2f m/s";
+"MapViewController.markerViewChecked.markerWindSpeedLabel.textImperial" = "Wind Speed %.2f miles/h";
+"MapViewController.markerViewChecked.markerWindSpeedLabel.textMetric" = "Wind Speed %.2f m/s";
 
 //MARK: - City choise alert
 "WeatherViewController.findCityAlertController.title" = "City Choise";

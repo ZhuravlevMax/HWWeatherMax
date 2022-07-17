@@ -15,7 +15,8 @@
 "WeatherViewController.tempLabe.text" = "%d°";
 
 //MARK: - MapVC.windSpeedForMarker
-"MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Скорость ветра %.2f м/с";
+"MapViewController.markerViewChecked.markerWindSpeedLabel.textMetric" = "Скорость ветра %.2f м/с";
+"MapViewController.markerViewChecked.markerWindSpeedLabel.textImperial" = "Wind Speed %.2f миль/ч";
 
 //MARK: - City choise alert
 "WeatherViewController.findCityAlertController.title" = "Выбор города";
@@ -26,7 +27,7 @@
 
 //MARK: - Error city name alert
 "WeatherViewController.errorAlertController.title" = "Упс!";
-"WeatherViewController.errorAlertController.message" = "Проверьте название города!";
+"WeatherViewController.wrongCityAlertController.message" = "Проверьте название города!";
 
 
 //MARK: - Error data alert
