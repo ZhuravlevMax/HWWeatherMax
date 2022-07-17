@@ -22,9 +22,9 @@ class NotificationViewController: UIViewController {
     @IBOutlet weak var snowCheckButton: UIButton!
     @IBOutlet weak var thunderstormCheckButton: UIButton!
     
-    var rain: Bool = false
-    var snow: Bool = false
-    var thunderstorm: Bool = false
+    var isRaining: Bool = false
+    var isSnowing: Bool = false
+    var isThunderstorming: Bool = false
     
     private var dBManager: DBManagerProtocol!
     
@@ -41,17 +41,17 @@ class NotificationViewController: UIViewController {
         
         dBManager = DBManager()
         if let rainChecked = dBManager.obtainBadWeather().last?.rainState {
-        rain = rainChecked
+        isRaining = rainChecked
         }
         if let snowChecked = dBManager.obtainBadWeather().last?.snowState {
-        snow = snowChecked
+        isSnowing = snowChecked
         }
         if let thunderstormchecked = dBManager.obtainBadWeather().last?.thunderstormState {
-        thunderstorm = thunderstormchecked
+        isThunderstorming = thunderstormchecked
         }
-        rain ? (rainCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (rainCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
-        snow ? (snowCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (snowCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
-        thunderstorm ? (thunderstormCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (thunderstormCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
+        isRaining ? (rainCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (rainCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
+        isSnowing ? (snowCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (snowCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
+        isThunderstorming ? (thunderstormCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (thunderstormCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
         
         
     }
@@ -61,24 +61,25 @@ class NotificationViewController: UIViewController {
     
     
     @IBAction func rainCheckButtonPressed(_ sender: Any) {
-        rain ? (rain = false) : (rain = true)
-        rain ? (rainCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (rainCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
+        isRaining ? (isRaining = false) : (isRaining = true)
+        rainCheckButton.setImage(UIImage(systemName: isRaining ? "checkmark.square" : "square"), for: .normal)
+        
     }
     @IBAction func snowCheckButtonPressed(_ sender: Any) {
-        snow ? (snow = false) : (snow = true)
-        snow ? (snowCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (snowCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
+        isSnowing ? (isSnowing = false) : (isSnowing = true)
+        snowCheckButton.setImage(UIImage(systemName: isSnowing ? "checkmark.square" : "square"), for: .normal)
     }
     
     @IBAction func thunderstormCheckButtonPressed(_ sender: Any) {
-        thunderstorm ? (thunderstorm = false) : (thunderstorm = true)
-        thunderstorm ? (thunderstormCheckButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)) : (thunderstormCheckButton.setImage(UIImage(systemName: "square"), for: .normal))
+        isThunderstorming ? (isThunderstorming = false) : (isThunderstorming = true)
+        thunderstormCheckButton.setImage(UIImage(systemName: isThunderstorming ? "checkmark.square" : "square"), for: .normal)
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         let realmBadWeatherStates = RealmBadWeatherStates()
-        realmBadWeatherStates.rainState = rain
-        realmBadWeatherStates.snowState = snow
-        realmBadWeatherStates.thunderstormState = thunderstorm
+        realmBadWeatherStates.rainState = isRaining
+        realmBadWeatherStates.snowState = isSnowing
+        realmBadWeatherStates.thunderstormState = isThunderstorming
         
         dBManager.saveWeatherStates(states: realmBadWeatherStates)
         dismiss(animated: true)
