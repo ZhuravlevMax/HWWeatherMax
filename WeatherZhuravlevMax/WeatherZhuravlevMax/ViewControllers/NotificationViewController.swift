@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import UniformTypeIdentifiers
 
 class NotificationViewController: UIViewController {
     @IBOutlet weak var rainLabel: UILabel!
@@ -26,6 +27,7 @@ class NotificationViewController: UIViewController {
     var isSnowing: Bool = false
     var isThunderstorming: Bool = false
     var resultStateData: Results<RealmBadWeatherStates>!
+    var badWeather: BadWeather!
     
     private var dBManager: DBManagerProtocol!
     
@@ -42,17 +44,15 @@ class NotificationViewController: UIViewController {
         
         dBManager = DBManager()
         resultStateData = dBManager.stateData()
+        guard let badWeatherBit = resultStateData.last?.badWeatherBitCode else {return}
         
-        if let rainChecked = resultStateData.last?.rainState {
-            isRaining = rainChecked
-        }
-        
-        if let snowChecked = resultStateData.last?.snowState {
-            isSnowing = snowChecked
-        }
-        if let thunderstormchecked = resultStateData.last?.thunderstormState {
-            isThunderstorming = thunderstormchecked
-        }
+        badWeather = BadWeather(rawValue: badWeatherBit)
+ 
+ 
+        isRaining = badWeather.contains(.rain)
+        isSnowing = badWeather.contains(.snow)
+        isThunderstorming = badWeather.contains(.thunderstorm)
+
         rainCheckButton.setImage(UIImage(systemName: isRaining ? "checkmark.square" : "square"), for: .normal)
         snowCheckButton.setImage(UIImage(systemName: isSnowing ? "checkmark.square" : "square"), for: .normal)
         thunderstormCheckButton.setImage(UIImage(systemName: isThunderstorming ? "checkmark.square" : "square"), for: .normal)
@@ -64,25 +64,42 @@ class NotificationViewController: UIViewController {
     
     
     @IBAction func rainCheckButtonPressed(_ sender: Any) {
-        isRaining ? (isRaining = false) : (isRaining = true)
+        if isRaining {
+            badWeather.remove(.rain)
+            isRaining = false
+        } else {
+            badWeather.insert(.rain)
+            isRaining = true
+        }
         rainCheckButton.setImage(UIImage(systemName: isRaining ? "checkmark.square" : "square"), for: .normal)
         
     }
     @IBAction func snowCheckButtonPressed(_ sender: Any) {
-        isSnowing ? (isSnowing = false) : (isSnowing = true)
+        if isSnowing {
+            badWeather.remove(.snow)
+            isSnowing = false
+        } else {
+            badWeather.insert(.snow)
+            isSnowing = true
+        }
         snowCheckButton.setImage(UIImage(systemName: isSnowing ? "checkmark.square" : "square"), for: .normal)
     }
     
     @IBAction func thunderstormCheckButtonPressed(_ sender: Any) {
-        isThunderstorming ? (isThunderstorming = false) : (isThunderstorming = true)
+        if isThunderstorming {
+            badWeather.remove(.thunderstorm)
+            isThunderstorming = false
+        } else {
+            badWeather.insert(.thunderstorm)
+            isThunderstorming = true
+        }
         thunderstormCheckButton.setImage(UIImage(systemName: isThunderstorming ? "checkmark.square" : "square"), for: .normal)
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         let realmBadWeatherStates = RealmBadWeatherStates()
-        realmBadWeatherStates.rainState = isRaining
-        realmBadWeatherStates.snowState = isSnowing
-        realmBadWeatherStates.thunderstormState = isThunderstorming
+        realmBadWeatherStates.badWeatherBitCode = badWeather.rawValue
+        print(badWeather.rawValue)
         
         dBManager.saveWeatherStates(states: realmBadWeatherStates)
         dismiss(animated: true)
