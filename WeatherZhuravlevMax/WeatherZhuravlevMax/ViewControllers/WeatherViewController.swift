@@ -64,6 +64,8 @@ class WeatherViewController: UIViewController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.tabBarController?.delegate = self
         
         view.layoutSubviews()
         
@@ -103,18 +105,18 @@ class WeatherViewController: UIViewController, UITabBarControllerDelegate {
         
         mainTableView.register(UINib(nibName: "ForTableVIewTableViewCell", bundle: nil), forCellReuseIdentifier: ForTableVIewTableViewCell.key)
         
+       makeRefresher()
+        
+        
+    }
+    
+    func makeRefresher() {
         //MARK: - Работа с refresher to mainTableView
         let refresh = UIRefreshControl()
         mainTableView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(refresher(sender: )), for: .valueChanged)
-        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        self.tabBarController?.delegate = self
-    }
     
     @objc private func refresher(sender: UIRefreshControl) {
         
@@ -128,6 +130,18 @@ class WeatherViewController: UIViewController, UITabBarControllerDelegate {
         }
         
     }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+            let tabBarIndex = tabBarController.selectedIndex
+            if tabBarIndex == 0 {
+                if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.search.rawValue || UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == nil {
+                    guard let city = cityNameLabel.text else {return}
+                    getCoordByCityName(searchCity: city)
+                } else if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.location.rawValue {
+                    self.coreManager.startUpdatingLocation()
+                }
+            }
+       }
     
     //MARK: - Работа с кнопкой текущей позиции
     @IBAction func currentPositionButtonPressed(_ sender: Any) {

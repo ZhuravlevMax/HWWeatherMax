@@ -7,10 +7,12 @@
 
 import UIKit
 
-class TabbarViewController: UITabBarController {
+class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.delegate = self
         
         tabBar.backgroundColor = UIColor.white
         guard let currentWeatherVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WeatherStoryboard") as? WeatherViewController else {return}
