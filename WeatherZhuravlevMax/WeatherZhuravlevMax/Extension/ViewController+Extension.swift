@@ -91,3 +91,28 @@ extension UIViewController {
     }
     
 }
+
+/*
+ 
+ Побитовое сложение
+ Каждому элементу списка присваивается номер
+ -----
+ optionSet
+ 
+ */
+//struct BadWeather: OptionSet {
+//    let rawValue: Int
+//    
+//    static let snow = BadWeather(rawValue: 1 << 0)
+//    static let rain = BadWeather(rawValue: 1 << 1)
+//    static let thunder = BadWeather(rawValue: 1 << 2)
+//    static let tornado = BadWeather(rawValue: 1 << 3)
+//    static let dust = BadWeather(rawValue: 1 << 4)
+//    //вторая цифра это сдвиг
+//    //если все добавлены то будут 11111
+//    //если первый и последний 10001
+//}
+//
+//var badWeather = BadWeather(/* сюда значение и реалма*/)
+//badWeather.insert(.snow)
+//badWeather.insert(.rain)

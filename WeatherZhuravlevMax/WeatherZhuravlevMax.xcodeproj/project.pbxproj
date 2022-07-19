@@ -11,6 +11,7 @@
 		94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */; };
 		94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */; };
 		94076D6828774986001A632A /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6728774985001A632A /* Image+Extension.swift */; };
+		941F0C8328868A8A00787622 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F0C8228868A8A00787622 /* TabbarViewController.swift */; };
 		941F8C0C287AB8B90067D9FA /* MarkerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */; };
 		941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */; };
 		9427CE1B288197E70031E0BC /* NotificationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */; };
@@ -60,6 +61,7 @@
 		94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForCollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 		94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForCollectionViewTableViewCell.xib; sourceTree = "<group>"; };
 		94076D6728774985001A632A /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
+		941F0C8228868A8A00787622 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkerWindow.xib; sourceTree = "<group>"; };
 		941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerWindowUIView.swift; sourceTree = "<group>"; };
 		9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationStoryboard.storyboard; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		94FC8D472868FB92000CDE91 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				941F0C8228868A8A00787622 /* TabbarViewController.swift */,
 				9467C240285E5E4400ADD251 /* WeatherViewController.swift */,
 				94FC8D252867349F000CDE91 /* MapViewController.swift */,
 				94F18EFA286C6A480092D1C0 /* RealmDataViewController.swift */,
@@ -455,6 +458,7 @@
 				941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */,
 				9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */,
 				94FC8D262867349F000CDE91 /* MapViewController.swift in Sources */,
+				941F0C8328868A8A00787622 /* TabbarViewController.swift in Sources */,
 				94F18F02286CA80A0092D1C0 /* RealmDataTableViewCell.swift in Sources */,
 				94F18EF0286C580B0092D1C0 /* RealmData.swift in Sources */,
 				94F18EFB286C6A490092D1C0 /* RealmDataViewController.swift in Sources */,
