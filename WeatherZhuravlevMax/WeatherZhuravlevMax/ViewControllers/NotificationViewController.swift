@@ -77,10 +77,10 @@ class NotificationViewController: UIViewController {
     @IBAction func snowCheckButtonPressed(_ sender: Any) {
         if isSnowing {
             badWeather.remove(.snow)
-            isSnowing = false
+            isSnowing.toggle()
         } else {
             badWeather.insert(.snow)
-            isSnowing = true
+            isSnowing.toggle()
         }
         snowCheckButton.setImage(UIImage(systemName: isSnowing ? "checkmark.square" : "square"), for: .normal)
     }

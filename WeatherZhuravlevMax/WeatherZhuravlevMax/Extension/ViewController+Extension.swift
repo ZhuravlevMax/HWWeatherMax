@@ -21,19 +21,19 @@ extension UIViewController {
             
             switch badWeatherState {
             case 7:
-                return (500...531).contains(id) || (600...622).contains(id) || (200...232).contains(id)
+                return BadWeatherEnum.rain.rangeWeather.contains(id) || BadWeatherEnum.snow.rangeWeather.contains(id) || BadWeatherEnum.thunderstorm.rangeWeather.contains(id)
             case 6:
-                return (500...531).contains(id) || (200...232).contains(id)
+                return BadWeatherEnum.rain.rangeWeather.contains(id) || BadWeatherEnum.thunderstorm.rangeWeather.contains(id)
             case 5:
-                return (600...622).contains(id) || (200...232).contains(id)
+                return BadWeatherEnum.snow.rangeWeather.contains(id) || BadWeatherEnum.thunderstorm.rangeWeather.contains(id)
             case 4:
-                return (200...232).contains(id)
+                return BadWeatherEnum.thunderstorm.rangeWeather.contains(id)
             case 3:
-                return (500...531).contains(id) || (600...622).contains(id)
+                return BadWeatherEnum.rain.rangeWeather.contains(id) || BadWeatherEnum.snow.rangeWeather.contains(id)
             case 2:
-                return (500...531).contains(id)
+                return BadWeatherEnum.rain.rangeWeather.contains(id)
             case 1:
-                return (600...622).contains(id)
+                return BadWeatherEnum.snow.rangeWeather.contains(id)
             default:
                 false
             }
