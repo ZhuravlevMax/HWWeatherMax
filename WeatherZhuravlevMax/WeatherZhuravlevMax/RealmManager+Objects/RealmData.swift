@@ -25,3 +25,8 @@ class RealmWeatherData: Object {
     
 }
 
+class RealmBadWeatherStates: Object {
+    @objc dynamic var badWeatherBitCode: Int = 0
+}
+
+

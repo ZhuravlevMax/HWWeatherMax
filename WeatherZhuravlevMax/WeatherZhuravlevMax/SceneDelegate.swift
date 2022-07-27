@@ -19,22 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //MARK: - Создаю tabBar 
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
-        guard let currentWeatherVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WeatherStoryboard") as? WeatherViewController else {return}
-        guard let MapVC = UIStoryboard(name: "MapStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MapStoryboard") as? MapViewController else {return}
-        guard let RealmDataVC = UIStoryboard(name: "RealmDataStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RealmDataStoryboard") as? RealmDataViewController else {return}
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([currentWeatherVC, MapVC, RealmDataVC], animated: true)
-        currentWeatherVC.tabBarItem.title = NSLocalizedString("SceneDelegate.tabBarController.currentWeatherVC.tabBarItem.title", comment: "")
-        currentWeatherVC.tabBarItem.image = UIImage(systemName: "cloud.sun")
-        MapVC.tabBarItem.title = NSLocalizedString("SceneDelegate.tabBarController.MapVC.tabBarItem.title", comment: "")
-        MapVC.tabBarItem.image = UIImage(systemName: "map")
-        RealmDataVC.tabBarItem.title = NSLocalizedString("SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title", comment: "")
-        RealmDataVC.tabBarItem.image = UIImage(systemName: "tablecells")
-        
-        tabBarController.tabBar.backgroundColor = UIColor.white
-        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
+        window?.rootViewController = TabbarViewController()
         
     }
 
@@ -65,7 +53,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
 
 }
 

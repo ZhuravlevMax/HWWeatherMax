@@ -10,7 +10,7 @@ import RealmSwift
 import UserNotifications
 import CoreLocation
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, UITabBarControllerDelegate {
     //MARK: - добавление outlets
     //loading view
     @IBOutlet weak var loadingView: UIView!
@@ -24,7 +24,7 @@ class WeatherViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
-    @IBOutlet weak var locationLabel: UILabel!
+   // @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
@@ -64,13 +64,15 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.tabBarController?.delegate = self
         
         view.layoutSubviews()
         
         mainView.isHidden = true
         
         dateLabel.text = ""
-        locationLabel.text = ""
+//        locationLabel.text = ""
         cityNameLabel.text = defaultCity
         tempLabel.text = ""
         descriptionWeatherLabel.text = ""
@@ -103,12 +105,18 @@ class WeatherViewController: UIViewController {
         
         mainTableView.register(UINib(nibName: "ForTableVIewTableViewCell", bundle: nil), forCellReuseIdentifier: ForTableVIewTableViewCell.key)
         
+       makeRefresher()
+        
+        
+    }
+    
+    func makeRefresher() {
         //MARK: - Работа с refresher to mainTableView
         let refresh = UIRefreshControl()
         mainTableView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(refresher(sender: )), for: .valueChanged)
-        
     }
+    
     
     @objc private func refresher(sender: UIRefreshControl) {
         
@@ -122,6 +130,18 @@ class WeatherViewController: UIViewController {
         }
         
     }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+            let tabBarIndex = tabBarController.selectedIndex
+            if tabBarIndex == 0 {
+                if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.search.rawValue || UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == nil {
+                    guard let city = cityNameLabel.text else {return}
+                    getCoordByCityName(searchCity: city)
+                } else if UserDefaults.standard.string(forKey: StateButtons.state.rawValue) == StateButtons.location.rawValue {
+                    self.coreManager.startUpdatingLocation()
+                }
+            }
+       }
     
     //MARK: - Работа с кнопкой текущей позиции
     @IBAction func currentPositionButtonPressed(_ sender: Any) {
@@ -257,7 +277,7 @@ class WeatherViewController: UIViewController {
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
                     guard let hourlyWeatherDataArray = value.hourly else {return}
-                    self.weatherIdCheck(hourlyWeatherData: hourlyWeatherDataArray)
+                    self.weatherIdCheck(hourlyWeatherData: hourlyWeatherDataArray, badWeather: self.dBManager.obtainBadWeather())
                     
                     if let hourly = value.hourly {
                         self.hourlyWeatherArray = hourly
@@ -271,7 +291,7 @@ class WeatherViewController: UIViewController {
                     self.loadingView.isHidden = true
                     
                     
-                    self.locationLabel.text = value.timeZone
+                   // self.locationLabel.text = value.timeZone
                     
                     guard let temp = value.current?.temp else {return}
                     

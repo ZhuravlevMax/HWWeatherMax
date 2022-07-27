@@ -28,12 +28,12 @@ class MapViewController: UIViewController {
     var currentTemp = ""
     var imageWeather: UIImage!
     var descriptionWeather = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.layoutSubviews()
-
+        
         apiProviderMap = AlamofireProvider()
         dBManager = DBManager()
         
@@ -44,7 +44,7 @@ class MapViewController: UIViewController {
         let mapView = GMSMapView.map(withFrame: forMapView.frame, camera: camera)
         forMapView.addSubview(mapView)
         mapView.delegate = self
-    
+        
     }
     
     
@@ -54,8 +54,11 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print(coordinate.latitude)
         
+        
+        
         apiProviderMap.getWeatherForCityCoordinates(lat: coordinate.latitude, lon: coordinate.longitude) { result in
             switch result {
+                
             case .success(let value):
                 
                 guard let weatherIconId = value.current?.weather?.first?.icon else {return}
@@ -76,9 +79,9 @@ extension MapViewController: GMSMapViewDelegate {
                     coordRealmData.lat = latData
                     coordRealmData.lon = lonData
                     coordRealmData.time = Int(date.timeIntervalSince1970)
-
+                    
                     self.dBManager.saveCoordinate(coordinateData: coordRealmData)
-                
+                    
                     // Сохраняем в таблицу RealmWeatherData
                     guard let tempData = value.current?.temp,
                           let feelsLikeData = value.current?.feelsLike,
@@ -95,22 +98,15 @@ extension MapViewController: GMSMapViewDelegate {
                     
                     self.dBManager.saveWeather(weatherData: weatherRealmData)
                     
-                    //MARK: - работа с маркером
-                    mapView.clear()
-                    let marker = GMSMarker()
-                    marker.position = CLLocationCoordinate2D(latitude: latData, longitude: lonData)
-                    marker.map = mapView
-                    mapView.selectedMarker = marker
-
                     // MARK: - работа с UI
-                    
                     self.windSpeedForMarker = windSpeed
-
+                    
                     self.currentTemp = "+\(Int(temp))°"
-
+                    
                     if let data = try? Data(contentsOf: imageUrl) {
                         //self.weatherImage.image = UIImage(data: data)
                         self.imageWeather = UIImage(data: data)
+                        self.addMarker(mapView: mapView, latData: coordinate.latitude, lonData: coordinate.longitude)
                     }
                     print(value)
                 }
@@ -121,12 +117,26 @@ extension MapViewController: GMSMapViewDelegate {
         
     }
     
+    func addMarker(mapView: GMSMapView, latData: Double, lonData: Double) {
+        //MARK: - работа с маркером
+        mapView.clear()
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: latData, longitude: lonData)
+        marker.map = mapView
+        mapView.selectedMarker = marker
+        
+    }
+    
+    
     //MARK: - метод работы с маркером
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let markerView = Bundle.main.loadNibNamed(MarkerWindowUIView.key, owner: self, options: nil)![0] as? MarkerWindowUIView
         guard let markerViewChecked = markerView else {return UIView()}
         markerViewChecked.markerMainView.layer.cornerRadius = 10
-        let markerWindSpeedLabelText  = NSLocalizedString("MapViewController.markerViewChecked.markerWindSpeedLabel.text", comment: "")
+        let markerWindSpeedLabelText: String
+        
+        UserDefaults.standard.bool(forKey: UserDefaultsKeys.metricUnitOn.rawValue) ? (markerWindSpeedLabelText = NSLocalizedString("MapViewController.markerViewChecked.markerWindSpeedLabel.textMetric", comment: "")) : (markerWindSpeedLabelText = NSLocalizedString("MapViewController.markerViewChecked.markerWindSpeedLabel.textImperial", comment: ""))
+        
         markerViewChecked.markerWindSpeedLabel.text =
         String.localizedStringWithFormat(markerWindSpeedLabelText, windSpeedForMarker)
         //"Ветер: \(windSpeedForMarker) м/с"

@@ -57,12 +57,12 @@ class AlamofireProvider: RestAPIProviderProtocol {
             }
         }
     }
-    
+    // https://api.openweathermap.org/data/2.5/onecall/
     func getWeatherForCityCoordinates(lat: Double, lon: Double, completion: @escaping (Result<WeatherData, Error>) -> Void) {
         
-        if Locale.current.languageCode == "\(Language.ru)" {
-            userUnits = "\(Units.metric)"
-        }
+        
+        UserDefaults.standard.bool(forKey: UserDefaultsKeys.metricUnitOn.rawValue) ? (userUnits = "\(Units.metric)") : (userUnits = "\(Units.imperial)")
+        
         
         let params = addParams(queryItems: ["lat": lat.description, "lon": lon.description, "exclude": "\(minutely),\(alerts)", "lang": userLanguage, "units": userUnits])
         

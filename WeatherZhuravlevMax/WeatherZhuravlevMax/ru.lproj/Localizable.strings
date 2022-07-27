@@ -9,12 +9,14 @@
 "SceneDelegate.tabBarController.currentWeatherVC.tabBarItem.title" = "Погода";
 "SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Карта";
 "SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "История запросов";
+"SceneDelegate.tabBarController.SettingsVC.tabBarItem.title" = "Настройки";
 
 //MARK: - tempLabel
-"WeatherViewController.tempLabe.text" = "%d°C";
+"WeatherViewController.tempLabe.text" = "%d°";
 
 //MARK: - MapVC.windSpeedForMarker
-"MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Скорость ветра %.2f м/с";
+"MapViewController.markerViewChecked.markerWindSpeedLabel.textMetric" = "Скорость ветра %.2f м/с";
+"MapViewController.markerViewChecked.markerWindSpeedLabel.textImperial" = "Wind Speed %.2f миль/ч";
 
 //MARK: - City choise alert
 "WeatherViewController.findCityAlertController.title" = "Выбор города";
@@ -25,7 +27,7 @@
 
 //MARK: - Error city name alert
 "WeatherViewController.errorAlertController.title" = "Упс!";
-"WeatherViewController.wrongCityAlertController.message" = "Проверьте название города!";
+"WeatherViewController.errorAlertController.message" = "Проверьте название города!";
 
 
 //MARK: - Error data alert
@@ -33,3 +35,28 @@
 
 //MARK: - City name label at WeatherVC if use location
 "WeatherViewController.cityNameLabel.text" = "Вокруг меня";
+
+//MARK: - Settings VC
+"SettingsViewController.settingsLabel.text" = "Настройки";
+"SettingsViewController.notificationButton.title" = "Уведомление о плохой погоде";
+"SettingsViewController.historyButton.title" = "История запросов";
+"SettingsViewController.unitsButton.title" = "Система измерений";
+"SettingsViewController.timeFormatButton.title" = "Формат времени";
+
+//MARK: - Notification VC
+"NotificationViewController.cancelButton.title" = "Отмена";
+"NotificationViewController.saveButton.title" = "Сохранить";
+"NotificationViewController.choiceLabel.text" = "Выбор погоды для уведомления";
+"NotificationViewController.rainLabel.text" = "Дождь";
+"NotificationViewController.snowLabel.text" = "Снег";
+"NotificationViewController.thunderstormLabel.text" = "Гроза";
+
+//MARK: - Units VC
+"UnitsViewController.choiceLabel.text" = "Выбор системы измерения";
+"UnitsViewController.unitsSegmentControl.title0" = "Метрическая";
+"UnitsViewController.unitsSegmentControl.title1" = "Имперская";
+
+//MARK: - TimeFormat VC
+"TimeFormatViewController.timeLabel.text" = "Выберите часовой формат";
+"TimeFormatViewController.timeSegmentControl.title0" = "12-ти часовой";
+"TimeFormatViewController.timeSegmentControl.title1" = "24-х часовой";

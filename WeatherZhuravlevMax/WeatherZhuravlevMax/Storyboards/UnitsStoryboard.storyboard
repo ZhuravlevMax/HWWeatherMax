@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Units View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="UnitsStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="UnitsViewController" customModule="WeatherZhuravlevMax" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="d9O-pA-zlP">
+                                <rect key="frame" x="20.5" y="54" width="373" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5d-Ra-ki5">
+                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="31"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KhU-df-0Lk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YU2-IE-5dN">
+                                        <rect key="frame" x="317.5" y="0.0" width="55.5" height="31"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qR3-sQ-lCg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3Ma-R8-vOD">
+                                <rect key="frame" x="92.5" y="139" width="229" height="32"/>
+                                <segments>
+                                    <segment title="Метрическая"/>
+                                    <segment title="Империческая"/>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбор системы измерений" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDs-hq-mz4">
+                                <rect key="frame" x="41.5" y="95" width="331" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.26274511220000002" green="0.59215688710000003" blue="0.89803922179999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="d9O-pA-zlP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="3pS-p4-QHL"/>
+                            <constraint firstItem="PDs-hq-mz4" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="GXG-zj-R0E"/>
+                            <constraint firstItem="PDs-hq-mz4" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="Huj-1q-nLY"/>
+                            <constraint firstItem="3Ma-R8-vOD" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="JBC-xw-rFP"/>
+                            <constraint firstItem="d9O-pA-zlP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="akd-PV-rSz"/>
+                            <constraint firstItem="3Ma-R8-vOD" firstAttribute="top" secondItem="PDs-hq-mz4" secondAttribute="bottom" constant="20" id="dSh-1Y-v3l"/>
+                            <constraint firstItem="PDs-hq-mz4" firstAttribute="top" secondItem="d9O-pA-zlP" secondAttribute="bottom" constant="10" id="j7W-yd-n1d"/>
+                            <constraint firstItem="d9O-pA-zlP" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="qQW-Ag-5rD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="K5d-Ra-ki5" id="iVF-Zg-DJW"/>
+                        <outlet property="choiceLabel" destination="PDs-hq-mz4" id="wVu-kq-2je"/>
+                        <outlet property="saveButton" destination="YU2-IE-5dN" id="4SJ-ww-FTp"/>
+                        <outlet property="unitsSegmentControl" destination="3Ma-R8-vOD" id="c7g-gJ-s8y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64" y="74"/>
+        </scene>
+    </scenes>
+</document>

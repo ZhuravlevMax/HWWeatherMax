@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notification View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="NotificationStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="NotificationViewController" customModule="WeatherZhuravlevMax" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7B-9f-EQV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Xbc-Zn-WeZ">
+                                        <rect key="frame" x="20.5" y="10" width="373" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-Pm-51L">
+                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="31"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2b8-Qr-hMj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnf-iV-yRR">
+                                                <rect key="frame" x="317.5" y="0.0" width="55.5" height="31"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ZBL-l1-K7J"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбор погоды для увеломлений" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgX-l3-8Es">
+                                        <rect key="frame" x="41.5" y="51" width="331" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kf7-cD-qY4">
+                                        <rect key="frame" x="20.5" y="95" width="373" height="112"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="l2y-vo-RiX">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="24"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHd-oT-2r2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="38" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re2-om-FWP">
+                                                        <rect key="frame" x="349" y="0.0" width="24" height="24"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                        <connections>
+                                                            <action selector="rainCheckButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HWW-gB-V3U"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="thK-l6-uge">
+                                                <rect key="frame" x="0.0" y="44" width="373" height="24"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uj-na-aL2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="49" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fde-4X-LqE">
+                                                        <rect key="frame" x="349" y="0.0" width="24" height="24"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                        <connections>
+                                                            <action selector="snowCheckButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Zbb-Gj-Jg4"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="rxH-fD-5df">
+                                                <rect key="frame" x="0.0" y="88" width="373" height="24"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thunderstorm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLQ-Sg-tSD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPD-LW-rT0">
+                                                        <rect key="frame" x="349" y="0.0" width="24" height="24"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                        <connections>
+                                                            <action selector="thunderstormCheckButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OOe-1f-xhi"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kf7-cD-qY4" firstAttribute="top" secondItem="SgX-l3-8Es" secondAttribute="bottom" constant="20" id="98k-Cx-yU6"/>
+                                    <constraint firstItem="kf7-cD-qY4" firstAttribute="centerX" secondItem="W7B-9f-EQV" secondAttribute="centerX" id="EFe-Uc-aTg"/>
+                                    <constraint firstItem="SgX-l3-8Es" firstAttribute="width" secondItem="W7B-9f-EQV" secondAttribute="width" multiplier="0.8" id="Eq3-MB-9d8"/>
+                                    <constraint firstItem="SgX-l3-8Es" firstAttribute="top" secondItem="Xbc-Zn-WeZ" secondAttribute="bottom" constant="10" id="Im6-Zj-u3B"/>
+                                    <constraint firstItem="Xbc-Zn-WeZ" firstAttribute="width" secondItem="W7B-9f-EQV" secondAttribute="width" multiplier="0.9" id="MBp-Ti-uCN"/>
+                                    <constraint firstItem="Xbc-Zn-WeZ" firstAttribute="centerX" secondItem="W7B-9f-EQV" secondAttribute="centerX" id="X9H-6m-McD"/>
+                                    <constraint firstItem="SgX-l3-8Es" firstAttribute="centerX" secondItem="W7B-9f-EQV" secondAttribute="centerX" id="YCT-bj-OQ4"/>
+                                    <constraint firstItem="kf7-cD-qY4" firstAttribute="width" secondItem="W7B-9f-EQV" secondAttribute="width" multiplier="0.9" id="gcn-2r-lSI"/>
+                                    <constraint firstItem="Xbc-Zn-WeZ" firstAttribute="top" secondItem="W7B-9f-EQV" secondAttribute="top" constant="10" id="hgV-0K-bks"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.26274511220000002" green="0.59215688710000003" blue="0.89803922179999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="W7B-9f-EQV" secondAttribute="bottom" id="4Pj-OK-DDs"/>
+                            <constraint firstItem="W7B-9f-EQV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Fp1-7q-nXA"/>
+                            <constraint firstItem="W7B-9f-EQV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="QH1-c4-8H4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="W7B-9f-EQV" secondAttribute="trailing" id="mQu-hr-eY7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="1JJ-Pm-51L" id="QWX-OV-qQO"/>
+                        <outlet property="choiceLabel" destination="SgX-l3-8Es" id="JVz-mW-wc6"/>
+                        <outlet property="rainCheckButton" destination="Re2-om-FWP" id="fw5-qJ-6dv"/>
+                        <outlet property="rainLabel" destination="zHd-oT-2r2" id="dWn-B9-LhR"/>
+                        <outlet property="saveButton" destination="jnf-iV-yRR" id="Cds-LJ-afI"/>
+                        <outlet property="snowCheckButton" destination="fde-4X-LqE" id="RS8-se-vK6"/>
+                        <outlet property="snowLabel" destination="8uj-na-aL2" id="0Kc-sE-VWA"/>
+                        <outlet property="thunderstormCheckButton" destination="sPD-LW-rT0" id="Agl-Sn-3nN"/>
+                        <outlet property="thunderstormLabel" destination="aLQ-Sg-tSD" id="P38-p2-jFA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-75.362318840579718" y="-7.3660714285714279"/>
+        </scene>
+    </scenes>
+</document>

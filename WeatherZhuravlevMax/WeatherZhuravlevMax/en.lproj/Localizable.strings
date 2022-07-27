@@ -9,12 +9,15 @@
 "SceneDelegate.tabBarController.currentWeatherVC.tabBarItem.title" = "Weather";
 "SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Map";
 "SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "WeatherRequestInfo";
+"SceneDelegate.tabBarController.SettingsVC.tabBarItem.title" = "Settings";
 
 //MARK: - WeatherViewController.tempLabel
-"WeatherViewController.tempLabe.text" = "%d°F";
+"WeatherViewController.tempLabe.text" = "%d°";
 
 //MARK: - MapVC.windSpeedForMarker
 "MapViewController.markerViewChecked.markerWindSpeedLabel.text" = "Wind Speed %.2f m/s";
+"MapViewController.markerViewChecked.markerWindSpeedLabel.textImperial" = "Wind Speed %.2f miles/h";
+"MapViewController.markerViewChecked.markerWindSpeedLabel.textMetric" = "Wind Speed %.2f m/s";
 
 //MARK: - City choise alert
 "WeatherViewController.findCityAlertController.title" = "City Choise";
@@ -33,3 +36,28 @@
 
 //MARK: - City name label at WeatherVC if use location
 "WeatherViewController.cityNameLabel.text" = "Around me";
+
+//MARK: - Settings VC
+"SettingsViewController.settingsLabel.text" = "Settings";
+"SettingsViewController.notificationButton.title" = "Weather notification";
+"SettingsViewController.historyButton.title" = "Request history";
+"SettingsViewController.unitsButton.title" = "Measuring system";
+"SettingsViewController.timeFormatButton.title" = "Date format";
+
+//MARK: - Notitcation VC
+"NotificationViewController.cancelButton.title" = "Cancel";
+"NotificationViewController.saveButton.title" = "Save";
+"NotificationViewController.choiceLabel.text" = "Choice weather for notification";
+"NotificationViewController.rainLabel.text" = "Rain";
+"NotificationViewController.snowLabel.text" = "Snow";
+"NotificationViewController.thunderstormLabel.text" = "Thunderstorm";
+
+//MARK: - Units VC
+"UnitsViewController.choiceLabel.text" = "Сhoose a measuring system";
+"UnitsViewController.unitsSegmentControl.title0" = "Metric";
+"UnitsViewController.unitsSegmentControl.title1" = "Imperial";
+
+//MARK: - TimeFormat VC
+"TimeFormatViewController.timeLabel.text" = "Choose hour format";
+"TimeFormatViewController.timeSegmentControl.title0" = "12-hour clock";
+"TimeFormatViewController.timeSegmentControl.title1" = "24-hour clock";
