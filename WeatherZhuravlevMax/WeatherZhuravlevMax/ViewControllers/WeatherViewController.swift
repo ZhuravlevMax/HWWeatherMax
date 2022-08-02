@@ -223,7 +223,7 @@ class WeatherViewController: UIViewController, UITabBarControllerDelegate {
                     UserDefaults.standard.set(StateButtons.search.rawValue, forKey: StateButtons.state.rawValue)
                     UserDefaults.standard.set(searchCity, forKey: StateButtons.city.rawValue)
                 } else {
-                    self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.errorAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.wrongCityAlertController.message", comment: ""))
+                    self.doFindCityAlert(title: NSLocalizedString("WeatherViewController.errorAlertController.title", comment: ""), message: NSLocalizedString("WeatherViewController.errorAlertController.message", comment: ""))
                     
                 }
             case .failure(let error):

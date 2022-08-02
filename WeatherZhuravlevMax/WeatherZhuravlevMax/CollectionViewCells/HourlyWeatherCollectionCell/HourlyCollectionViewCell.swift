@@ -26,7 +26,6 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         UserDefaults.standard.bool(forKey: UserDefaultsKeys.twentyFormatOn.rawValue) ? (formatTime = "hh:mm") : (formatTime = "HH:mm")
         if let hourlyIconId = model.weather?.first?.icon,
            let imageUrl = URL(string: "\(Constants.imageURL)\(hourlyIconId)@2x.png"),
-           let hourlyTime = model.dt,
            let decodedTime = model.dt?.decoderDt(format: formatTime),
            let hourlyTemp = model.temp {
             

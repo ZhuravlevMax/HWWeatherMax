@@ -10,6 +10,7 @@
 "SceneDelegate.tabBarController.MapVC.tabBarItem.title" = "Карта";
 "SceneDelegate.tabBarController.RealmDataVC.tabBarItem.title" = "История запросов";
 "SceneDelegate.tabBarController.SettingsVC.tabBarItem.title" = "Настройки";
+"SceneDelegate.tabBarController.FavotiteVC.tabBarItem.title" = "Избранное";
 
 //MARK: - tempLabel
 "WeatherViewController.tempLabe.text" = "%d°";

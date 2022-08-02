@@ -11,9 +11,14 @@
 		94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */; };
 		94076D6428757DFD001A632A /* ForCollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */; };
 		94076D6828774986001A632A /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94076D6728774985001A632A /* Image+Extension.swift */; };
+		941211B9289802C200A2B924 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941211B7289802C200A2B924 /* FavoriteTableViewCell.swift */; };
+		941211BA289802C200A2B924 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941211B8289802C200A2B924 /* FavoriteTableViewCell.xib */; };
 		941F0C8328868A8A00787622 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F0C8228868A8A00787622 /* TabbarViewController.swift */; };
 		941F0C852887105000787622 /* BadWeatherEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F0C842887105000787622 /* BadWeatherEnum.swift */; };
 		941F0CA728872B2F00787622 /* BadWeatherStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F0CA628872B2F00787622 /* BadWeatherStruct.swift */; };
+		941F0CAB2891350000787622 /* FavoriteCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F0CAA2891350000787622 /* FavoriteCitiesViewController.swift */; };
+		941F0CAD2891353300787622 /* FavoriteCitiesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941F0CAC2891353300787622 /* FavoriteCitiesStoryboard.storyboard */; };
+		941F0CB0289143A500787622 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 941F0CAF289143A500787622 /* SnapKit */; };
 		941F8C0C287AB8B90067D9FA /* MarkerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */; };
 		941F8C0E287ABA580067D9FA /* MarkerWindowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */; };
 		9427CE1B288197E70031E0BC /* NotificationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */; };
@@ -63,9 +68,13 @@
 		94076D6128757DFD001A632A /* ForCollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForCollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 		94076D6228757DFD001A632A /* ForCollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForCollectionViewTableViewCell.xib; sourceTree = "<group>"; };
 		94076D6728774985001A632A /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
+		941211B7289802C200A2B924 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		941211B8289802C200A2B924 /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		941F0C8228868A8A00787622 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		941F0C842887105000787622 /* BadWeatherEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadWeatherEnum.swift; sourceTree = "<group>"; };
 		941F0CA628872B2F00787622 /* BadWeatherStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadWeatherStruct.swift; sourceTree = "<group>"; };
+		941F0CAA2891350000787622 /* FavoriteCitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCitiesViewController.swift; sourceTree = "<group>"; };
+		941F0CAC2891353300787622 /* FavoriteCitiesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteCitiesStoryboard.storyboard; sourceTree = "<group>"; };
 		941F8C0B287AB8B90067D9FA /* MarkerWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkerWindow.xib; sourceTree = "<group>"; };
 		941F8C0D287ABA580067D9FA /* MarkerWindowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerWindowUIView.swift; sourceTree = "<group>"; };
 		9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationStoryboard.storyboard; sourceTree = "<group>"; };
@@ -126,6 +135,7 @@
 				94F18EF3286C59580092D1C0 /* Realm in Frameworks */,
 				94FC8D102866F90A000CDE91 /* Alamofire in Frameworks */,
 				5023904C077797B2EF8CF1D3 /* Pods_WeatherZhuravlevMax.framework in Frameworks */,
+				941F0CB0289143A500787622 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +159,15 @@
 				949F6A1F2878033900AF472B /* ForTableVIewTableViewCell.xib */,
 			);
 			path = MainTableViewCell;
+			sourceTree = "<group>";
+		};
+		941211BB289802C800A2B924 /* FavoriteTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				941211B7289802C200A2B924 /* FavoriteTableViewCell.swift */,
+				941211B8289802C200A2B924 /* FavoriteTableViewCell.xib */,
+			);
+			path = FavoriteTableViewCell;
 			sourceTree = "<group>";
 		};
 		941F8C0F287ABA5F0067D9FA /* MarkerWindow */ = {
@@ -220,6 +239,7 @@
 				94076D6028757DB9001A632A /* MainTableViewCell */,
 				94FC8D462868FB6C000CDE91 /* DailyWeatherTableViewCell */,
 				94F18F04286CA8110092D1C0 /* RealmDataTableViewCell */,
+				941211BB289802C800A2B924 /* FavoriteTableViewCell */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -290,6 +310,7 @@
 				9427CE1C288197FD0031E0BC /* NotificationViewController.swift */,
 				9427CE242882DEEC0031E0BC /* UnitsViewController.swift */,
 				9427CE202882CDC60031E0BC /* TimeFormatViewController.swift */,
+				941F0CAA2891350000787622 /* FavoriteCitiesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -304,6 +325,7 @@
 				9427CE1A288197E70031E0BC /* NotificationStoryboard.storyboard */,
 				9427CE222882DEC80031E0BC /* UnitsStoryboard.storyboard */,
 				9427CE1E2882CDA30031E0BC /* TimeFormatStoryboard.storyboard */,
+				941F0CAC2891353300787622 /* FavoriteCitiesStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -339,6 +361,7 @@
 				94FC8D0F2866F90A000CDE91 /* Alamofire */,
 				94F18EF2286C59580092D1C0 /* Realm */,
 				94F18EF4286C59580092D1C0 /* RealmSwift */,
+				941F0CAF289143A500787622 /* SnapKit */,
 			);
 			productName = WeatherZhuravlevMax;
 			productReference = 9467C239285E5E4400ADD251 /* WeatherZhuravlevMax.app */;
@@ -372,6 +395,7 @@
 			packageReferences = (
 				94FC8D0E2866F90A000CDE91 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				94F18EF1286C59580092D1C0 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				941F0CAE289143A400787622 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 9467C23A285E5E4400ADD251 /* Products */;
 			projectDirPath = "";
@@ -396,6 +420,7 @@
 				94FC8D2428673482000CDE91 /* MapStoryboard.storyboard in Resources */,
 				9427CE1F2882CDA30031E0BC /* TimeFormatStoryboard.storyboard in Resources */,
 				9427CE232882DEC80031E0BC /* UnitsStoryboard.storyboard in Resources */,
+				941211BA289802C200A2B924 /* FavoriteTableViewCell.xib in Resources */,
 				9467C244285E5E4400ADD251 /* Main.storyboard in Resources */,
 				94F18EFD286C6A6F0092D1C0 /* RealmDataStoryboard.storyboard in Resources */,
 				94C69AB228818F4100FE3EAD /* SettingsStoryboard.storyboard in Resources */,
@@ -403,6 +428,7 @@
 				941F8C0C287AB8B90067D9FA /* MarkerWindow.xib in Resources */,
 				949F6A212878033900AF472B /* ForTableVIewTableViewCell.xib in Resources */,
 				94FC8D402868B551000CDE91 /* HourlyCollectionViewCell.xib in Resources */,
+				941F0CAD2891353300787622 /* FavoriteCitiesStoryboard.storyboard in Resources */,
 				94FC8D442868BA31000CDE91 /* DailyTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,10 +491,12 @@
 				9467C23D285E5E4400ADD251 /* AppDelegate.swift in Sources */,
 				941F0C852887105000787622 /* BadWeatherEnum.swift in Sources */,
 				94FC8D262867349F000CDE91 /* MapViewController.swift in Sources */,
+				941F0CAB2891350000787622 /* FavoriteCitiesViewController.swift in Sources */,
 				941F0C8328868A8A00787622 /* TabbarViewController.swift in Sources */,
 				94F18F02286CA80A0092D1C0 /* RealmDataTableViewCell.swift in Sources */,
 				94F18EF0286C580B0092D1C0 /* RealmData.swift in Sources */,
 				94F18EFB286C6A490092D1C0 /* RealmDataViewController.swift in Sources */,
+				941211B9289802C200A2B924 /* FavoriteTableViewCell.swift in Sources */,
 				941F0CA728872B2F00787622 /* BadWeatherStruct.swift in Sources */,
 				94076D6328757DFD001A632A /* ForCollectionViewTableViewCell.swift in Sources */,
 				94FC8D1F2866FC99000CDE91 /* AlamofireProvider.swift in Sources */,
@@ -728,6 +756,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		941F0CAE289143A400787622 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
 		94F18EF1286C59580092D1C0 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -747,6 +783,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		941F0CAF289143A500787622 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 941F0CAE289143A400787622 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		94F18EF2286C59580092D1C0 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 94F18EF1286C59580092D1C0 /* XCRemoteSwiftPackageReference "realm-swift" */;
